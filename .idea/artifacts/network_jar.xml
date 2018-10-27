@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="network:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/network_jar</output-path>
+    <root id="archive" name="network.jar">
+      <element id="module-output" name="network" />
+      <element id="extracted-dir" path="E:/developEnv/mavenrepo/commons-net/commons-net/3.1/commons-net-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="E:/developEnv/mavenrepo/com/jcraft/jsch/0.1.54/jsch-0.1.54.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="E:/developEnv/mavenrepo/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.m2/repository/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.m2/repository/org/scala-lang/scala-reflect/2.11.8/scala-reflect-2.11.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
