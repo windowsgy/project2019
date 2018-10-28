@@ -56,7 +56,6 @@ public class Analysis implements ModelInterface {
             }else {//如果存在就删除目录中的文件
                 fileUtils.deleteFiles(currentFormatDesPath);
             }
-
             //构建格式化结构体
             LogInfo.info("FormatType :"+formatType);
             List<FormatStrut> listStrut = buildFormatStrut(formatType,currentFormatDesPath);
@@ -79,8 +78,11 @@ public class Analysis implements ModelInterface {
         LogInfo.linel2();
     }
 
-
-
+    /**
+     * 分析方法
+     * @param list list
+     * @param analysisType 分析类型
+     */
     private void analysis(List<List<String>> list, String analysisType){
         String analysisFilePath = Param.currentAnalysisPath+analysisType+".txt";
        // LogInfo.info("currentAnalysisFilePath :"+analysisFilePath);
@@ -110,6 +112,10 @@ public class Analysis implements ModelInterface {
     }
 
 
+    /**
+     * 格式化方法
+     * @param listStrut 结构体
+     */
     public  void format(List<FormatStrut> listStrut) {
         //LogInfo.info("Format Start");
         for (FormatStrut strut: listStrut) {
@@ -143,6 +149,12 @@ public class Analysis implements ModelInterface {
     }
 
 
+    /**
+     * 整合方法
+     * @param listStrut 结构体
+     * @param formatType 格式化类型
+     * @return string
+     */
     private String integrate(List<FormatStrut> listStrut, String formatType) {
        // LogInfo.info("Integrate Start");
         String integrateFilePath = Param.currentIntegratePath+formatType+".txt";
@@ -187,7 +199,13 @@ public class Analysis implements ModelInterface {
             return list;
         }
 
-    private  List<FormatStrut> buildFormatStrut(String formatType, String currentFormatDesPath){
+    /**
+     * 构建格式化结构体
+     * @param formatType 格式化类型
+     * @param currentFormatDesPath 格式化后存储路径
+     * @return 格式化结构体
+     */
+        private  List<FormatStrut> buildFormatStrut(String formatType, String currentFormatDesPath){
        // LogInfo.info("Build FormatStrut");
         List<FormatStrut> listStrut = new ArrayList<>();
         FileUtils fileUtils = new FileUtils();

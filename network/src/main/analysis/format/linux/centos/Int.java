@@ -8,7 +8,6 @@ public class Int implements FormatInterface {
 
     @Override
      public String run( List<String> list) {
-
        return "not define";
     }
 }
