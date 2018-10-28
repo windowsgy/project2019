@@ -44,14 +44,14 @@ public class ListUtils {
      * @return 行、列 列表
      */
     public  List<List<String>> list2ListFields(List<String> list, String splitChar) {
-        String[] firstArray = list.get(0).split(splitChar); //首行
+        String[] firstArray = list.get(0).split(splitChar,-1); //首行
         int firstArraySize = firstArray.length;
         List<List<String>> theList = new ArrayList<>();
         int lineCount = 0;
         for (String lists : list) {
             lineCount++;
-            String[] array = lists.split(splitChar);
-            if (array.length == firstArraySize) {// 如果此行长度不等于首行字段长度
+            String[] array = lists.split(splitChar,-1);
+            if (array.length == firstArraySize) {// 如果此行长度等于首行字段长度
                 theList.add(Arrays.asList(array));
             } else {
                 LogInfo.error(lineCount + " :Line Error , Current Line Split Lenght : " + lists);

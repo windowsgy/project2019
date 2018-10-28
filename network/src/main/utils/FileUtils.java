@@ -117,7 +117,7 @@ public class FileUtils {
             // 一次读入一行，直到读入null为文件结束
             while ((line = br.readLine()) != null) {
                 lineCtl++;
-                if (lineCtl >= lineNumber && !("".equals(line.trim()))) {//如果当前行号大于指定行号
+                if (lineCtl >= lineNumber) {//如果当前行号大于指定行号
                     //loadLineCount++;
                     list.add(line.trim());
                 }

@@ -27,7 +27,6 @@ public class Analysis implements ModelInterface {
         if (!AnalysisParam.run()) {
             return;
         }
-
         //创建整合路径
         Param.currentIntegratePath = Param.currentMainPath+Param.pathMap.get("integration");
         //LogInfo.info("currentIntegratePath :"+Param.currentIntegratePath);
@@ -90,7 +89,6 @@ public class Analysis implements ModelInterface {
         }else {//如果不存在就创建
             fileUtils.createFile(analysisFilePath);
         }
-
         try {
             String result;
             //动态构造类
