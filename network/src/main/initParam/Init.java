@@ -33,7 +33,6 @@ public class Init {
         if(!Config.mapL1("model.properties",Param.modelTypeMap)){
             return false;
         }
-
         LogInfo.info("Init Params Finished");
         return true;
     }

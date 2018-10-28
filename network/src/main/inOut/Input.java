@@ -158,7 +158,12 @@ public class Input {
         }
     }
 
-
+    /**
+     *
+     * @param path 路径
+     * @param isDir 是目录
+     * @return boolean
+     */
     private static boolean isPath(String path, boolean isDir){
         FileUtils fileUtils =  new FileUtils();
          if(isDir){

@@ -45,15 +45,13 @@ public class Param {
     public static String loginFilePath;
     public static String accountFileName;
     public static String accountFilePath;
-
-
     public static String currentCollectPath;//当前采集路径
     public static String currentFormatSourcePath;//当前格式化路径
     public static String currentIntegratePath;//当前整理路径
     public static String currentAnalysisPath;//当前分析路径
     public static String currentLogFilePath;//当前日志路径
 
-
+    //char
     public static final String splitChar = "\\|";
     public static final String fileSplitChar = "_";
     public static final String charCode = "UTF-8";
