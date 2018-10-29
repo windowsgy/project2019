@@ -9,9 +9,13 @@ public class Version implements LocalAnalysisInterface {
      * @return String
      */
     public String run(List<List<String>> list){
-        for(List<String> line :list  ){
-
+        StringBuilder sb = new StringBuilder();
+        for (List<String> listFiled : list) {
+            for(String field:listFiled){
+                sb.append(field).append("|");
+            }
+            sb.append("\r\n");
         }
-        return " ok ";
+        return sb.toString();
     }
 }

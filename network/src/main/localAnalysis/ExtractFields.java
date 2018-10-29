@@ -19,10 +19,8 @@ public class ExtractFields {
         List<List<String>> newList = new ArrayList<>();
         for (List<String> fieldsList : list) {
             List<String> newFieldsList = new ArrayList<>();
-            for (int j = 0; j < fieldsList.size(); j++) {
-                if (fieldsIndex.contains(j)) {
-                    newFieldsList.add(fieldsList.get(j));
-                }
+            for (int j = 0; j < fieldsIndex.size(); j++) {
+                newFieldsList.add(fieldsList.get(j));
             }
             newList.add(newFieldsList);
         }
