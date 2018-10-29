@@ -169,11 +169,11 @@ public class Analysis implements ModelInterface {
         sb = new StringBuilder();
         int i = 0 ;
         for (FormatStrut strut: listStrut) {
-            String ipAddress = strut.getIpadd();
+            String IpAddressress = strut.getIpAddress();
             List<String> fileList = fileUtils.read2List(strut.getDesPath(),0,Param.charCode);
             for(String line: fileList) {
                 i++;
-                sb.append(ipAddress).append("|").append(line).append("\r\n");
+                sb.append(IpAddressress).append("|").append(line).append("\r\n");
             }
         }
         fileUtils.wrStrToFile(sb.toString(),integrateFilePath,Param.charCode);
@@ -217,13 +217,13 @@ public class Analysis implements ModelInterface {
             String systemType = fileNameArr[0];
             String driversType = fileNameArr[1];
             String collectType = fileNameArr[2];
-            String ipAddress = fileNameArr[3].substring(0,fileNameArr[3].lastIndexOf("."));
+            String IpAddressress = fileNameArr[3].substring(0,fileNameArr[3].lastIndexOf("."));
             strut.setSystemType(systemType);
             strut.setDriversType(driversType);
             strut.setCollectType(collectType);
-            strut.setIpadd(ipAddress);
+            strut.setIpAddress(IpAddressress);
             strut.setFormatType(formatType);
-            strut.setDesPath(currentFormatDesPath+"\\"+strut.getIpadd()+".txt");
+            strut.setDesPath(currentFormatDesPath+"\\"+strut.getIpAddress()+".txt");
             strut.setSouPath(Param.currentFormatSourcePath+"\\"+ fileName);
             listStrut.add(strut);
         }

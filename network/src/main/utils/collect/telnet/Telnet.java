@@ -21,7 +21,7 @@ public class Telnet implements Callable<Object> {
     private TelnetClient telnet = new TelnetClient();// 构造telnet对象
     private InputStream in; // 输入流 连接方法赋值
     private PrintStream out; // 输出流 连接方法赋值
-    private String ipaddress; // IP地址 构造方法初始化
+    private String IpAddressress; // IP地址 构造方法初始化
     private String username; // 用户名 构造方法初始化
     private String password; // 密码 构造方法初始化
     private String command; // 指令
@@ -31,14 +31,14 @@ public class Telnet implements Callable<Object> {
     private DateTimeUtils dtUtils = new DateTimeUtils();
 
     Telnet(Collect_Strut map) {
-        this.ipaddress = map.getIpadd(); // ip地址加载
+        this.IpAddressress = map.getIpAddress(); // ip地址加载
         this.username = map.getUname(); // 用户名加载
         this.password = map.getPwd(); // 密码加载
         this.command = map.getCmd();
        
         reStrut = new CollectResult_Strut();//采集返回信息
         reStrut.setTn(tn);
-        reStrut.setIpadd(map.getIpadd());
+        reStrut.setIpAddress(map.getIpAddress());
         reStrut.setStartDateTime(dtUtils.getCurTime(DATE_FORMAT));
     }
 
@@ -101,14 +101,14 @@ public class Telnet implements Callable<Object> {
             this.telnet.setDefaultTimeout(60000);// 60秒
             this.telnet.setConnectTimeout(60000);// 60秒
             this.telnet.setDefaultPort(23);//端口
-            this.telnet.connect(this.ipaddress); //IP地址
+            this.telnet.connect(this.IpAddressress); //IP地址
             this.in = telnet.getInputStream();//输入流
             this.out = new PrintStream(telnet.getOutputStream());//输入流
             return true;
         } catch (Exception e) {
             reStrut.setEndDateTime(dtUtils.getCurTime(DATE_FORMAT));//设置结束时间
             reStrut.setLog(e.getMessage());//设置错误消息
-            reStrut.setGatBoolean(false);//设置失败
+            reStrut.setCollectBoolean(false);//设置失败
             return false;
         }
     }
@@ -123,7 +123,7 @@ public class Telnet implements Callable<Object> {
         } catch (Exception e) {
             reStrut.setEndDateTime(dtUtils.getCurTime(DATE_FORMAT));//设置结束时间
             reStrut.setLog(e.getMessage());//设置错误消息
-            reStrut.setGatBoolean(false);//设置失败
+            reStrut.setCollectBoolean(false);//设置失败
             return false;
         }
     }
@@ -141,7 +141,7 @@ public class Telnet implements Callable<Object> {
         } catch (Exception e) {
             reStrut.setEndDateTime(dtUtils.getCurTime(DATE_FORMAT));//设置结束时间
             reStrut.setLog(e.getMessage());//设置错误消息
-            reStrut.setGatBoolean(false);//设置失败
+            reStrut.setCollectBoolean(false);//设置失败
             return false;
         }
         return true;
@@ -172,7 +172,7 @@ public class Telnet implements Callable<Object> {
         } catch (Exception e) {
             reStrut.setEndDateTime(dtUtils.getCurTime(DATE_FORMAT));//设置结束时间
             reStrut.setLog(e.getMessage());//设置错误消息
-            reStrut.setGatBoolean(false);//设置失败
+            reStrut.setCollectBoolean(false);//设置失败
             return false;
         }
     }

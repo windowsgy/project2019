@@ -38,7 +38,7 @@ public class Int implements FormatInterface {
         String desc = "";
         String proStatus = "";
         String mac = "";
-        String ipadd = "";
+        String IpAddress = "";
         for (String line : list) {
             if (includeInt(line)) {
                 intStr = line.substring(0, line.indexOf("current")).trim();
@@ -51,17 +51,17 @@ public class Int implements FormatInterface {
                 desc = line.substring(line.lastIndexOf(":") + 1).trim();
             }
             if (includeInternetAddress(line)) {
-                ipadd = line.substring(line.lastIndexOf("is") + 2).trim();
+                IpAddress = line.substring(line.lastIndexOf("is") + 2).trim();
             }
             if (includeMac(line)) {
                 mac = line.substring(line.lastIndexOf("is") + 2).trim();
             }
             if ("".equals(line)) {
-                String fields = intStr + "|" + phStatus + "|" + proStatus + "|" + desc + "|" + mac + "|" + ipadd + "\r\n";
+                String fields = intStr + "|" + phStatus + "|" + proStatus + "|" + desc + "|" + mac + "|" + IpAddress + "\r\n";
                 desc = "";
                 proStatus = "";
                 mac = "";
-                ipadd = "";
+                IpAddress = "";
                 intStr = "";
                 phStatus ="";
          //       System.out.print(fields);

@@ -3,7 +3,7 @@ package collect;
 public class Collect_Strut {
 
     private int  tn ; //线程编号
-    private String ipadd ;//IP地址
+    private String IpAddress ;//IP地址
     private String uname;//用户名
     private String pwd;//密码
     private String cmd  ; //指令类型
@@ -71,12 +71,12 @@ public class Collect_Strut {
         this.tn = tn;
     }
 
-    public String getIpadd() {
-        return ipadd;
+    public String getIpAddress() {
+        return IpAddress;
     }
 
-    void setIpadd(String ipadd) {
-        this.ipadd = ipadd;
+    void setIpAddress(String IpAddress) {
+        this.IpAddress = IpAddress;
     }
 
     public String getUname() {

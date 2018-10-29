@@ -21,7 +21,7 @@ class BuildCollectStrut {
         if (!loadCollectIpList() || !loadAccount()) {
             return null;
         }
-        List<String> list = Param.loginIpAddList;
+        List<String> list = Param.loginIpAddressList;
 
         for (int i = 0; i < list.size(); i++) {
             Collect_Strut stru = new Collect_Strut();
@@ -29,7 +29,7 @@ class BuildCollectStrut {
             stru.setSystemType(Param.currentSystemType);
             stru.setDriversType(Param.currentDriversType);
             stru.setCollectType(Param.currentCollectType);
-            stru.setIpadd(list.get(i).trim());
+            stru.setIpAddress(list.get(i).trim());
             stru.setUname(Param.userName);
             stru.setPwd(Param.passWord);
             stru.setCmd(Param.command);
@@ -46,7 +46,7 @@ class BuildCollectStrut {
         }
         LogInfo.info("Collect Struct Size :" + listStru.size());
         if (list.size() != listStru.size()) {
-            LogInfo.error("LoginFile ipAddress format error exists");
+            LogInfo.error("LoginFile IpAddressress format error exists");
             return null;
         }
         LogInfo.info("Build Collect Struct Finish");
@@ -66,18 +66,18 @@ class BuildCollectStrut {
             return false;
         }
         LogInfo.info("loginFile Row Count :" + list.size());
-        Set<String> ipAddSet = new HashSet<>(list);
-        if (ipAddSet.size() != list.size()) {//重复地址判断
-            LogInfo.error("loginFile ipAddress duplication exists");
+        Set<String> IpAddressSet = new HashSet<>(list);
+        if (IpAddressSet.size() != list.size()) {//重复地址判断
+            LogInfo.error("loginFile IpAddressress duplication exists");
             return false;
         }
         for (String aList : list) {
             if (!Chk4Str.isFormat(aList, Regex.REGEX_IPV4)) {
-                LogInfo.error("ipAddress format error :" + aList);
+                LogInfo.error("IpAddressress format error :" + aList);
                 return false;
             }
         }
-        Param.loginIpAddList = list;
+        Param.loginIpAddressList = list;
         return true;
     }
 

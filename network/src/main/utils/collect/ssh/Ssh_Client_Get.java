@@ -48,7 +48,7 @@ public class Ssh_Client_Get implements Callable<Object> {
     public Ssh_Client_Get(Collect_Strut collectStru) {
         //线程ID
         int tn = collectStru.getTn();
-        this.host = collectStru.getIpadd();
+        this.host = collectStru.getIpAddress();
         this.port = collectStru.getPort();
         this.systemType = collectStru.getSystemType();
         this.driversType = collectStru.getDriversType();
@@ -67,7 +67,7 @@ public class Ssh_Client_Get implements Callable<Object> {
 
         reStrut = new CollectResult_Strut();//采集返回信息
         reStrut.setTn(tn);
-        reStrut.setIpadd(host);
+        reStrut.setIpAddress(host);
         reStrut.setStartDateTime(dtUtils.getCurTime(DATE_FORMAT));
     }
 
@@ -97,7 +97,7 @@ public class Ssh_Client_Get implements Callable<Object> {
             return reStrut;
         }
         close();
-        reStrut.setGatBoolean(true);
+        reStrut.setCollectBoolean(true);
         reStrut.setLog("succeed");
         reStrut.setEndDateTime(dtUtils.getCurTime(DATE_FORMAT));
         reStrut.setTimeLong(dtUtils.timeDifference(reStrut.getStartDateTime(), reStrut.getEndDateTime()));
@@ -113,7 +113,7 @@ public class Ssh_Client_Get implements Callable<Object> {
             debug(null);
         }
         close();
-        reStrut.setGatBoolean(false);
+        reStrut.setCollectBoolean(false);
         reStrut.setEndDateTime(dtUtils.getCurTime(DATE_FORMAT));
         reStrut.setTimeLong(dtUtils.timeDifference(reStrut.getStartDateTime(), reStrut.getEndDateTime()));
     }
@@ -122,22 +122,22 @@ public class Ssh_Client_Get implements Callable<Object> {
      * debug
      */
     private void debug() {
-        String debug = reStrut.getTn() + "," + reStrut.getIpadd() + "," + reStrut.getStep();
+        String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep();
         LogInfo.debug(debug);
     }
 
     private void debug(String info) {
-        String debug = reStrut.getTn() + "," + reStrut.getIpadd() + "," + reStrut.getStep() + "," + info;
+        String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep() + "," + info;
         LogInfo.debug(debug);
     }
 
     private void debug(boolean info) {
-        String debug = reStrut.getTn() + "," + reStrut.getIpadd() + "," + reStrut.getStep() + "," + info;
+        String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep() + "," + info;
         LogInfo.debug(debug);
     }
 
     private void debug(long info) {
-        String debug = reStrut.getTn() + "," + reStrut.getIpadd() + "," + reStrut.getStep() + "," + info;
+        String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep() + "," + info;
         LogInfo.debug(debug);
     }
 
@@ -303,7 +303,7 @@ public class Ssh_Client_Get implements Callable<Object> {
                     ExitOnOff = false;//发送退出指令开关置于关闭状态，不再进行发送退出指令
                 }
             }
-            reStrut.setGatInfo(sb.toString());
+            reStrut.setCollectInfo(sb.toString());
             reStrut.setStep("getData end");
             if (sb.length() < 1) {
                 return false;
@@ -351,14 +351,14 @@ public class Ssh_Client_Get implements Callable<Object> {
             debug();
         }
         String collectFilesPath = wrPath +systemType+"_"+driversType+"_"+collectType+"_"+host + ".txt";
-        reStrut.setcollectFilesPath(collectFilesPath);
+        reStrut.setCollectFilePath(collectFilesPath);
         if (!fileUtils.createFile(collectFilesPath)) {
             if (debugOnOff) {
                 debug(false);
             }
             return false;
         }
-        succeeded = fileUtils.wrStrToFile(reStrut.getGatInfo(), collectFilesPath, charCode);
+        succeeded = fileUtils.wrStrToFile(reStrut.getCollectInfo(), collectFilesPath, charCode);
         if (debugOnOff) {
             debug(succeeded);
         }

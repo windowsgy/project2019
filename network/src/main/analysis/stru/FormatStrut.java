@@ -86,14 +86,14 @@ public class FormatStrut {
     private String collectType;
     private String formatType;
 
-    public String getIpadd() {
-        return ipadd;
+    public String getIpAddress() {
+        return IpAddress;
     }
 
-    public void setIpadd(String ipadd) {
-        this.ipadd = ipadd;
+    public void setIpAddress(String IpAddress) {
+        this.IpAddress = IpAddress;
     }
 
-    private String ipadd;
+    private String IpAddress;
 
 }

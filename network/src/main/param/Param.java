@@ -37,7 +37,7 @@ public class Param {
     public static int threadPool;//线程池大小
     public static String userName;
     public static String passWord;
-    public static List<String> loginIpAddList;
+    public static List<String> loginIpAddressList;
 
 
     //path

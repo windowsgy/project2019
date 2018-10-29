@@ -2,11 +2,12 @@ package collect;
 
 public class CollectResult_Strut {
 
-    private boolean gatBoolean = false; //采集结果是否成功
-    private String ipadd;
+    private boolean collectBoolean = false; //采集结果是否成功
+    private String IpAddress;
     private String step;//登陆步骤
     private String log;//采集日志；
-    private String gatInfo; //采集信息
+    private String collectFilesPath;
+    private String collectInfo; //采集信息
     private String startDateTime;//采集开始时间
     private String endDateTime;//采集结束时间
     private long timeLong;
@@ -19,15 +20,15 @@ public class CollectResult_Strut {
         this.timeLong = timeLong;
     }
 
-    public String getcollectFilesPath() {
+    public String getCollectFilePath() {
         return collectFilesPath;
     }
 
-    public void setcollectFilesPath(String collectFilesPath) {
+    public void setCollectFilePath(String collectFilesPath) {
         this.collectFilesPath = collectFilesPath;
     }
 
-    private String collectFilesPath;
+
 
     public int getTn() {
         return tn;
@@ -39,20 +40,20 @@ public class CollectResult_Strut {
 
     private int tn;
 
-    boolean isGatBoolean() {
-        return gatBoolean;
+    boolean isCollectBoolean() {
+        return collectBoolean;
     }
 
-    public void setGatBoolean(boolean gatBoolean) {
-        this.gatBoolean = gatBoolean;
+    public void setCollectBoolean(boolean collectBoolean) {
+        this.collectBoolean = collectBoolean;
     }
 
-    public String getIpadd() {
-        return ipadd;
+    public String getIpAddress() {
+        return IpAddress;
     }
 
-    public void setIpadd(String ipadd) {
-        this.ipadd = ipadd;
+    public void setIpAddress(String IpAddress) {
+        this.IpAddress = IpAddress;
     }
 
     public String getStep() {
@@ -71,12 +72,12 @@ public class CollectResult_Strut {
         this.log = log;
     }
 
-    public String getGatInfo() {
-        return gatInfo;
+    public String getCollectInfo() {
+        return collectInfo;
     }
 
-    public void setGatInfo(String gatInfo) {
-        this.gatInfo = gatInfo;
+    public void setCollectInfo(String collectInfo) {
+        this.collectInfo = collectInfo;
     }
 
     public String getStartDateTime() {
