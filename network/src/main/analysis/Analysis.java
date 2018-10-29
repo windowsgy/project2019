@@ -13,7 +13,6 @@ import utils.LogInfo;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class Analysis implements ModelInterface {
@@ -42,7 +41,7 @@ public class Analysis implements ModelInterface {
         }
 
         //返回所有格式化类型
-        List<String> formatTypeList = keyList(Param.formatMap, Param.currentCollectType);
+        List<String> formatTypeList = listUtils.keyList(Param.formatMap, Param.currentCollectType);
 
         for(String formatType : formatTypeList) {
             //生成路径
@@ -66,7 +65,7 @@ public class Analysis implements ModelInterface {
             //加载格式化结果
             List<List<String>> integrateList = listUtils.list2ListFields(fileUtils.read2List(integratePath,0,Param.charCode),Param.splitChar);
             //返回所有分析类型
-            List<String> analysisTypeList =keyList(Param.analysisMap,formatType);
+            List<String> analysisTypeList =listUtils.keyList(Param.analysisMap,formatType);
             for( String analysisType :analysisTypeList){
                 LogInfo.info("Analysis Type :"+analysisType);
                 analysis(integrateList,analysisType);
@@ -182,22 +181,6 @@ public class Analysis implements ModelInterface {
         return integrateFilePath;
     }
 
-        /**
-         * 根据value 返回所有 key list
-         *
-         * @param map   map
-         * @param value 查找的value
-         * @return list
-         */
-        private  List<String> keyList(Map<String, String> map, String value) {
-            List<String> list = new ArrayList<>();
-            for (String key : map.keySet()) {
-                if (map.get(key).equals(value)) {
-                    list.add(key);
-                }
-            }
-            return list;
-        }
 
     /**
      * 构建格式化结构体

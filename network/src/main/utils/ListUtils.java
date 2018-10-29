@@ -10,6 +10,24 @@ import java.util.regex.Pattern;
  */
 public class ListUtils {
 
+
+    /**
+     * 根据value 返回所有 key list
+     *
+     * @param map   map
+     * @param value 查找的value
+     * @return list
+     */
+    public  List<String> keyList(Map<String, String> map, String value) {
+        List<String> list = new ArrayList<>();
+        for (String key : map.keySet()) {
+            if (map.get(key).equals(value)) {
+                list.add(key);
+            }
+        }
+        return list;
+    }
+
     /**
      * List To List Array
      *

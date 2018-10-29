@@ -33,6 +33,14 @@ public class Init {
         if(!Config.mapL1("model.properties",Param.modelTypeMap)){
             return false;
         }
+        if(!Config.mapL1("localAnalysis.properties",Param.localAnalysisMap)){
+            return false;
+        }
+        if(!Config.mapL1("fieldsIndex.properties",Param.fieldsIndexMap)){
+            return false;
+        }
+
+
         LogInfo.info("Init Params Finished");
         return true;
     }
