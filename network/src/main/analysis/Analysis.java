@@ -171,8 +171,11 @@ public class Analysis implements ModelInterface {
             String IpAddressress = strut.getIpAddress();
             List<String> fileList = fileUtils.read2List(strut.getDesPath(),0,Param.charCode);
             for(String line: fileList) {
-                i++;
-                sb.append(IpAddressress).append("|").append(line).append("\r\n");
+                if(line.length()>0){//过滤空行
+                    i++;
+                    sb.append(IpAddressress).append("|").append(line).append("\r\n");
+                }
+
             }
         }
         fileUtils.wrStrToFile(sb.toString(),integrateFilePath,Param.charCode);
