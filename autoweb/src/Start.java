@@ -7,9 +7,9 @@ public class Start {
 
     private static WebDriver bro;
     private static JavascriptExecutor broJs;
-    private static final String click = "arguments[0].click()";
-    private static final String timeStr = "2018-01-01";
+    private static final String START_TIME = "2018-01-01";
     //脚本
+    private static final String CLICK = "arguments[0].click()";
     private static final String LOGIN_XPATH = "//form[@name = 'loginform']/tbody/tr/td[3]/div";
     private static final String NO_CHANGE_PASS_XPATH = "//td[@align = 'left']/input[2]";
     private static final String WORK_TAB_MANG_XPATH = "//img[@alt = '工单管理']";
@@ -53,10 +53,10 @@ public class Start {
         bro.findElement(By.name("userid")).sendKeys(username);
         bro.findElement(By.name("passWord")).click();
         WebElement loginButton = bro.findElement(By.xpath(LOGIN_XPATH));
-        broJs.executeScript(click, loginButton);
+        broJs.executeScript(CLICK, loginButton);
         sleep(2);
         WebElement offChange = bro.findElement(By.xpath(NO_CHANGE_PASS_XPATH));
-        broJs.executeScript(click, offChange);
+        broJs.executeScript(CLICK, offChange);
         sleep(5);
         System.out.println("login , currentPage :" + bro.getCurrentUrl());
     }
@@ -69,13 +69,13 @@ public class Start {
         bro.switchTo().frame("navigation");
         sleep(3);
         WebElement gongdan = bro.findElement(By.xpath(WORK_TAB_MANG_XPATH));
-        broJs.executeScript(click, gongdan);
+        broJs.executeScript(CLICK, gongdan);
         sleep(2);
         bro.switchTo().defaultContent();
         bro.switchTo().frame("mainFrame");
         bro.switchTo().frame("left");
         WebElement zonghe = bro.findElement(By.xpath(SEARCH_XPATH));
-        broJs.executeScript(click, zonghe);
+        broJs.executeScript(CLICK, zonghe);
         sleep(2);
     }
 
@@ -86,20 +86,20 @@ public class Start {
             bro.switchTo().frame("mainFrame");
             bro.switchTo().frame("left");
             WebElement wangluoGD = bro.findElement(By.xpath(NETWORK_SEARCH_XPATH));
-            broJs.executeScript(click, wangluoGD);
+            broJs.executeScript(CLICK, wangluoGD);
             sleep(2);
             changeFrame();
             WebElement startTime = bro.findElement(By.xpath(START_TIME_XPATH));//定位开始时间
             broJs.executeScript("arguments[0].removeAttribute('readOnly')", startTime);//修改时间属性为可变更
             startTime.clear();
-            startTime.sendKeys(timeStr);
+            startTime.sendKeys(START_TIME);
             WebElement sendNumber = bro.findElement(By.xpath(TIME_LABEL_XPATH));//输入时间
             sendNumber.sendKeys(id);
             WebElement search = bro.findElement(By.xpath(SEARCH_BUTTON_XPATH));//查询按钮
-            broJs.executeScript(click, search);
+            broJs.executeScript(CLICK, search);
             sleep(2);
             WebElement lookOver = bro.findElement(By.xpath(JOIN_BILL_XPATH));//查看工单
-            broJs.executeScript(click, lookOver);
+            broJs.executeScript(CLICK, lookOver);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -134,7 +134,7 @@ public class Start {
                     editBill();
 
                     WebElement quit = bro.findElement(By.name("saveButton"));
-                    broJs.executeScript(click, quit);
+                    broJs.executeScript(CLICK, quit);
                     sleep(2);
                     Alert alert = bro.switchTo().alert();
                     alert.accept();
@@ -164,7 +164,7 @@ public class Start {
                     bro.switchTo().window(winHandler);
                     //quit
                     WebElement quit = bro.findElement(By.xpath(EDIT_STEP_QUIT_XPACH));
-                    broJs.executeScript(click, quit);
+                    broJs.executeScript(CLICK, quit);
                     sleep(2);
 
                 }
