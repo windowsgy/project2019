@@ -1,6 +1,6 @@
 package localAnalysis;
 
-import main.utils.ExcelUtils;
+import utils.ExcelUtils;
 
 import java.util.List;
 import java.util.Map;
