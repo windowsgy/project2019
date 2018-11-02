@@ -27,7 +27,7 @@ public class Start {
     public static void main(String[] args) {
         String url = "http://172.18.11.56/";
         String path = "C:\\Program Files\\Internet Explorer\\IEDriverServer.exe";
-        String username = "18943151979";
+        String username = "18904420062";
         System.setProperty("webdriver.ie.driver", path);
 
         bro = new InternetExplorerDriver();
