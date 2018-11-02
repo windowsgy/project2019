@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/autoweb/autoweb.iml" filepath="$PROJECT_DIR$/autoweb/autoweb.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/office/office.iml" filepath="$PROJECT_DIR$/office/office.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/project2019.iml" filepath="$PROJECT_DIR$/.idea/project2019.iml" />

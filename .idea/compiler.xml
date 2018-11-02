@@ -6,13 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="autoweb" />
         <module name="network" />
         <module name="office" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="network" target="8" />
-      <module name="office" target="8" />
+      <module name="autoweb" target="1.7" />
+      <module name="network" target="6" />
+      <module name="office" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

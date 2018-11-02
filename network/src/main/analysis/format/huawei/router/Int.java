@@ -72,7 +72,7 @@ public class Int implements FormatInterface {
     }
 
     private boolean includeInt(String line){
-        return line.indexOf("DCN") == 0 || line.indexOf("Eth") == 0 || line.indexOf("NULL") == 0 || line.indexOf("LoopBack") == 0 || line.indexOf("Gigabit") == 0;
+        return line.indexOf("DCN") == 0 || line.indexOf("Eth") == 0 || line.indexOf("NULL") == 0 || line.indexOf("LoopBack") == 0 || line.indexOf("Gigabit")  == 0 ||line.indexOf("Aux") ==0 ||line.indexOf("Virtual") ==0;
     }
     private boolean includeDesc(String line){
         return line.indexOf("Desc") == 0;
