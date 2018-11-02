@@ -18,6 +18,4 @@ object Start {
     val rddCount = rddFields.map(x => (x(0),1)).reduceByKey(_+_)
     rddCount.foreach(println)
   }
-
-
 }
