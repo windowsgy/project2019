@@ -11,11 +11,11 @@ public class Collect implements ModelInterface {
 
     public void run() {
         LogInfo.linel1();
-        if (!CollectParams.run()) {
+        if (!BuildCollectParams.run()) {
             return;
         }
         LogInfo.linel2();
-        List<Collect_Strut> listGatherStru = BuildCollectStrut.run();
+        List<Strut_Collect> listGatherStru = BuildCollectStrut.run();
         if (listGatherStru == null) {
             return;
         }

@@ -8,7 +8,7 @@ import utils.FileUtils;
 import utils.LogInfo;
 
 
-public class CurrentParam implements ModelInterface {
+public class Build_CurrentParam implements ModelInterface {
 
     public void run(){
         LogInfo.info("Init Current Param");

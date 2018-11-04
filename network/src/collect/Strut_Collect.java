@@ -1,6 +1,6 @@
 package collect;
 
-public class Collect_Strut {
+public class Strut_Collect {
 
     private int  tn ; //线程编号
     private String IpAddress ;//IP地址

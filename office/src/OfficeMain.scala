@@ -1,6 +1,6 @@
 import org.apache.spark.{SparkConf, SparkContext}
 
-object Start {
+object OfficeMain {
   def main(args: Array[String]): Unit = {
     println("Start App")
     val conf = new SparkConf

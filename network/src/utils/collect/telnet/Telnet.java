@@ -11,8 +11,8 @@ import java.util.concurrent.Callable;
 import utils.DateTimeUtils;
 import utils.FileUtils;
 import org.apache.commons.net.telnet.TelnetClient;
-import collect.CollectResult_Strut;
-import collect.Collect_Strut;
+import collect.Stru_CollectResult;
+import collect.Strut_Collect;
 
 
 public class Telnet implements Callable<Object> {
@@ -25,18 +25,18 @@ public class Telnet implements Callable<Object> {
     private String username; // 用户名 构造方法初始化
     private String password; // 密码 构造方法初始化
     private String command; // 指令
-    private CollectResult_Strut reStrut;// gather return status
+    private Stru_CollectResult reStrut;// gather return status
     private String DATE_FORMAT;
     private FileUtils fileUtils = new FileUtils();
     private DateTimeUtils dtUtils = new DateTimeUtils();
 
-    Telnet(Collect_Strut map) {
+    Telnet(Strut_Collect map) {
         this.IpAddressress = map.getIpAddress(); // ip地址加载
         this.username = map.getUname(); // 用户名加载
         this.password = map.getPwd(); // 密码加载
         this.command = map.getCmd();
        
-        reStrut = new CollectResult_Strut();//采集返回信息
+        reStrut = new Stru_CollectResult();//采集返回信息
         reStrut.setTn(tn);
         reStrut.setIpAddress(map.getIpAddress());
         reStrut.setStartDateTime(dtUtils.getCurTime(DATE_FORMAT));

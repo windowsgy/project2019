@@ -1,6 +1,6 @@
 package collect;
 
-public class CollectResult_Strut {
+public class Stru_CollectResult {
 
     private boolean collectBoolean = false; //采集结果是否成功
     private String IpAddress;

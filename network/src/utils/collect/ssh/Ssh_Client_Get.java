@@ -1,8 +1,8 @@
 package utils.collect.ssh;
 
 import com.jcraft.jsch.*;
-import collect.CollectResult_Strut;
-import collect.Collect_Strut;
+import collect.Stru_CollectResult;
+import collect.Strut_Collect;
 import utils.DateTimeUtils;
 import utils.FileUtils;
 import utils.LogInfo;
@@ -17,7 +17,7 @@ public class Ssh_Client_Get implements Callable<Object> {
     private JSch jsch = new JSch();
     private Session session;
     private ChannelShell channelShell;
-    private CollectResult_Strut reStrut;// gather return status
+    private Stru_CollectResult reStrut;// gather return status
     private String host;
     private int port;
     private int timeOut;
@@ -45,7 +45,7 @@ public class Ssh_Client_Get implements Callable<Object> {
      * 构造函数
      * @param collectStru 采集信息结构体
      */
-    public Ssh_Client_Get(Collect_Strut collectStru) {
+    public Ssh_Client_Get(Strut_Collect collectStru) {
         //线程ID
         int tn = collectStru.getTn();
         this.host = collectStru.getIpAddress();
@@ -65,7 +65,7 @@ public class Ssh_Client_Get implements Callable<Object> {
         this.charCode = collectStru.getCharCode();
         this.wrPath = collectStru.getWrPath();
 
-        reStrut = new CollectResult_Strut();//采集返回信息
+        reStrut = new Stru_CollectResult();//采集返回信息
         reStrut.setTn(tn);
         reStrut.setIpAddress(host);
         reStrut.setStartDateTime(dtUtils.getCurTime(DATE_FORMAT));

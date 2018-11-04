@@ -1,6 +1,6 @@
 package collect;
 
-class CollectrCount_Strut {
+class Stru_CollectCount {
     int getCount() {
         return count;
     }
@@ -9,17 +9,13 @@ class CollectrCount_Strut {
         this.count = count;
     }
 
-    int getSuccessedCount() {
-        return successedCount;
+    int getSuccessfulCount() {return successfulCount;}
+
+    void setSuccessfulCount(int successfulCount) {
+        this.successfulCount = successfulCount;
     }
 
-    void setSuccessedCount(int successedCount) {
-        this.successedCount = successedCount;
-    }
-
-    int getFailCount() {
-        return failCount;
-    }
+    int getFailCount() {return failCount; }
 
     void setFailCount(int failCount) {
         this.failCount = failCount;
@@ -50,7 +46,7 @@ class CollectrCount_Strut {
     }
 
     private int count;
-    private int successedCount;
+    private int successfulCount;
     private int failCount;
     private String startTime ;
     private String endTime;

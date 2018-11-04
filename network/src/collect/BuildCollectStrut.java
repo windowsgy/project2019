@@ -15,16 +15,16 @@ class BuildCollectStrut {
      * 构造采集信息结构
      * @return 采集信息结构列表
      */
-    static List<Collect_Strut> run() {
+    static List<Strut_Collect> run() {
         LogInfo.info("build collect struct start");
-        List<Collect_Strut> listStru = new ArrayList<>();
+        List<Strut_Collect> listStru = new ArrayList<>();
         if (!loadCollectIpList() || !loadAccount()) {
             return null;
         }
         List<String> list = Param.loginIpAddressList;
 
         for (int i = 0; i < list.size(); i++) {
-            Collect_Strut stru = new Collect_Strut();
+            Strut_Collect stru = new Strut_Collect();
             stru.setTn(i);
             stru.setSystemType(Param.currentSystemType);
             stru.setDriversType(Param.currentDriversType);

@@ -11,7 +11,7 @@ public class Start {
     //脚本
     private static final String CLICK = "arguments[0].click()";
     private static final String LOGIN_XPATH = "//form[@name = 'loginform']/tbody/tr/td[3]/div";
-    private static final String NO_CHANGE_PASS_XPATH = "//td[@align = 'left']/input[2]";
+    //private static final String NO_CHANGE_PASS_XPATH = "//td[@align = 'left']/input[2]";
     private static final String WORK_TAB_MANG_XPATH = "//img[@alt = '工单管理']";
     private static final String SEARCH_XPATH = "//tr[@title = '综合查询']/td[1]/img";
     private static final String NETWORK_SEARCH_XPATH = "//tr[@title = '网络层障碍工单查询']/td[3]/img";
@@ -24,7 +24,7 @@ public class Start {
     private static final String GO_BACK_JS = "setTimeout(function(){document.getElementsByTagName('button')[4].click()},100)";
     private static final String EDIT_STEP_QUIT_XPACH = "//div[@align = 'center']/input[3]";
 
-    public static void main(String[] args) {
+    public static void run() {
         String url = "http://172.18.11.56/";
         String path = "C:\\Program Files\\Internet Explorer\\IEDriverServer.exe";
         String username = "18904420062";
@@ -54,9 +54,9 @@ public class Start {
         bro.findElement(By.name("passWord")).click();
         WebElement loginButton = bro.findElement(By.xpath(LOGIN_XPATH));
         broJs.executeScript(CLICK, loginButton);
-        sleep(2);
+       /* sleep(2);
         WebElement offChange = bro.findElement(By.xpath(NO_CHANGE_PASS_XPATH));
-        broJs.executeScript(CLICK, offChange);
+        broJs.executeScript(CLICK, offChange);*/
         sleep(5);
         System.out.println("login , currentPage :" + bro.getCurrentUrl());
     }
