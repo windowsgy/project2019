@@ -35,8 +35,6 @@ class BuildCollectStrut {
             stru.setCmd(Param.command);
             stru.setPort(Param.port);
             stru.setTimeFormat(Param.pathMap.get("timeFormat"));
-            stru.setCollectOut(Param.collectOutOnOff);
-            stru.setDebugOnOff(Param.collectDebugOnOff);
             stru.setTimeOut(Param.timeOut);
             stru.setSleepTime(Param.sleepTime);
             stru.setWrPath(Param.currentCollectPath);

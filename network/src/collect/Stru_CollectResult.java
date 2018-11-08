@@ -6,7 +6,6 @@ public class Stru_CollectResult {
     private String IpAddress;
     private String step;//登陆步骤
     private String log;//采集日志；
-    private String collectFilesPath;
     private String collectInfo; //采集信息
     private String startDateTime;//采集开始时间
     private String endDateTime;//采集结束时间
@@ -20,13 +19,6 @@ public class Stru_CollectResult {
         this.timeLong = timeLong;
     }
 
-    public String getCollectFilePath() {
-        return collectFilesPath;
-    }
-
-    public void setCollectFilePath(String collectFilesPath) {
-        this.collectFilesPath = collectFilesPath;
-    }
 
 
 

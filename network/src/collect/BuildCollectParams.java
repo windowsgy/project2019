@@ -21,14 +21,7 @@ public class BuildCollectParams {
             Param.timeOut = Integer.parseInt(Param.collectMap.get("timeOut"));
             Param.sleepTime = Long.parseLong(Param.collectMap.get("sleepTime"));
             Param.threadPool = Integer.parseInt(Param.collectMap.get("threadPool"));
-            String collectOutOnOff = Param.collectMap.get("outOnOff");
-            String collectDebugOnOff = Param.collectMap.get("debugOnOff");
-            if(collectOutOnOff.equals("true")){
-                Param.collectOutOnOff = true;
-            }
-            if(collectDebugOnOff.equals("true")){
-                Param.collectDebugOnOff = true;
-            }
+
 
             //系统类型##############################################################
             Input.inputParam("currentSystemType",Param.commandMap.keySet());

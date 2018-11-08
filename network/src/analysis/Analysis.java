@@ -168,12 +168,12 @@ public class Analysis implements ModelInterface {
         sb = new StringBuilder();
         int i = 0 ;
         for (FormatStrut strut: listStrut) {
-            String IpAddressress = strut.getIpAddress();
+            String IpAddress = strut.getIpAddress();
             List<String> fileList = fileUtils.read2List(strut.getDesPath(),0,Param.charCode);
             for(String line: fileList) {
                 if(line.length()>0){//过滤空行
                     i++;
-                    sb.append(IpAddressress).append("|").append(line).append("\r\n");
+                    sb.append(IpAddress).append("|").append(line).append("\r\n");
                 }
 
             }

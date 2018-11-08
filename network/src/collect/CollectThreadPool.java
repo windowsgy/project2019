@@ -16,30 +16,27 @@ class CollectThreadPool {
 
     /**
      * @param collectList 采集结构体
-     * @param timeFormat 时间格式
+     * @param timeFormat  时间格式
      * @param threadPool  线程池大小
-     * @param debugOnOff  debug开关
-     * @param logFilePath  日志文件路径
+     * @param logFilePath 日志文件路径
      * @return boolean
      */
-    static boolean run(List<Strut_Collect> collectList, String timeFormat, int threadPool, boolean debugOnOff, String logFilePath) {
+    static boolean run(List<Strut_Collect> collectList, String timeFormat, int threadPool, String logFilePath) {
         FileUtils fileUtils = new FileUtils();
         DateTimeUtils dtUtils = new DateTimeUtils();
         Log.info("Collect Start ");
         if (collectList.size() < 1) {
-            Log.info("Collect Struct Size :" + collectList.size());
+            Log.info("Collect Strut Size :" + collectList.size());
             return false;
         }
 
         //采集失败List
         List<Stru_CollectResult> failList = new ArrayList<>();
-
-
         Stru_CollectCount countStru = new Stru_CollectCount();
         countStru.setStartTime(dtUtils.getCurTime(timeFormat));
         countStru.setCount(collectList.size());
         int failCount = 0;
-        int successedCount = 0;
+        int successfulCount = 0;
 
         ExecutorService pool = Executors.newFixedThreadPool(threadPool);
         // 创建多个有返回值的任务
@@ -58,13 +55,13 @@ class CollectThreadPool {
             try {
                 Stru_CollectResult struCollectResult_ = (Stru_CollectResult) f.get();
                 String logInfo = struCollectResult_.getTn() + "," + struCollectResult_.getIpAddress() + "," + struCollectResult_.isCollectBoolean() + "," + struCollectResult_.getStep() + "," + struCollectResult_.getLog() + "," + struCollectResult_.getTimeLong() + "," + struCollectResult_.getStartDateTime() + "," + struCollectResult_.getEndDateTime();
-                if (debugOnOff) {
-                    Log.info(logInfo);
-                }
+
+                Log.debug(logInfo);
+
                 fileUtils.wrStrAddToFile(logInfo + "\r\n", logFilePath);
                 boolean collectBoolean = struCollectResult_.isCollectBoolean();
                 if (collectBoolean) {
-                    successedCount = successedCount + 1;
+                    successfulCount = successfulCount + 1;
                 } else {
                     failList.add(struCollectResult_);//采集失败的加入list;
                     failCount = failCount + 1;
@@ -77,20 +74,19 @@ class CollectThreadPool {
         }
         while (true) {
             if (pool.isTerminated()) {
-                if (debugOnOff) {
-                    Log.info("pool is finished ");
-                }
+                Log.debug("pool is finished ");
+
                 break;
             }
         }
         System.out.println();
         countStru.setEndTime(dtUtils.getCurTime(timeFormat));
         countStru.setTimeLong(dtUtils.timeDifference(countStru.getStartTime(), countStru.getEndTime()));
-        countStru.setSuccessfulCount(successedCount);
+        countStru.setSuccessfulCount(successfulCount);
         countStru.setFailCount(failCount);
         double collectSuccess = countStru.getSuccessfulCount();
         double collectTotal = countStru.getCount();
-        double collectRatio = collectSuccess/collectTotal;
+        double collectRatio = collectSuccess / collectTotal;
 
         Log.linel3();
         Log.info("StartTime :" + countStru.getStartTime());
@@ -99,10 +95,10 @@ class CollectThreadPool {
         Log.info("Failed Count :" + countStru.getFailCount());
         Log.info("EndTime :" + countStru.getEndTime());
         Log.info("Collect TimeLong :" + countStru.getTimeLong() + " second");
-        Log.info("collectRaio :" + collectRatio);
+        Log.info("collectRatio :" + collectRatio);
         //遍历打印采集失败的列表
-        for(Stru_CollectResult strut :failList){
-            System.out.println("Collect Failed :"+strut.getTn()+"IP :"+strut.getIpAddress()+",CollectStatus :"+strut.isCollectBoolean()+",CollectStep :"+strut.getStep()+",Log :"+strut.getLog());
+        for (Stru_CollectResult strut : failList) {
+            System.out.println("Collect Failed :" + strut.getTn() + "IP :" + strut.getIpAddress() + ",CollectStatus :" + strut.isCollectBoolean() + ",CollectStep :" + strut.getStep() + ",Log :" + strut.getLog());
         }
         Log.linel3();
 

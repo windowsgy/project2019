@@ -35,7 +35,7 @@ public class IpVpnLoopback implements AnalysisInterface {
             sb.append(str).append("\r\n");
         }
 
-        Log.info("loopback count :" + i);
+        Log.out("loopback count :" + i);
         return sb.toString();
     }
 }

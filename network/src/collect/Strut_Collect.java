@@ -9,8 +9,6 @@ public class Strut_Collect {
     private String cmd  ; //指令类型
     private String exitCmd;//退出命令
     private int port ;
-    private boolean debugOnOff;//debug开关
-    private boolean collectOut;//采集输出开关
     private String timeFormat;//时间格式
     private int timeOut;//超时时间
     private long sleepTime ;//等待时长
@@ -110,13 +108,7 @@ public class Strut_Collect {
         this.port = port;
     }
 
-    public boolean isDebugOnOff() {
-        return debugOnOff;
-    }
 
-    void setDebugOnOff(boolean debugOnOff) {
-        this.debugOnOff = debugOnOff;
-    }
 
     public String getTimeFormat() {
         return timeFormat;
@@ -127,13 +119,6 @@ public class Strut_Collect {
     }
 
 
-    public boolean isCollectOut() {
-        return collectOut;
-    }
-
-    void setCollectOut(boolean collectOut) {
-        this.collectOut = collectOut;
-    }
     public String getExitCmd() {
         return exitCmd;
     }

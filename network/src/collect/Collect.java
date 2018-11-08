@@ -20,7 +20,7 @@ public class Collect implements ModelInterface {
             return;
         }
         Log.linel2();
-        if (!CollectThreadPool.run(listGatherStru,Param.pathMap.get("timeFormat"),Param.threadPool,Param.collectDebugOnOff,Param.currentLogFilePath)) {
+        if (!CollectThreadPool.run(listGatherStru,Param.pathMap.get("timeFormat"),Param.threadPool,Param.currentLogFilePath)) {
             return;
         }
         Param.collectOnOff = true; //采集开关打开
