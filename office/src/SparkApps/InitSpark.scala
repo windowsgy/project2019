@@ -2,7 +2,6 @@ package SparkApps
 
 import Config.Params
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.SparkSession.Builder
 import org.apache.spark.{SparkConf, SparkContext}
 import utils.Log
 
@@ -11,8 +10,8 @@ import utils.Log
   */
 object InitSpark {
   private val logger = new Log
-  def getSession: Builder = {
-    logger.info("init spark")
+  def getSession: SparkSession = {
+    logger.info("init Spark Session ")
     val sc = SparkSession.builder().master(Params.map.get("masterPath"))
       .appName(Params.map.get("appName"))
       .config("spark.driver.cores", Params.map.get("cores"))
@@ -20,11 +19,11 @@ object InitSpark {
       .config("spark.local.dir", Params.map.get("tempPath"))
       .config("spark.sql.shuffle.partitions", Params.map.get("shuffle"))
     System.setProperty("hadoop.home.dir", Params.map.get("hadoopHome"))
-    sc
+    sc.getOrCreate()
   }
 
   def getContext: SparkContext = {
-    logger.info("init spark")
+    logger.info("init Spark Context")
     val conf = new SparkConf
     conf.setMaster(Params.map.get("masterPath")) //master路径
     conf.set("spark.app.name", Params.map.get("appName")) //应用名称

@@ -20,7 +20,8 @@ object OfficeMain {
     val filesUtils = new FileUtils
     val filesPath = Params.map.get("sourcePath")
     val filesName: util.List[String] = filesUtils.getFileNameToList(filesPath)
+    logger.info("fileCount :"+filesName.size())
+    Compute.run(InitSpark.getSession.sparkContext)
 
-    Compute.run(InitSpark.getContext)
   }
 }
