@@ -7,14 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="autoweb" />
+        <module name="bigdata" />
         <module name="network" />
         <module name="office" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="autoweb" target="1.8" />
+      <module name="bigdata" target="1.8" />
       <module name="network" target="1.8" />
       <module name="office" target="1.8" />
+      <module name="utils" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

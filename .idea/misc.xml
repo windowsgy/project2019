@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/autoOffice/pom.xml" />
         <option value="$PROJECT_DIR$/office/pom.xml" />
         <option value="$PROJECT_DIR$/autoweb/pom.xml" />
+        <option value="$PROJECT_DIR$/utils/pom.xml" />
+        <option value="$PROJECT_DIR$/bigdata/pom.xml" />
       </list>
     </option>
   </component>

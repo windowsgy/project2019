@@ -1,21 +1,26 @@
-import org.apache.spark.{SparkConf, SparkContext}
 
+import java.util
+
+import Config.Params
+import Config.Config
+import SparkApps.{Compute, InitSpark}
+import utils.{FileUtils, Log}
+//隐式转换java 与 scala集合类
+//import collection.JavaConversions._
+
+/**
+  * Created by jlgaoyuan on 2018/11/8.
+  */
 object OfficeMain {
+  private val logger = new Log
   def main(args: Array[String]): Unit = {
-    println("Start App")
-    val conf = new SparkConf
-    conf.setMaster(Config.masterPath) //master路径
-    conf.set("spark.app.name", Config.appName) //应用名称
-    conf.set("spark.driver.cores", Config.coresConf) //cpu内核数
-    conf.set("spark.executor.memory", Config.memConf) //executor设置内存大小
-    conf.set("spark.local.dir", Config.tmpDirPath) //spark临时文件路径
-    conf.set("spark.sql.shuffle.partitions", Config.shufflePar) //shuffle分区设置
-    System.setProperty("hadoop.home.dir",Config.hadoopHome )
-    val sc: SparkContext = new SparkContext(conf)
-    val path = "E:\\Apps\\system\\test\\format\\IpRouTab\\*"
-    val rdd = sc.textFile(path)
-    val rddFields = rdd.map(x => x.split("\\|"))
-    val rddCount = rddFields.map(x => (x(0),1)).reduceByKey(_+_)
-    rddCount.foreach(println)
+    logger.info("Start")
+    val configFile = "sparkConfig.properties"
+    Params.map = Config.build(configFile)
+    val filesUtils = new FileUtils
+    val filesPath = Params.map.get("sourcePath")
+    val filesName: util.List[String] = filesUtils.getFileNameToList(filesPath)
+
+    Compute.run(InitSpark.getContext)
   }
 }
