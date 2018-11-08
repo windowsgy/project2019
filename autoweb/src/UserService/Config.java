@@ -1,7 +1,7 @@
 package UserService;
 
 
-import utils.LogInfo;
+import utils.Log;
 
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -16,16 +16,16 @@ public class Config {
         try {
             props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(resourceFilePath)));
         } catch (Exception e) {
-            LogInfo.error(e.getMessage());
-            LogInfo.error("Load Config Failed :" + resourceFilePath);
+            Log.error(e.getMessage());
+            Log.error("Load Config Failed :" + resourceFilePath);
         }
-        //   LogInfo.info("Load ConfigFile :"+fileName);
+        //   Log.info("Load ConfigFile :"+fileName);
         for (Object key : props.keySet()) {
             String keyString = String.valueOf(key);  //Key
             String valString = props.getProperty(keyString);//Value
             map.put(keyString, valString);
         }
-        //  LogInfo.info("Load File Finished :"+fileName);
+        //  Log.info("Load File Finished :"+fileName);
         return map;
     }
 }

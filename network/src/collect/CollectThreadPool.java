@@ -2,8 +2,8 @@ package collect;
 
 import utils.DateTimeUtils;
 import utils.FileUtils;
+import utils.Log;
 import utils.collect.ssh.Ssh_Client_Get;
-import utils.LogInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,9 @@ class CollectThreadPool {
     static boolean run(List<Strut_Collect> collectList, String timeFormat, int threadPool, boolean debugOnOff, String logFilePath) {
         FileUtils fileUtils = new FileUtils();
         DateTimeUtils dtUtils = new DateTimeUtils();
-        LogInfo.info("Collect Start ");
+        Log.info("Collect Start ");
         if (collectList.size() < 1) {
-            LogInfo.info("Collect Struct Size :" + collectList.size());
+            Log.info("Collect Struct Size :" + collectList.size());
             return false;
         }
 
@@ -59,7 +59,7 @@ class CollectThreadPool {
                 Stru_CollectResult struCollectResult_ = (Stru_CollectResult) f.get();
                 String logInfo = struCollectResult_.getTn() + "," + struCollectResult_.getIpAddress() + "," + struCollectResult_.isCollectBoolean() + "," + struCollectResult_.getStep() + "," + struCollectResult_.getLog() + "," + struCollectResult_.getTimeLong() + "," + struCollectResult_.getStartDateTime() + "," + struCollectResult_.getEndDateTime();
                 if (debugOnOff) {
-                    LogInfo.info(logInfo);
+                    Log.info(logInfo);
                 }
                 fileUtils.wrStrAddToFile(logInfo + "\r\n", logFilePath);
                 boolean collectBoolean = struCollectResult_.isCollectBoolean();
@@ -71,14 +71,14 @@ class CollectThreadPool {
                 }
 
             } catch (Exception e) {
-                LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
+                Log.error(e.getClass().getSimpleName() + "," + e.getMessage());
                 e.printStackTrace();
             }
         }
         while (true) {
             if (pool.isTerminated()) {
                 if (debugOnOff) {
-                    LogInfo.info("pool is finished ");
+                    Log.info("pool is finished ");
                 }
                 break;
             }
@@ -92,22 +92,22 @@ class CollectThreadPool {
         double collectTotal = countStru.getCount();
         double collectRatio = collectSuccess/collectTotal;
 
-        LogInfo.linel3();
-        LogInfo.info("StartTime :" + countStru.getStartTime());
-        LogInfo.info("Collect Total :" + countStru.getCount());
-        LogInfo.info("Successful Count :" + countStru.getSuccessfulCount());
-        LogInfo.info("Failed Count :" + countStru.getFailCount());
-        LogInfo.info("EndTime :" + countStru.getEndTime());
-        LogInfo.info("Collect TimeLong :" + countStru.getTimeLong() + " second");
-        LogInfo.info("collectRaio :" + collectRatio);
+        Log.linel3();
+        Log.info("StartTime :" + countStru.getStartTime());
+        Log.info("Collect Total :" + countStru.getCount());
+        Log.info("Successful Count :" + countStru.getSuccessfulCount());
+        Log.info("Failed Count :" + countStru.getFailCount());
+        Log.info("EndTime :" + countStru.getEndTime());
+        Log.info("Collect TimeLong :" + countStru.getTimeLong() + " second");
+        Log.info("collectRaio :" + collectRatio);
         //遍历打印采集失败的列表
         for(Stru_CollectResult strut :failList){
             System.out.println("Collect Failed :"+strut.getTn()+"IP :"+strut.getIpAddress()+",CollectStatus :"+strut.isCollectBoolean()+",CollectStep :"+strut.getStep()+",Log :"+strut.getLog());
         }
-        LogInfo.linel3();
+        Log.linel3();
 
         //采集质量分析
-        LogInfo.info("collect finished");
+        Log.info("collect finished");
         return true;
 
     }

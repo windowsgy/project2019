@@ -4,7 +4,7 @@ package collect;
 import inOut.Input;
 import param.Param;
 import utils.FileUtils;
-import utils.LogInfo;
+import utils.Log;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class BuildCollectParams {
 
     public static boolean run() {
-        LogInfo.info("Init Collect Param");
+        Log.info("Init Collect Param");
         try {
 
             FileUtils fileUtils = new FileUtils();
@@ -72,13 +72,13 @@ public class BuildCollectParams {
 
             List<String> loginFileNameList = fileUtils.getFileNameToList(loginFilesPath);
             if(loginFileNameList == null){
-                LogInfo.error("login file is null");
+                Log.error("login file is null");
                 return false;
             }
             Set<String> loginFilesSet = new HashSet<>(loginFileNameList);
             Input.inputParam("loginFileName",loginFilesSet);
             if(!Param.inputStatus ){
-                LogInfo.error("login file not setup :");
+                Log.error("login file not setup :");
                 return false;
             }
             Param.inputStatus = false;//重置输入状态
@@ -90,13 +90,13 @@ public class BuildCollectParams {
             String accountFilesPath = Param.pathMap.get("main")+Param.pathMap.get("account");
             List<String> accountFileNameList = fileUtils.getFileNameToList(accountFilesPath);
             if(accountFileNameList == null){
-                LogInfo.error("account file is null");
+                Log.error("account file is null");
                 return false;
             }
             Set<String> accountFilesSet = new HashSet<>(accountFileNameList);
             Input.inputParam("accountFileName",accountFilesSet);
             if(!Param.inputStatus ){
-                LogInfo.error("account file not setup :");
+                Log.error("account file not setup :");
                 return false;
             }
             Param.inputStatus = false;//重置输入状态
@@ -113,10 +113,10 @@ public class BuildCollectParams {
 
 
         } catch (Exception e) {
-            LogInfo.error(e.getClass() + "," + e.getMessage());
+            Log.error(e.getClass() + "," + e.getMessage());
             return false;
         }
-        LogInfo.info("Init Collect Param Finished");
+        Log.info("Init Collect Param Finished");
         return true;
     }
 

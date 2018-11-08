@@ -5,13 +5,13 @@ import param.Param;
 import start.ModelInterface;
 import utils.DateTimeUtils;
 import utils.FileUtils;
-import utils.LogInfo;
+import utils.Log;
 
 
 public class Build_CurrentParam implements ModelInterface {
 
     public void run(){
-        LogInfo.info("Init Current Param");
+        Log.info("Init Current Param");
         DateTimeUtils dtUtils = new DateTimeUtils();
         String timeStr = dtUtils.getCurTime(Param.pathMap.get("timeFormat"));
         Param.currentTimeStr = dtUtils.timeConvTimestamp(timeStr);

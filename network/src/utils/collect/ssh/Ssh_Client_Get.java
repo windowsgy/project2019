@@ -5,7 +5,7 @@ import collect.Stru_CollectResult;
 import collect.Strut_Collect;
 import utils.DateTimeUtils;
 import utils.FileUtils;
-import utils.LogInfo;
+import utils.Log;
 
 
 import java.io.*;
@@ -123,22 +123,22 @@ public class Ssh_Client_Get implements Callable<Object> {
      */
     private void debug() {
         String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep();
-        LogInfo.debug(debug);
+        Log.debug(debug);
     }
 
     private void debug(String info) {
         String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep() + "," + info;
-        LogInfo.debug(debug);
+        Log.debug(debug);
     }
 
     private void debug(boolean info) {
         String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep() + "," + info;
-        LogInfo.debug(debug);
+        Log.debug(debug);
     }
 
     private void debug(long info) {
         String debug = reStrut.getTn() + "," + reStrut.getIpAddress() + "," + reStrut.getStep() + "," + info;
-        LogInfo.debug(debug);
+        Log.debug(debug);
     }
 
 
@@ -160,7 +160,7 @@ public class Ssh_Client_Get implements Callable<Object> {
             session.setConfig(config);
             session.connect(timeOut);
         } catch (Exception e) {
-            LogInfo.error("session catch error : " + session.isConnected());
+            Log.error("session catch error : " + session.isConnected());
             reStrut.setLog(e.getMessage());
             if (debugOnOff) {
                 debug(session.isConnected());
@@ -239,7 +239,7 @@ public class Ssh_Client_Get implements Callable<Object> {
             }
             reStrut.setStep("AfterLoginGetData End");
         } catch (Exception e) {
-            LogInfo.error("afterLogin catch error : " + e.getMessage());
+            Log.error("afterLogin catch error : " + e.getMessage());
             reStrut.setLog(e.getMessage());
             if (debugOnOff) {
                 debug(e.getMessage());
@@ -260,7 +260,7 @@ public class Ssh_Client_Get implements Callable<Object> {
             out.write(cmd.getBytes());
             out.flush();
         } catch (IOException e) {
-            LogInfo.error(e.getMessage());
+            Log.error(e.getMessage());
         }
         if (sleep) {
             sleep();
@@ -312,7 +312,7 @@ public class Ssh_Client_Get implements Callable<Object> {
                 debug(sb.length());
             }
         } catch (Exception e) {
-            LogInfo.error("getData catch error : " + e.getMessage());
+            Log.error("getData catch error : " + e.getMessage());
             reStrut.setLog(e.getMessage());
             if (debugOnOff) {
                 debug(e.getMessage());

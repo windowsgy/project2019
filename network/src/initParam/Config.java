@@ -1,7 +1,7 @@
 package initParam;
 
 
-import utils.LogInfo;
+import utils.Log;
 
 import java.io.InputStreamReader;
 import java.util.*;
@@ -15,13 +15,13 @@ public class Config {
      */
 
     static boolean mapL1(String fileName, Map<String, String> map) {
-        //   LogInfo.info("Load ConfigFile :"+fileName);
+        //   Log.info("Load ConfigFile :"+fileName);
         Properties props = new Properties();
         try {
             props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(fileName)));
         } catch (Exception e) {
-            LogInfo.error(e.getMessage());
-            LogInfo.error("Load Config Failed :" + fileName);
+            Log.error(e.getMessage());
+            Log.error("Load Config Failed :" + fileName);
             return false;
         }
         for (Object key : props.keySet()) {
@@ -29,7 +29,7 @@ public class Config {
             String valString = props.getProperty(keyString);//Value
             map.put(keyString, valString);
         }
-        //  LogInfo.info("Load File Finished :"+fileName);
+        //  Log.info("Load File Finished :"+fileName);
         return true;
     }
 
@@ -41,13 +41,13 @@ public class Config {
      */
 
     public static boolean mapL2(String fileName, Map<String, Map<String, String>> map) {
-        //    LogInfo.info("Load ConfigFile :"+fileName);
+        //    Log.info("Load ConfigFile :"+fileName);
         Properties props = new Properties();
         try {
             props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(fileName)));
         } catch (Exception e) {
-            LogInfo.error(e.getMessage());
-            LogInfo.error("Load Config Failed :" + fileName);
+            Log.error(e.getMessage());
+            Log.error("Load Config Failed :" + fileName);
             return false;
         }
         for (Object key : props.keySet()) {
@@ -65,7 +65,7 @@ public class Config {
             }
         }
 
-        //LogInfo.info("Load File Finished :"+fileName);
+        //Log.info("Load File Finished :"+fileName);
         return true;
     }
 
@@ -76,13 +76,13 @@ public class Config {
      */
 
     static boolean mapL3(String fileName, Map<String, Map<String, Map<String, String>>> map) {
-        // LogInfo.info("Load ConfigFile :"+fileName);
+        // Log.info("Load ConfigFile :"+fileName);
         Properties props = new Properties();
         try {
             props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(fileName)));
         } catch (Exception e) {
-            LogInfo.error(e.getMessage());
-            LogInfo.error("Load Config Failed :" + fileName);
+            Log.error(e.getMessage());
+            Log.error("Load Config Failed :" + fileName);
             return false;
         }
         for (Object key : props.keySet()) {
@@ -108,7 +108,7 @@ public class Config {
                 }
             }
         }
-        //LogInfo.info("Load File Finished :"+fileName);
+        //Log.info("Load File Finished :"+fileName);
         return true;
     }
 

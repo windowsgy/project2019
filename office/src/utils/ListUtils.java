@@ -12,8 +12,6 @@ import java.util.regex.Pattern;
  * List 工具
  */
 public class ListUtils {
-
-    private static Log logger = new Log();
     /**
      * 根据value 返回所有 key list
      *
@@ -48,7 +46,7 @@ public class ListUtils {
             lineCount++;
             String[] array = aList.split(splitChar);
             if (array.length != firstArraySize) {
-                logger.info(lineCount + " :Line Error : " + aList);
+                Log.info(lineCount + " :Line Error : " + aList);
                 return null;
             }
             listArray.add(aList.split(splitChar));
@@ -75,7 +73,7 @@ public class ListUtils {
             if (array.length == firstArraySize) {// 如果此行长度等于首行字段长度
                 theList.add(Arrays.asList(array));
             } else {
-                logger.error(lineCount + " :Line Error , Current Line Split Lenght : " + lists);
+                Log.error(lineCount + " :Line Error , Current Line Split Lenght : " + lists);
                 return null;
             }
         }

@@ -1,7 +1,7 @@
 package analysis.analysis;
 
 
-import utils.LogInfo;
+import utils.Log;
 
 import java.util.HashSet;
 import java.util.List;
@@ -35,7 +35,7 @@ public class IpVpnLoopback implements AnalysisInterface {
             sb.append(str).append("\r\n");
         }
 
-        LogInfo.info("loopback count :" + i);
+        Log.info("loopback count :" + i);
         return sb.toString();
     }
 }

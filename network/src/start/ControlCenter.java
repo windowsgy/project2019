@@ -3,7 +3,7 @@ package start;
 
 import inOut.Input;
 import param.Param;
-import utils.LogInfo;
+import utils.Log;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
 class ControlCenter {
 
     static void run() {
-        LogInfo.linel1();
-        LogInfo.info("Run Control Center");
+        Log.linel1();
+        Log.info("Run Control Center");
         try {
             String modelPath;
             //如果未执行当前参数初始化，则执行当前参数初始化
@@ -34,15 +34,15 @@ class ControlCenter {
             n.invoke(model);
 
         } catch (InstantiationException e) {
-            LogInfo.error("Model InstantiationException : " + e.getMessage());
+            Log.error("Model InstantiationException : " + e.getMessage());
         } catch (IllegalAccessException e) {
-            LogInfo.error("Model IllegalAccessException : " + e.getMessage());
+            Log.error("Model IllegalAccessException : " + e.getMessage());
         } catch (ClassNotFoundException e) {
-            LogInfo.error("Model  ClassNotFoundException : " + e.getMessage());
+            Log.error("Model  ClassNotFoundException : " + e.getMessage());
         } catch (NoSuchMethodException e) {
-            LogInfo.error("Method  MethodNotFoundException : " + e.getMessage());
+            Log.error("Method  MethodNotFoundException : " + e.getMessage());
         } catch (InvocationTargetException e) {
-            LogInfo.error(" : " + e.getMessage());
+            Log.error(" : " + e.getMessage());
         }
     }
 }

@@ -5,7 +5,6 @@ import java.io.*;
 import java.util.*;
 
 public class FileUtils {
-
     /**
      * 判断路径是否为一个文件
      *
@@ -13,8 +12,14 @@ public class FileUtils {
      * @return boolean
      */
     public boolean isFile(String filePath) {
-        File path = new File(filePath);
-        return path.exists() && path.isFile();
+        try{
+            File path = new File(filePath);
+            return path.exists() && path.isFile();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
 
@@ -29,7 +34,7 @@ public class FileUtils {
             File path = new File(dirPath);
             return path.exists() && path.isDirectory();
         } catch (Exception e) {
-            LogInfo.error(e.getMessage());
+            Log.error(e.getMessage());
             return false;
         }
 
@@ -41,11 +46,18 @@ public class FileUtils {
      * @param path 路径
      */
     public boolean createDir(String path) {
-        File file = new File(path);
-        if (file.exists()) {
+        try {
+            File file = new File(path);
+            if (file.exists() && file.isDirectory()) {
+                Log.warn("isExists :"+path);
+                return false;
+            } else {
+                return file.mkdir();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
-        } else {
-            return !file.mkdir();
         }
     }
 
@@ -55,16 +67,17 @@ public class FileUtils {
      * @param path 路径
      */
     public boolean delDir(String path) {
-        LogInfo.info("Dir Path : " + path);
-        File file = new File(path);
-        boolean delDir;
-        if (!file.exists()) {//如果目录不存在返回
-            LogInfo.info("Dir Not Exists:" + path);
-            return true;
+        try{
+            File file = new File(path);
+            if (!file.exists() || !file.isDirectory()) {//如果目录不存在返回
+                Log.warn("Dir Not Exists :"+path);
+                return false;
+            }
+            return file.delete();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
-        delDir = file.delete();
-        LogInfo.info("Dir Delete Succeed" + path);
-        return delDir;
     }
 
     /**
@@ -73,30 +86,33 @@ public class FileUtils {
      * @param path 路径
      */
     public boolean deleteFiles(String path) {
-        boolean delFiles = false;
+        boolean bool = false;
         try {
-
             File files = new File(path);
-            if (!files.exists()) {//如果目录不存在返回
-                LogInfo.info("Dir Not Exists:" + path);
-                return true;
+            if (!files.exists() || !files.isDirectory()) {//如果目录不存在返回
+                Log.warn("dir not exists :" + path);
+                return bool;
             }
             String[] file = files.list();
             if (file == null) {
-                LogInfo.info("dir is null:" + path);
-                return true;
+                Log.warn("dir is null :" + path);
+                return bool;
             } else {
                 for (String aFile : file) {
                     String full_filePath = files.getPath() + "/" + aFile;
                     File f = new File(full_filePath);
-                    delFiles = f.delete();
+                    bool = f.delete();
+                    if(!bool){
+                        return bool;
+                    }
                 }
             }
 
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
-        return delFiles;
+        return bool;
     }
 
     /**
@@ -107,9 +123,14 @@ public class FileUtils {
      */
     public List<String> read2List(String path, long lineNumber, String code) {
         List<String> list = new ArrayList<>();//返回结果
-        File file = new File(path);
+
         BufferedReader br;
         try {
+            File file = new File(path);
+            if (!file.exists() || !file.isFile()) {
+                Log.warn("path is exists"+path);
+                return list;
+            }
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file), code));
             String line;
             int lineCtl = 0; //读取位置控制
@@ -124,8 +145,7 @@ public class FileUtils {
             }
             br.close();
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
         return list;
     }
@@ -135,22 +155,19 @@ public class FileUtils {
      * 创建文件
      *
      * @param path Path
-     * @return boolean
      */
     public boolean createFile(String path) {
-        boolean bool;
-        File file = new File(path);
-        if (!file.exists()) {
-            try {
-                bool = file.createNewFile();
-            } catch (Exception e) {
-                LogInfo.error("Create File Fail:" + e.getMessage());
+        try{
+            File file = new File(path);
+            if (file.exists() && file.isFile()) {
+                Log.warn(path +" : path is exists");
                 return false;
             }
-        } else {
-            bool = true;
+            return file.createNewFile();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
-        return bool;
     }
 
 
@@ -161,16 +178,18 @@ public class FileUtils {
      * @return boolean
      */
     public boolean delFile(String path) {
-        boolean bool;
-       /* LogInfo.info("delete File :" + path);*/
-        File file = new File(path);
         try {
-            bool = file.delete();
+            File file = new File(path);
+            if (!file.exists() && !file.isFile()) {
+                Log.warn(path+" :not exists");
+                return false;
+            }else {
+                return file.delete();
+            }
         } catch (Exception e) {
-            LogInfo.error(e.getMessage());
-            bool = false;
+            e.printStackTrace();
+            return false;
         }
-        return bool;
     }
 
     /**
@@ -178,39 +197,45 @@ public class FileUtils {
      *
      * @param str  字符串
      * @param path 文件路径
-     * @return boolean
      */
     public boolean wrStrToFile(String str, String path) {
         try {
             File file = new File(path);
+            if(!file.exists() && !file.isFile()){
+                Log.error(path+" :not exists");
+                return false;
+            }
             PrintWriter outToFile = new PrintWriter(new BufferedWriter(new FileWriter(file.getPath())));
             outToFile.print(str);
             outToFile.flush();
             outToFile.close();
+            return true;
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
+            e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     /**
      * @param str  字符串
      * @param path 文件路径
      * @param code 字符编码
-     * @return boolean
      */
     public boolean wrStrToFile(String str, String path, String code) {
         try {
             File file = new File(path);
+            if(!file.exists() && !file.isFile()){
+                Log.error("not exists :"+path);
+                return false;
+            }
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), code));
             writer.write(str);
             writer.close();
+            return true;
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
+            e.printStackTrace();
             return false;
         }
-        return true;
     }
 
 
@@ -222,15 +247,20 @@ public class FileUtils {
      */
     public boolean wrStrAddToFile(String str, String path) {
         try {
+            File file = new File(path);
+            if(!file.exists() && !file.isFile()){
+                Log.error(path+" :not exists");
+                return false;
+            }
             // 打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件
             FileWriter writer = new FileWriter(path, true);
             writer.write(str);
             writer.close();
+            return true;
         } catch (IOException e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
-            return false;
+            e.printStackTrace();
+            return false ;
         }
-        return true;
     }
 
     /**
@@ -240,13 +270,16 @@ public class FileUtils {
      * @return List
      */
     public List<String> getFileNameToList(String path) {
-        List<String> list ;//返回结果
-        File file = new File(path);
+        List<String> list = new ArrayList<>();//返回结果
         try {
-            list = Arrays.asList(Objects.requireNonNull(file.list()));
+            File file = new File(path);
+            if(!file.exists() && !file.isDirectory()){
+                Log.error(path+" :not exists");
+            }else {
+                list = Arrays.asList(Objects.requireNonNull(file.list()));
+            }
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
         return list;
     }
@@ -258,7 +291,7 @@ public class FileUtils {
      * @return 文件编码格式
      */
     public String codeString(String filePath) {
-        String code;
+        String code = "dont know";
         File file = new File(filePath);
         try {
             BufferedInputStream bin = new BufferedInputStream(new FileInputStream(file));
@@ -281,8 +314,7 @@ public class FileUtils {
                     code = "GBK";
             }
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
         return code;
     }
@@ -294,14 +326,19 @@ public class FileUtils {
      * @return L
      */
     public String readFirstLine(String path, String code) {
-        String firstLine;//返回结果
-        File file = new File(path);
+        String firstLine = null;//返回结果
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), code));
-            firstLine = br.readLine().trim();
-            br.close();
+            File file = new File(path);
+            if(!file.exists() && !file.isFile()){
+                Log.error(path+" :not exists");
+            }else {
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), code));
+                firstLine = br.readLine().trim();
+                br.close();
+            }
+
         } catch (Exception e) {
-            LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
+            e.printStackTrace();
             return null;
         }
         return firstLine;
@@ -315,14 +352,12 @@ public class FileUtils {
      */
     private boolean allFileInSubDir(String path) {
         File dir = new File(path);
-        if (!dir.exists()) {
-            return false;
-        }
-        if (!dir.isDirectory()) {
+        if (!dir.exists() && !dir.isDirectory()) {
+            Log.warn("dir not exists :"+path);
             return false;
         }
         String[] fileArr = dir.list();
-        if (fileArr!= null && fileArr.length >0) {
+        if (fileArr != null && fileArr.length > 0) {
             for (String aFileArr : fileArr) {
                 File file = new File(path + "\\" + aFileArr);
                 if (!file.isFile()) {
@@ -338,61 +373,66 @@ public class FileUtils {
 
     /**
      * file read to str
-     * @param path path
+     *
+     * @param path       path
      * @param lineNumber lineNumber
-     * @param code coder
+     * @param code       coder
      * @return string
      */
-     public String read2Str(String path, long lineNumber, String code) {
+    public String read2Str(String path, long lineNumber, String code) {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br;
+        try {
             File file = new File(path);
-            StringBuilder sb = new StringBuilder();
-            BufferedReader br;
-            try {
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(file), code));
-                String line;
-                int lineCtl = 0; //读取位置控制
-                //int loadLineCount = 0;//读取行数计数
-                // 一次读入一行，直到读入null为文件结束
-                while ((line = br.readLine()) != null) {
-                    lineCtl++;
-                    if (lineCtl >= lineNumber && !("".equals(line.trim()))) {//如果当前行号大于指定行号
-                        //loadLineCount++;
-                        sb.append(line.trim()).append("\r\n");
-                    }
-                }
-                br.close();
-            } catch (Exception e) {
-                LogInfo.error(e.getClass().getSimpleName() + "," + e.getMessage());
+            if(!file.exists() && !file.isFile()){
+                Log.error("not exists :"+path);
                 return null;
             }
-            return sb.toString();
+
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), code));
+            String line;
+            int lineCtl = 0; //读取位置控制
+            //int loadLineCount = 0;//读取行数计数
+            // 一次读入一行，直到读入null为文件结束
+            while ((line = br.readLine()) != null) {
+                lineCtl++;
+                if (lineCtl >= lineNumber && !("".equals(line.trim()))) {//如果当前行号大于指定行号
+                    //loadLineCount++;
+                    sb.append(line.trim()).append("\r\n");
+                }
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
+        return sb.toString();
+    }
 
 
     /**
-     *
-     * @param path dir
+     * @param path     dir
      * @param charCode charCode
      * @return map
      */
-    public  Map<String,List<String>> loadDirFiles(String path,String charCode){
+    public Map<String, List<String>> loadDirFiles(String path, String charCode) {
         // format source data path is exist
         if (!isDir(path)) {
-            LogInfo.error("Path does not exist\n"+
+            Log.error("Path does not exist\n" +
                     "Path is not a directory");
             return null;
         }
         //如果分析数据目录中全部都是文件
         if (!allFileInSubDir(path)) {
-            LogInfo.error("This path contains directories, not all files ");
+            Log.error("This path contains directories, not all files ");
             return null;
         }
         Map<String, List<String>> filesMap = new HashMap<>();
         List<String> files = getFileNameToList(path);
         for (String fileName : files) {
-            String filePath = path +"\\"+ fileName;
+            String filePath = path + "\\" + fileName;
             List<String> fileList = read2List(filePath, 0, charCode);
-            filesMap.put(fileName,fileList);
+            filesMap.put(fileName, fileList);
         }
         return filesMap;
     }
