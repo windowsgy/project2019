@@ -1,10 +1,7 @@
-
 import java.util
 
-import Config.Params
-import Config.Config
 import SparkApps.{Compute, InitSpark}
-import utils.{FileUtils, Log}
+import utils.{Config, FileUtils, Log}
 //隐式转换java 与 scala集合类
 //import collection.JavaConversions._
 
@@ -12,15 +9,20 @@ import utils.{FileUtils, Log}
   * Created by jlgaoyuan on 2018/11/8.
   */
 object OfficeMain {
-  private val logger = new Log
   def main(args: Array[String]): Unit = {
-    logger.info("Start")
+    if(args.length ==1){
+      if("debug" == args(0)|| "DEBUG"==args(0)){
+        Log.setDebug(true)
+      }
+    }
+
+    Log.info("Start")
     val configFile = "sparkConfig.properties"
-    Params.map = Config.build(configFile)
+    Config.build(configFile)
     val filesUtils = new FileUtils
-    val filesPath = Params.map.get("sourcePath")
+    val filesPath = Config.map.get("sourcePath")
     val filesName: util.List[String] = filesUtils.getFileNameToList(filesPath)
-    logger.info("fileCount :"+filesName.size())
+    Log.debug("fileCount :"+filesName.size())
     Compute.run(InitSpark.getSession.sparkContext)
 
   }

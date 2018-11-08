@@ -4,6 +4,7 @@ import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapred.TextInputFormat
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
+import utils.Log
 
 /**
   * Created by jlgaoyuan on 2018/11/8.
@@ -17,6 +18,7 @@ object ReaderGBK {
     * @return RDD[String]
     */
   def transfer(sc:SparkContext,path:String):RDD[String]={
+    Log.debug("load read GBK")
     sc.hadoopFile(path,classOf[TextInputFormat],classOf[LongWritable],classOf[Text],1)
       .map(p => new String(p._2.getBytes, 0, p._2.getLength, "GBK"))
   }
