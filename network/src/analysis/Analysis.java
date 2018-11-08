@@ -163,7 +163,6 @@ public class Analysis implements ModelInterface {
         }else {
             fileUtils.createFile(integrateFilePath);
         }
-
         StringBuilder sb;
         sb = new StringBuilder();
         int i = 0 ;
@@ -175,7 +174,6 @@ public class Analysis implements ModelInterface {
                     i++;
                     sb.append(IpAddress).append("|").append(line).append("\r\n");
                 }
-
             }
         }
         fileUtils.wrStrToFile(sb.toString(),integrateFilePath,Param.charCode);
