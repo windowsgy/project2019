@@ -21,50 +21,53 @@ public class BuildCollectParams {
             Param.timeOut = Integer.parseInt(Param.collectMap.get("timeOut"));
             Param.sleepTime = Long.parseLong(Param.collectMap.get("sleepTime"));
             Param.threadPool = Integer.parseInt(Param.collectMap.get("threadPool"));
-
-
             //系统类型##############################################################
             Input.inputParam("currentSystemType",Param.commandMap.keySet());
             if(!Param.inputStatus){
                 return false;
             }
             Param.inputStatus = false;//重置输入状态
-
             //输入设备类型
             Input.inputParam("currentDriversType",Param.commandMap.get(Param.currentSystemType).keySet());
             if(!Param.inputStatus){
                 return false;
             }
             Param.inputStatus = false;//重置输入状态
-
             //设置采集类型
             Input.inputParam("currentCollectType",Param.commandMap.get(Param.currentSystemType).get(Param.currentDriversType).keySet());
             if(!Param.inputStatus){
                 return false;
             }
             Param.inputStatus = false;//重置输入状态
-
             //创建当前采集目录
-
             String collectBasePath = Param.currentMainPath+Param.pathMap.get("collect");
-            fileUtils.createDir(collectBasePath);
+            if(!fileUtils.isDir(collectBasePath)){//如果目录不存在，创建目录
+                if(!fileUtils.createDir(collectBasePath)){//如果创建失败返回
+                    Log.error("create fail :"+collectBasePath);
+                    return false;
+                }
+            }
+
             Param.currentCollectPath =  collectBasePath+ Param.currentCollectType+"\\";
-            fileUtils.createDir(Param.currentCollectPath);
-            System.out.println("currentCollectPath :"+Param.currentCollectPath);
-
+            if(fileUtils.isDir(Param.currentCollectPath)){//如果目录存在，返回错误
+                Log.error(Param.currentCollectPath+" is exits");
+                return false;
+            }
+            if(!fileUtils.createDir(Param.currentCollectPath)){//创建目录
+                    Log.error("create fail :"+Param.currentCollectPath);
+                    return false;
+            }
+            Log.info("currentCollectPath :"+Param.currentCollectPath);
             //设定指令
-
             Param.command = Param.commandMap.get(Param.currentSystemType).get(Param.currentDriversType).get(Param.currentCollectType);
-            System.out.println("command :" + Param.command);
+            Log.info("command :" + Param.command);
             Param.exitCmd = Param.commandMap.get(Param.currentSystemType).get(Param.currentDriversType).get("ExitCommand");
-
-
             //login 相关参数设置####################################################
             String loginFilesPath = Param.pathMap.get("main")+Param.pathMap.get("login");
-            System.out.println("loginFilesPath :"+loginFilesPath);
+            Log.info("loginFilesPath :"+loginFilesPath);
 
             List<String> loginFileNameList = fileUtils.getFileNameToList(loginFilesPath);
-            if(loginFileNameList == null){
+            if(loginFileNameList.size()<1){
                 Log.error("login file is null");
                 return false;
             }
@@ -77,12 +80,11 @@ public class BuildCollectParams {
             Param.inputStatus = false;//重置输入状态
 
             Param.loginFilePath = loginFilesPath+Param.loginFileName;
-            System.out.println("loginFilePath :"+Param.loginFilePath);
-
+            Log.info("loginFilePath :"+Param.loginFilePath);
             //account参数设置 ####################################################
             String accountFilesPath = Param.pathMap.get("main")+Param.pathMap.get("account");
             List<String> accountFileNameList = fileUtils.getFileNameToList(accountFilesPath);
-            if(accountFileNameList == null){
+            if(accountFileNameList.size()<1){
                 Log.error("account file is null");
                 return false;
             }
@@ -94,16 +96,13 @@ public class BuildCollectParams {
             }
             Param.inputStatus = false;//重置输入状态
             Param.accountFilePath = accountFilesPath+Param.accountFileName;
-            System.out.println("accountFilePath :"+Param.accountFilePath);
-
+            Log.info("accountFilePath :"+Param.accountFilePath);
             //logfile ####################################################
             String currentLogBasePath = Param.currentMainPath+"\\log\\";
             fileUtils.createDir(currentLogBasePath);
             Param.currentLogFilePath = currentLogBasePath+Param.currentCollectType+".txt";
-            System.out.println("currentLogFilePath :"+Param.currentLogFilePath);
+            Log.info("currentLogFilePath :"+Param.currentLogFilePath);
             fileUtils.createFile(Param.currentLogFilePath);
-
-
 
         } catch (Exception e) {
             Log.error(e.getClass() + "," + e.getMessage());

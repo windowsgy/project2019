@@ -4,6 +4,12 @@ package utils;
 /**
  * 日志记录类
  * Created by Telis on 17/7/12.
+ * info 打印输出 并可选记录文件
+ * debug 打印输出 并可选记录文件
+ * warn 打印输出 并可选记录文件
+ * error 打印输出 并可选记录文件
+ * msg 消息不记录文件
+ * out 系统输出不换行，不记录文件
  */
 public class Log {
 
@@ -17,7 +23,6 @@ public class Log {
     public static void setDebug(boolean debug) {
         debugOnOff = debug;
     }
-
     public static void setOut(boolean out) {
         outOnOff = out;
     }
@@ -87,16 +92,16 @@ public class Log {
     }
 
     public static void info(double x) {
-        String message = "[info][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
-        System.out.print(message);
-        if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
-        }
+            String message = "[info][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
+            System.out.print(message);
+            if (logFilePath != null) {
+                fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            }
     }
 
     public static void warn(String x) {
 
-        String message = "[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
+        String message = "\033[35;4m"+"[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\033[0m" +  "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
             fileUtils.wrStrToFile(message, logFilePath, "utf-8");
@@ -105,7 +110,7 @@ public class Log {
 
     public static void warn(int x) {
 
-        String message = "[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
+        String message =   "\033[35;4m"+"[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x+ "\033[0m" +  "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
             fileUtils.wrStrToFile(message, logFilePath, "utf-8");
@@ -113,7 +118,7 @@ public class Log {
     }
 
     public static void warn(double x) {
-        String message = "[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
+        String message =  "\033[35;4m"+"[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\033[0m" +  "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
             fileUtils.wrStrToFile(message, logFilePath, "utf-8");
@@ -121,7 +126,7 @@ public class Log {
     }
 
     public static void warn(boolean x) {
-        String message = "[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
+        String message =  "\033[35;4m"+"[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\033[0m" +  "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
             fileUtils.wrStrToFile(message, logFilePath, "utf-8");
@@ -162,48 +167,63 @@ public class Log {
 
     public static void out(String x) {
         if (outOnOff) {
-            System.out.println(x);
-            if (logFilePath != null) {
-                fileUtils.wrStrToFile(x, logFilePath, "utf-8");
-            }
+            System.out.print(x);
         }
     }
 
     public static void out(boolean x) {
         if (outOnOff) {
-            System.out.println(x);
-            if (logFilePath != null) {
-                fileUtils.wrStrToFile(String.valueOf(x), logFilePath, "utf-8");
-            }
+            System.out.print(x);
         }
     }
 
     public static void out(int x) {
         if (outOnOff) {
-            System.out.println(x);
-            if (logFilePath != null) {
-                fileUtils.wrStrToFile(String.valueOf(x), logFilePath, "utf-8");
-            }
+            System.out.print(x);
         }
     }
 
     public static void out(long x) {
         if (outOnOff) {
-            System.out.println(x);
-            if (logFilePath != null) {
-                fileUtils.wrStrToFile(String.valueOf(x), logFilePath, "utf-8");
-            }
+            System.out.print(x);
         }
     }
 
     public static void out(double x) {
         if (outOnOff) {
-            System.out.println(x);
-            if (logFilePath != null) {
-                fileUtils.wrStrToFile(String.valueOf(x), logFilePath, "utf-8");
-            }
+            System.out.print(x);
         }
     }
+
+
+    public static void msg(String x) {
+        if (outOnOff) {
+            System.out.print(x);
+        }
+    }
+
+    public static void msg(boolean x) {
+        if (outOnOff) {
+            System.out.print(x);
+        }
+    }
+
+    public static void msg(int x) {
+        System.out.print(x);
+
+    }
+
+    public static void msg(long x) {
+        System.out.println(x);
+
+    }
+
+    public static void msg(double x) {
+
+        System.out.println(x);
+
+    }
+
 
     public static void linel0() {
         String message = "#############################################################################################" + "\r\n";

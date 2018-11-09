@@ -19,7 +19,7 @@ public class Build_CurrentParam implements ModelInterface {
         Param.currentMainPath = Param.pathMap.get("main")+"\\"+Param.currentTimeStr;
         FileUtils fileUtils = new FileUtils();//创建当前时间目录
         fileUtils.createDir(Param.currentMainPath);
-        System.out.println("currentMainPath :"+Param.currentMainPath);
+        Log.info("currentMainPath :"+Param.currentMainPath);
         Param.currentParamOnOff = true;
         //采集开关设置关闭，未采集状态
         Param.collectOnOff = false;
