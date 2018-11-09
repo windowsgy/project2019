@@ -47,7 +47,7 @@ public class BuildCollectParams {
                     return false;
                 }
             }
-
+            //创建当前采集类型目录
             Param.currentCollectPath =  collectBasePath+ Param.currentCollectType+"\\";
             if(fileUtils.isDir(Param.currentCollectPath)){//如果目录存在，返回错误
                 Log.error(Param.currentCollectPath+" is exits");
