@@ -5,7 +5,7 @@ import analysis.format.FormatInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Config implements FormatInterface {
+public class Config  implements FormatInterface {
 
     @Override
     public String run(List<String> list) {

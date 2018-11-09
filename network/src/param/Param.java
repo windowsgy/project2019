@@ -29,8 +29,6 @@ public class Param {
     public static boolean exitOnOff = false;//退出开关
 
     //collect
-    public static boolean collectDebugOnOff = false;//debug开关
-    public static boolean collectOutOnOff = false;//采集输出开关
     public static String command;
     public static String exitCmd;//采集设备退出指令
     public static int timeOut;//超时时间

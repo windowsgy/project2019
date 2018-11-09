@@ -8,7 +8,7 @@ import param.Param;
 import start.ModelInterface;
 import utils.FileUtils;
 import utils.ListUtils;
-import utils.LogInfo;
+import utils.Log;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -20,22 +20,22 @@ public class Analysis implements ModelInterface {
     private ListUtils listUtils = new ListUtils();
     @Override
     public void run() {
-        LogInfo.linel2();
-        LogInfo.info("Analysis Start");
+        Log.linel2();
+        Log.info("Analysis Start");
 
         if (!AnalysisParam.run()) {
             return;
         }
         //创建整合路径
         Param.currentIntegratePath = Param.currentMainPath+Param.pathMap.get("integration");
-        //LogInfo.info("currentIntegratePath :"+Param.currentIntegratePath);
+        //Log.info("currentIntegratePath :"+Param.currentIntegratePath);
         if(!fileUtils.isDir(Param.currentIntegratePath)){//如果目录不存在就创建
             fileUtils.createDir(Param.currentIntegratePath);
         }
 
         //创建分析路径
         Param.currentAnalysisPath = Param.currentMainPath+Param.pathMap.get("analysis");
-        //LogInfo.info("currentAnalysisPath :"+Param.currentAnalysisPath);
+        //Log.info("currentAnalysisPath :"+Param.currentAnalysisPath);
         if(!fileUtils.isDir(Param.currentAnalysisPath)){//如果目录不存在就创建
             fileUtils.createDir(Param.currentAnalysisPath);
         }
@@ -56,9 +56,9 @@ public class Analysis implements ModelInterface {
                 fileUtils.deleteFiles(currentFormatDesPath);
             }
             //构建格式化结构体
-            LogInfo.info("FormatType :"+formatType);
+            Log.info("FormatType :"+formatType);
             List<FormatStrut> listStrut = buildFormatStrut(formatType,currentFormatDesPath);
-            LogInfo.info("Build format strut size :"+listStrut.size());
+            Log.info("Build format strut size :"+listStrut.size());
             //格式化过程
             format(listStrut);
             String integratePath = integrate(listStrut,formatType);
@@ -67,14 +67,14 @@ public class Analysis implements ModelInterface {
             //返回所有分析类型
             List<String> analysisTypeList =listUtils.keyList(Param.analysisMap,formatType);
             for( String analysisType :analysisTypeList){
-                LogInfo.info("Analysis Type :"+analysisType);
+                Log.info("Analysis Type :"+analysisType);
                 analysis(integrateList,analysisType);
             }
         }
         //如果分析完成，采集开关关闭
         Param.collectOnOff = false;
-        LogInfo.info("Analysis Finish");
-        LogInfo.linel2();
+        Log.info("Analysis Finish");
+        Log.linel2();
     }
 
     /**
@@ -84,7 +84,7 @@ public class Analysis implements ModelInterface {
      */
     private void analysis(List<List<String>> list, String analysisType){
         String analysisFilePath = Param.currentAnalysisPath+analysisType+".txt";
-       // LogInfo.info("currentAnalysisFilePath :"+analysisFilePath);
+       // Log.info("currentAnalysisFilePath :"+analysisFilePath);
         if(fileUtils.isFile(analysisFilePath)){//如果存在就删除
             fileUtils.delFile(analysisFilePath);
         }else {//如果不存在就创建
@@ -99,14 +99,14 @@ public class Analysis implements ModelInterface {
             n.setAccessible(true);
             result = (String) n.invoke(analysis,list);//result
             if(result == null){
-                LogInfo.error("Analysis error :"+analysisType);
+                Log.error("Analysis error :"+analysisType);
             }else {
                 fileUtils.wrStrToFile(result,analysisFilePath,Param.charCode);
-              //  LogInfo.info("Analysis Finished :"+analysisType);
+              //  Log.info("Analysis Finished :"+analysisType);
             }
         }catch (Exception e){
-            LogInfo.error(e.getMessage());
-            LogInfo.error("analysis error :"+analysisType);
+            Log.error(e.getMessage());
+            Log.error("analysis error :"+analysisType);
         }
     }
 
@@ -116,7 +116,7 @@ public class Analysis implements ModelInterface {
      * @param listStrut 结构体
      */
     public  void format(List<FormatStrut> listStrut) {
-        //LogInfo.info("Format Start");
+        //Log.info("Format Start");
         for (FormatStrut strut: listStrut) {
             String classPath = "analysis.format" + "." + strut.getSystemType() + "." + strut.getDriversType() + "." + strut.getFormatType();
             // System.out.println("class path :"+classPath);
@@ -131,12 +131,12 @@ public class Analysis implements ModelInterface {
                 n.setAccessible(true);
                 result = (String) n.invoke( format,list);//result
             }catch (Exception e){
-                LogInfo.error(e.getMessage());
-                LogInfo.error("format error :"+ strut.getFileName());
+                Log.error(e.getMessage());
+                Log.error("format error :"+ strut.getFileName());
                 strut.setFormated(false);
             }
             if (result == null) {
-                LogInfo.error("format error :"+ strut.getFileName());
+                Log.error("format error :"+ strut.getFileName());
                 strut.setFormated(false);
             } else {
                 strut.setFormated(true);//执行格式化
@@ -144,7 +144,7 @@ public class Analysis implements ModelInterface {
             }
         }
 
-        //LogInfo.info("Format Finish");
+        //Log.info("Format Finish");
     }
 
 
@@ -155,32 +155,30 @@ public class Analysis implements ModelInterface {
      * @return string
      */
     private String integrate(List<FormatStrut> listStrut, String formatType) {
-       // LogInfo.info("Integrate Start");
+       // Log.info("Integrate Start");
         String integrateFilePath = Param.currentIntegratePath+formatType+".txt";
-        //LogInfo.info("integrateFilePath :"+integrateFilePath);
+        //Log.info("integrateFilePath :"+integrateFilePath);
         if(fileUtils.isFile(integrateFilePath)){
             fileUtils.delFile(integrateFilePath);
         }else {
             fileUtils.createFile(integrateFilePath);
         }
-
         StringBuilder sb;
         sb = new StringBuilder();
         int i = 0 ;
         for (FormatStrut strut: listStrut) {
-            String IpAddressress = strut.getIpAddress();
+            String IpAddress = strut.getIpAddress();
             List<String> fileList = fileUtils.read2List(strut.getDesPath(),0,Param.charCode);
             for(String line: fileList) {
                 if(line.length()>0){//过滤空行
                     i++;
-                    sb.append(IpAddressress).append("|").append(line).append("\r\n");
+                    sb.append(IpAddress).append("|").append(line).append("\r\n");
                 }
-
             }
         }
         fileUtils.wrStrToFile(sb.toString(),integrateFilePath,Param.charCode);
-        LogInfo.info("Integrate Line :"+i);
-        //LogInfo.info("Integrate Finish");
+        Log.info("Integrate Line :"+i);
+        //Log.info("Integrate Finish");
         return integrateFilePath;
     }
 
@@ -192,7 +190,7 @@ public class Analysis implements ModelInterface {
      * @return 格式化结构体
      */
         private  List<FormatStrut> buildFormatStrut(String formatType, String currentFormatDesPath){
-       // LogInfo.info("Build FormatStrut");
+       // Log.info("Build FormatStrut");
         List<FormatStrut> listStrut = new ArrayList<>();
         FileUtils fileUtils = new FileUtils();
         List<String> fileNameList = fileUtils.getFileNameToList(Param.currentFormatSourcePath);
@@ -213,7 +211,7 @@ public class Analysis implements ModelInterface {
             strut.setSouPath(Param.currentFormatSourcePath+"\\"+ fileName);
             listStrut.add(strut);
         }
-        //LogInfo.info("Build FormatStrut Finish");
+        //Log.info("Build FormatStrut Finish");
         return listStrut;
     }
 

@@ -3,7 +3,7 @@ package collect;
 import param.Param;
 import utils.Chk4Str;
 import utils.FileUtils;
-import utils.LogInfo;
+import utils.Log;
 import utils.Regex;
 
 import java.util.*;
@@ -15,16 +15,16 @@ class BuildCollectStrut {
      * 构造采集信息结构
      * @return 采集信息结构列表
      */
-    static List<Collect_Strut> run() {
-        LogInfo.info("build collect struct start");
-        List<Collect_Strut> listStru = new ArrayList<>();
+    static List<Strut_Collect> run() {
+        Log.info("build collect struct start");
+        List<Strut_Collect> listStru = new ArrayList<>();
         if (!loadCollectIpList() || !loadAccount()) {
             return null;
         }
         List<String> list = Param.loginIpAddressList;
 
         for (int i = 0; i < list.size(); i++) {
-            Collect_Strut stru = new Collect_Strut();
+            Strut_Collect stru = new Strut_Collect();
             stru.setTn(i);
             stru.setSystemType(Param.currentSystemType);
             stru.setDriversType(Param.currentDriversType);
@@ -35,8 +35,6 @@ class BuildCollectStrut {
             stru.setCmd(Param.command);
             stru.setPort(Param.port);
             stru.setTimeFormat(Param.pathMap.get("timeFormat"));
-            stru.setCollectOut(Param.collectOutOnOff);
-            stru.setDebugOnOff(Param.collectDebugOnOff);
             stru.setTimeOut(Param.timeOut);
             stru.setSleepTime(Param.sleepTime);
             stru.setWrPath(Param.currentCollectPath);
@@ -44,12 +42,12 @@ class BuildCollectStrut {
             stru.setExitCmd(Param.exitCmd);
             listStru.add(stru);
         }
-        LogInfo.info("Collect Struct Size :" + listStru.size());
+        Log.info("Collect Struct Size :" + listStru.size());
         if (list.size() != listStru.size()) {
-            LogInfo.error("LoginFile IpAddressress format error exists");
+            Log.error("LoginFile IpAddressress format error exists");
             return null;
         }
-        LogInfo.info("Build Collect Struct Finish");
+        Log.info("Build Collect Struct Finish");
         return listStru;
     }
 
@@ -65,15 +63,15 @@ class BuildCollectStrut {
         if (null == list) {
             return false;
         }
-        LogInfo.info("loginFile Row Count :" + list.size());
+        Log.info("loginFile Row Count :" + list.size());
         Set<String> IpAddressSet = new HashSet<>(list);
         if (IpAddressSet.size() != list.size()) {//重复地址判断
-            LogInfo.error("loginFile IpAddressress duplication exists");
+            Log.error("loginFile IpAddressress duplication exists");
             return false;
         }
         for (String aList : list) {
             if (!Chk4Str.isFormat(aList, Regex.REGEX_IPV4)) {
-                LogInfo.error("IpAddressress format error :" + aList);
+                Log.error("IpAddressress format error :" + aList);
                 return false;
             }
         }
@@ -85,7 +83,7 @@ class BuildCollectStrut {
         FileUtils fileUtils = new FileUtils();
         List<String> list = fileUtils.read2List(Param.accountFilePath, 0, Param.charCode);
         if (null == list) {
-            LogInfo.error("load account Failed");
+            Log.error("load account Failed");
             return false;
         }
         Param.userName = list.get(0).trim();

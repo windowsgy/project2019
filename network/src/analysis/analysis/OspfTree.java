@@ -2,7 +2,7 @@ package analysis.analysis;
 
 
 import analysis.stru.OspfPeer_Stru;
-import utils.LogInfo;
+import utils.Log;
 
 import java.util.*;
 
@@ -25,7 +25,7 @@ public class OspfTree  implements AnalysisInterface {
             }
             map = buildCountMap(listOspfStru);
         }
-        LogInfo.info("Tree Set Size :"+treeSet.size());
+        Log.info("Tree Set Size :"+treeSet.size());
         StringBuilder sb = new StringBuilder();
         for(String  str : treeSet) {
             sb.append(str).append("\r\n");

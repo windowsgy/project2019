@@ -2,7 +2,7 @@ package initParam;
 
 
 import param.Param;
-import utils.LogInfo;
+import utils.Log;
 
 
 public class Init {
@@ -13,7 +13,7 @@ public class Init {
      * @return boolean
      */
     public static  boolean run() {
-        LogInfo.info("Init Params Maps ");
+        Log.info("Init Params Maps ");
 
         if(!Config.mapL1("path.properties",Param.pathMap)){
             return false;
@@ -41,7 +41,7 @@ public class Init {
         }
 
 
-        LogInfo.info("Init Params Finished");
+        Log.info("Init Params Finished");
         return true;
     }
 }

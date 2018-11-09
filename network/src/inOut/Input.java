@@ -2,7 +2,7 @@ package inOut;
 
 import param.Param;
 import utils.FileUtils;
-import utils.LogInfo;
+import utils.Log;
 
 
 import java.lang.reflect.Field;
@@ -17,7 +17,7 @@ public class Input {
 
      public static void inputParam(String paramName) {
         Param.inputStatus = false;//执行状态重置
-        LogInfo.linel4();
+        Log.linel4();
         System.out.println("Input " + paramName + " : (0,yes ; 1,no ;2, return ; 3,exit)");
         System.out.println();
         System.out.print(":");
@@ -41,7 +41,7 @@ public class Input {
     }
     public static void inputParam(String paramName, Set<String> set) {
         Param.inputStatus = false;//执行状态重置
-        LogInfo.linel4();
+        Log.linel4();
         System.out.println("Input " + paramName + "");
         Field field;
         List<String> list = new ArrayList<>(set);
@@ -74,10 +74,10 @@ public class Input {
                 Input.inputParam(paramName, set);
             }
         } catch (NoSuchFieldException e) {
-            LogInfo.error("Input : NoSuchFieldException : " + e.getMessage());
+            Log.error("Input : NoSuchFieldException : " + e.getMessage());
             Param.inputStatus = false;
         } catch (Exception e){
-            LogInfo.error("Input  : " + e.getMessage());
+            Log.error("Input  : " + e.getMessage());
             Param.inputStatus = false;
         }
     }
@@ -85,7 +85,7 @@ public class Input {
 
     private static void inputPath(String paramName, boolean isDir) {
         Param.inputStatus = false;//执行状态重置
-        LogInfo.linel4();
+        Log.linel4();
         System.out.println("Input " + paramName + ":  Path ;0,Return ; 1,Exit");
         System.out.print(":");
         Field field;
@@ -109,10 +109,10 @@ public class Input {
                 inputPath(paramName,isDir);
             }
         } catch (NoSuchFieldException e) {
-            LogInfo.error("Input : NoSuchFieldException : " + e.getMessage());
+            Log.error("Input : NoSuchFieldException : " + e.getMessage());
             Param.inputStatus = false;
         } catch (IllegalAccessException e) {
-            LogInfo.error("Input : IllegalAccessException : " + e.getMessage());
+            Log.error("Input : IllegalAccessException : " + e.getMessage());
             Param.inputStatus = false;
         }
     }
@@ -126,7 +126,7 @@ public class Input {
 
     public static void inputPath(String paramName,String basePath,boolean isDir) {
         Param.inputStatus = false;//执行状态重置
-        LogInfo.linel4();
+        Log.linel4();
         System.out.println("Input " + paramName + ":  Path ;0,Return ; 1,Exit");
         System.out.print(":");
         Field field;
@@ -150,10 +150,10 @@ public class Input {
                 inputPath(paramName,isDir);
             }
         } catch (NoSuchFieldException e) {
-            LogInfo.error("Input : NoSuchFieldException : " + e.getMessage());
+            Log.error("Input : NoSuchFieldException : " + e.getMessage());
             Param.inputStatus = false;
         } catch (IllegalAccessException e) {
-            LogInfo.error("Input : IllegalAccessException : " + e.getMessage());
+            Log.error("Input : IllegalAccessException : " + e.getMessage());
             Param.inputStatus = false;
         }
     }

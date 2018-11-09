@@ -19,9 +19,6 @@ public class Version implements FormatInterface {
             String formatLine = head1+"\r\n";
             sb.append(formatLine);
         }
-
-        /*    LogInfo.info("established row count :"+i);*/
-
         return sb.toString();
 
     }

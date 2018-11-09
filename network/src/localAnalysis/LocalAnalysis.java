@@ -5,7 +5,7 @@ import param.Param;
 import start.ModelInterface;
 import utils.FileUtils;
 import utils.ListUtils;
-import utils.LogInfo;
+import utils.Log;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -51,15 +51,15 @@ public class LocalAnalysis implements ModelInterface {
                 n.setAccessible(true);
                 result = (String) n.invoke(analysis, list);//result
                 if (result == null) {
-                    LogInfo.error("Analysis error :" + localAnalysisType);
+                    Log.error("Analysis error :" + localAnalysisType);
                 } else {
                     fileUtils.wrStrToFile(result, analysisFilePath, Param.charCode);
-                    //  LogInfo.info("Analysis Finished :"+analysisType);
+                    //  Log.info("Analysis Finished :"+analysisType);
                 }
 
             } catch (Exception e) {
-                LogInfo.error(e.getMessage());
-                LogInfo.error("Analysis error :" + localAnalysisType);
+                Log.error(e.getMessage());
+                Log.error("Analysis error :" + localAnalysisType);
             }
         }
     }
