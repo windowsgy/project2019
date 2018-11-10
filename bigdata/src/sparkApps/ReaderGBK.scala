@@ -1,4 +1,4 @@
-package SparkApps
+package sparkApps
 
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapred.TextInputFormat

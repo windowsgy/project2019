@@ -1,4 +1,4 @@
-package SparkApps
+package sparkApps
 
 import org.apache.spark.SparkContext
 import utils.{Config, Log}
@@ -13,6 +13,6 @@ object Compute {
     val rddFilter = rdd.filter(x => x.length>0 && x.contains(" "))
     val rddFields = rddFilter.map(x => x.split(" ",-1)).map(x=> (x(1).trim,x(1).trim))
     val rddCount = rddFields.map(x => (x._1,1)).reduceByKey(_+_)
-    Log.out(rddCount.count())
+    Log.msg(rddCount.count())
   }
 }

@@ -8,7 +8,7 @@ import utils.{Config, FileUtils, Log}
 /**
   * Created by jlgaoyuan on 2018/11/8.
   */
-object OfficeMain {
+object BigdataMain {
   def main(args: Array[String]): Unit = {
     if(args.length ==1){
       if("debug" == args(0)|| "DEBUG"==args(0)){

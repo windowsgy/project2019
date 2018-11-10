@@ -1,4 +1,4 @@
-package SparkApps
+package sparkApps
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
@@ -8,6 +8,7 @@ import utils.{Config, Log}
 /**
   * Created by jlgaoyuan on 2018/11/8.
   */
+
 object InitSpark {
   def getSession: SparkSession = {
     Log.debug("init Spark Session ")
