@@ -4,8 +4,8 @@ import UserService.BaseOperation;
 import UserService.Params;
 import UserService.Stru_Bill;
 import org.openqa.selenium.*;
-import utils.Config;
-import utils.FileUtils;
+import javaUtils.LoadProperties;
+import javaUtils.FileUtils;
 
 import java.util.*;
 
@@ -25,7 +25,7 @@ public class SetElement {
     private static final String EDIT_STEP_DELETE_XPACH = "//div[@align = 'center']/input[2]";
 
     private static List<Stru_Bill> buildStru(String filesPath) {
-        List<String> filesName = fileUtils.getFileNameToList(filesPath);
+        List<String> filesName = fileUtils.getFilesName(filesPath);
 
         List<Stru_Bill> struList = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class SetElement {
     public static void run() {
 
         String configFile = "userService.properties";
-        Config.paramMap(configFile,Params.map);//初始化参数
+        LoadProperties.paramMap(configFile,Params.map);//初始化参数
         String editPath = Params.map.get("editPath");//获取采集编辑路径
         System.out.println(editPath);
         List<Stru_Bill> list = buildStru(editPath);//构造编辑结构体

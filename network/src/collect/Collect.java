@@ -1,9 +1,9 @@
 package collect;
 
 
+import javaUtils.*;
 import param.Param;
 import start.ModelInterface;
-import utils.Log;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package analysis.analysis;
 
 
 import analysis.stru.OspfPeer_Stru;
-import utils.Log;
+import javaUtils.Log;
 
 import java.util.*;
 

@@ -4,7 +4,7 @@ import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapred.TextInputFormat
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
-import utils.Log
+import javaUtils.Log
 
 /**
   * Created by jlgaoyuan on 2018/11/8.

@@ -1,4 +1,4 @@
-package utils;
+package javaUtils;
 
 
 import java.io.*;
@@ -198,7 +198,7 @@ public class FileUtils {
      * @param str  字符串
      * @param path 文件路径
      */
-    public boolean wrStrToFile(String str, String path) {
+    public boolean wrStr2File(String str, String path) {
         try {
             File file = new File(path);
             if(!file.exists() && !file.isFile()){
@@ -221,7 +221,7 @@ public class FileUtils {
      * @param path 文件路径
      * @param code 字符编码
      */
-    public boolean wrStrToFile(String str, String path, String code) {
+    public boolean wrStr2File(String str, String path, String code) {
         try {
             File file = new File(path);
             if(!file.exists() && !file.isFile()){
@@ -245,7 +245,7 @@ public class FileUtils {
      * @param path 文件路径
      * @param str  追加字符串
      */
-    public boolean wrStrAddToFile(String str, String path) {
+    public boolean wrStrAdd2File(String str, String path) {
         try {
             File file = new File(path);
             if(!file.exists() && !file.isFile()){
@@ -269,7 +269,7 @@ public class FileUtils {
      * @param path 路径
      * @return List
      */
-    public List<String> getFileNameToList(String path) {
+    public List<String> getFilesName(String path) {
         List<String> list = new ArrayList<>();//返回结果
         try {
             File file = new File(path);
@@ -428,7 +428,7 @@ public class FileUtils {
             return null;
         }
         Map<String, List<String>> filesMap = new HashMap<>();
-        List<String> files = getFileNameToList(path);
+        List<String> files = getFilesName(path);
         for (String fileName : files) {
             String filePath = path + "\\" + fileName;
             List<String> fileList = read2List(filePath, 0, charCode);

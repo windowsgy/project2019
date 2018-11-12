@@ -1,4 +1,4 @@
-package utils;
+package javaUtils;
 
 /**
  * Created by jlgaoyuan on 2018/11/12.

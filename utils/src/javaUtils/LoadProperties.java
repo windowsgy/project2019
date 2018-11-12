@@ -1,4 +1,4 @@
-package utils;
+package javaUtils;
 
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Properties;
  * Created by jlgaoyuan on 2018/11/8.
  *
  */
-public class Config {
+public class LoadProperties {
     /**
      * 加载配置文件到map
      * @param fileName 配置文件名
@@ -18,7 +18,7 @@ public class Config {
     public static boolean paramMap(String fileName, Map<String, String> map) {
         Properties props = new Properties();
         try {
-            props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(fileName)));
+            props.load(new InputStreamReader(LoadProperties.class.getClassLoader().getResourceAsStream(fileName)));
             for (Object key : props.keySet()) {
                 String keyString = String.valueOf(key);  //Key
                 String valString = props.getProperty(keyString);//Value
@@ -42,7 +42,7 @@ public class Config {
 
         Properties props = new Properties();
         try {
-            props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(fileName)));
+            props.load(new InputStreamReader(LoadProperties.class.getClassLoader().getResourceAsStream(fileName)));
             for (Object key : props.keySet()) {
                 String keyString = String.valueOf(key);  //Key
                 String valString = props.getProperty(keyString);//Value

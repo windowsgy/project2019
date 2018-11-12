@@ -3,8 +3,7 @@ package start;
 
 import inOut.Input;
 import param.Param;
-import utils.Log;
-import utils.Reflect;
+import javaUtils.Log;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

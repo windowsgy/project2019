@@ -1,7 +1,7 @@
 
 import params.Params._
 import sparkApps.{Compute, InitSpark}
-import utils.{Config, FileUtils, Log}
+import javaUtils.{LoadProperties, FileUtils, Log}
 //隐式转换java 与 scala集合类
 //import collection.JavaConversions._
 
@@ -17,10 +17,10 @@ object BigdataMain {
     }
 
     val configFile = "spark.properties"
-    Config.paramMap(configFile,paramsMap)
+    LoadProperties.paramMap(configFile,paramsMap)
     val filesUtils = new FileUtils
     val filesPath =paramsMap.get("sourcePath")
-    val filesName = filesUtils.getFileNameToList(filesPath)
+    val filesName = filesUtils.getFilesName(filesPath)
     Log.debug("fileCount :"+filesName.size())
     Compute.run(InitSpark.getSession.sparkContext)
 

@@ -2,8 +2,8 @@ package initParam;
 
 
 import param.Param;
-import utils.Config;
-import utils.Log;
+import javaUtils.LoadProperties;
+import javaUtils.Log;
 
 
 public class Init {
@@ -15,28 +15,28 @@ public class Init {
      */
     public static  boolean run() {
         Log.info("Init Params Maps ");
-        if(!Config.paramMap("path.properties",Param.pathMap)){
+        if(!LoadProperties.paramMap("path.properties",Param.pathMap)){
             return false;
         }
-        if(!Config.paramMap("collect.properties",Param.collectMap)){
+        if(!LoadProperties.paramMap("collect.properties",Param.collectMap)){
             return false;
         }
-        if(!Config.paramMapL3("command.properties",Param.commandMap)){
+        if(!LoadProperties.paramMapL3("command.properties",Param.commandMap)){
             return false;
         }
-        if(!Config.paramMap("format.properties",Param.formatMap)){
+        if(!LoadProperties.paramMap("format.properties",Param.formatMap)){
             return false;
         }
-        if(!Config.paramMap("analysis.properties",Param.analysisMap)){
+        if(!LoadProperties.paramMap("analysis.properties",Param.analysisMap)){
             return false;
         }
-        if(!Config.paramMap("model.properties",Param.modelTypeMap)){
+        if(!LoadProperties.paramMap("model.properties",Param.modelTypeMap)){
             return false;
         }
-        if(!Config.paramMap("localAnalysis.properties",Param.localAnalysisMap)){
+        if(!LoadProperties.paramMap("localAnalysis.properties",Param.localAnalysisMap)){
             return false;
         }
-        if(!Config.paramMap("fieldsIndex.properties",Param.fieldsIndexMap)){
+        if(!LoadProperties.paramMap("fieldsIndex.properties",Param.fieldsIndexMap)){
             return false;
         }
         Log.info("Init Params Finished");

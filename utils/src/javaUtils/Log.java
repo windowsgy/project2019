@@ -1,4 +1,4 @@
-package utils;
+package javaUtils;
 
 
 /**
@@ -33,7 +33,7 @@ public class Log {
             String message = "\033[35;4m" + "[debug][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\033[0m" + "\r\n";
             System.out.print(message);
             if (logFilePath != null) {
-                fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+                fileUtils.wrStr2File(message, logFilePath, "utf-8");
             }
         }
     }
@@ -43,7 +43,7 @@ public class Log {
         String message = "[info][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -52,7 +52,7 @@ public class Log {
         String message = "\033[35;4m"+"[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\033[0m" +  "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -60,7 +60,7 @@ public class Log {
         String message = "[error][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
         System.err.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -84,7 +84,7 @@ public class Log {
         String message = "#############################################################################################" + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -92,7 +92,7 @@ public class Log {
         String message = "=============================================================================" + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -100,7 +100,7 @@ public class Log {
         String message = "**************************************************************" + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -109,7 +109,7 @@ public class Log {
         String message = "---------------------------------------" + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 
@@ -117,7 +117,7 @@ public class Log {
         String message = "............................." + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
-            fileUtils.wrStrToFile(message, logFilePath, "utf-8");
+            fileUtils.wrStr2File(message, logFilePath, "utf-8");
         }
     }
 

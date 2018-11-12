@@ -3,8 +3,8 @@ package collect;
 
 import inOut.Input;
 import param.Param;
-import utils.FileUtils;
-import utils.Log;
+import javaUtils.FileUtils;
+import javaUtils.Log;
 
 import java.util.HashSet;
 import java.util.List;
@@ -63,7 +63,7 @@ public class BuildCollectParams {
             String loginFilesPath = Param.pathMap.get("main")+Param.pathMap.get("login");
             Log.info("loginFilesPath :"+loginFilesPath);
 
-            List<String> loginFileNameList = fileUtils.getFileNameToList(loginFilesPath);
+            List<String> loginFileNameList = fileUtils.getFilesName(loginFilesPath);
             if(loginFileNameList.size()<1){
                 Log.error("login file is null");
                 return false;
@@ -79,7 +79,7 @@ public class BuildCollectParams {
             Log.info("loginFilePath :"+Param.loginFilePath);
             //account参数设置 ####################################################
             String accountFilesPath = Param.pathMap.get("main")+Param.pathMap.get("account");
-            List<String> accountFileNameList = fileUtils.getFileNameToList(accountFilesPath);
+            List<String> accountFileNameList = fileUtils.getFilesName(accountFilesPath);
             if(accountFileNameList.size()<1){
                 Log.error("account file is null");
                 return false;

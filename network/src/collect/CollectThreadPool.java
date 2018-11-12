@@ -1,14 +1,16 @@
 package collect;
 
-import utils.DateTimeUtils;
-import utils.FileUtils;
-import utils.Log;
+import javaUtils.DateTimeUtils;
+import javaUtils.FileUtils;
+import javaUtils.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 
 class CollectThreadPool {
 
@@ -34,7 +36,6 @@ class CollectThreadPool {
         countStru.setCount(collectList.size());
         int failCount = 0;
         int successfulCount = 0;
-
         ExecutorService pool = Executors.newFixedThreadPool(threadPool);
         // 创建多个有返回值的任务
         List<Future> list = new ArrayList<>();
@@ -51,7 +52,7 @@ class CollectThreadPool {
             try {
                 Stru_CollectResult struCollectResult = (Stru_CollectResult) f.get();
                 Log.debug(struCollectResult.toString());
-                fileUtils.wrStrAddToFile(struCollectResult.toString() + "\r\n", logFilePath);
+                fileUtils.wrStrAdd2File(struCollectResult.toString() + "\r\n", logFilePath);
                 boolean collectBoolean = struCollectResult.isCollectBoolean();
                 if (collectBoolean) {
                     successfulCount = successfulCount + 1;
