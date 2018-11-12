@@ -39,6 +39,11 @@ public class IpRouTab implements FormatInterface {
         return sb.toString();
     }
 
+    /**
+     * 判断是否包含数字
+     * @param line 每行
+     * @return boolean
+     */
     private boolean includeNumber(String line){
         Pattern p = Pattern.compile("[0-9]");
         Matcher m = p.matcher(line);

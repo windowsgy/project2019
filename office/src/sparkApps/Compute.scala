@@ -6,6 +6,7 @@ import utils.{Config, Log}
 object Compute {
 
   def run(sc: SparkContext): Unit = {
+    Log.debug("test")
     Log.debug("Compute")
     val path = Config.map.get("sourcePath")+"*"
     Log.debug("load source filePath :"+path)

@@ -14,35 +14,48 @@ import java.util.Set;
 
 public class Input {
 
+    public static boolean inputStatus = false;//输入状态 判断输入是否成功
 
-     public static void inputParam(String paramName) {
-        Param.inputStatus = false;//执行状态重置
+    /**
+     * 输入 是否参数
+     *
+     * @param prompt 提示信息
+     */
+    public static void inputParam(String prompt) {
+        inputStatus = false;//执行状态重置
         Log.linel4();
-        System.out.println("Input " + paramName + " : (0,yes ; 1,no ;2, return ; 3,exit)");
+        System.out.println("Input " + prompt + " : (0,yes ; 1,no ;2, return ; 3,exit)");
         System.out.println();
         System.out.print(":");
         Scanner input = new Scanner(System.in);
         int inputInt = input.nextInt();
         if (inputInt == 0) {
-            Param.inputStatus = true;
-        } else if (1== inputInt) {
-            Param.inputStatus = false;
+            inputStatus = true;
+        } else if (1 == inputInt) {
+            inputStatus = false;
         } else if (2 == inputInt) {
-            Param.inputStatus = false;
-        } else if (3== inputInt) {
+            inputStatus = false;
+        } else if (3 == inputInt) {
             System.out.println("Exit");
-            Param.inputStatus = false;
+            inputStatus = false;
             Param.exitOnOff = true;
         } else {
             System.out.println("input error");
-            inputParam(paramName);
+            inputParam(prompt);
         }
 
     }
-    public static void inputParam(String paramName, Set<String> set) {
-        Param.inputStatus = false;//执行状态重置
+
+    /**
+     * 输入参数
+     *
+     * @param param 全局静态变量，根据选择内容设置这个全局静态变量
+     * @param set   选择的集合，根据集合中的内容进行选择
+     */
+    public static void inputParam(String param, Set<String> set) {
+        inputStatus = false;//执行状态重置
         Log.linel4();
-        System.out.println("Input " + paramName + "");
+        System.out.println("Input " + param + "");
         Field field;
         List<String> list = new ArrayList<>(set);
         list.add("Return");//
@@ -57,34 +70,39 @@ public class Input {
             int inputInt = input.nextInt();
             if (inputInt == list.size() - 1) {
                 System.out.println("Exit");
-                Param.inputStatus = false;
+                inputStatus = false;
                 Param.exitOnOff = true;
-            } else if (inputInt == (list.size()-2)) {
-                Param.inputStatus = false;
-            } else if (inputInt >=0 && inputInt <= list.size() ) {
+            } else if (inputInt == (list.size() - 2)) {
+                inputStatus = false;
+            } else if (inputInt >= 0 && inputInt <= list.size()) {
                 //get the input index
                 String value = list.get(inputInt);
-                field = param.Param.class.getField(paramName);
+                field = param.Param.class.getField(param);
                 field.set(param.Param.class, value);
                 //打印变量 和变量值
-                System.out.println(paramName + " :" + field.get(Param.class));
-                Param.inputStatus = true;
+                System.out.println(param + " :" + field.get(Param.class));
+                inputStatus = true;
             } else {
                 System.out.println("input error");
-                Input.inputParam(paramName, set);
+                Input.inputParam(param, set);
             }
         } catch (NoSuchFieldException e) {
             Log.error("Input : NoSuchFieldException : " + e.getMessage());
-            Param.inputStatus = false;
-        } catch (Exception e){
+            inputStatus = false;
+        } catch (Exception e) {
             Log.error("Input  : " + e.getMessage());
-            Param.inputStatus = false;
+            inputStatus = false;
         }
     }
 
+    /**
+     * 输入路径
+     * @param paramName 要设置的全局静态变量名
+     * @param isDir
+     */
 
     private static void inputPath(String paramName, boolean isDir) {
-        Param.inputStatus = false;//执行状态重置
+        inputStatus = false;//执行状态重置
         Log.linel4();
         System.out.println("Input " + paramName + ":  Path ;0,Return ; 1,Exit");
         System.out.print(":");
@@ -94,38 +112,39 @@ public class Input {
         try {
             if ("1".equals(str)) {
                 System.out.println("Exit");
-                Param.inputStatus = false;
+                inputStatus = false;
                 Param.exitOnOff = true;
             } else if ("0".equals(str)) {
-                Param.inputStatus = false;
-            } else if (isPath(str,isDir)) {
+                inputStatus = false;
+            } else if (isPath(str, isDir)) {
                 field = param.Param.class.getField(paramName);
                 field.set(param.Param.class, str);
                 //打印变量 和变量值
                 System.out.println(paramName + " :" + field.get(Param.class));
-                Param.inputStatus = true;
+                inputStatus = true;
             } else {
                 System.out.println("input path not exist");
-                inputPath(paramName,isDir);
+                inputPath(paramName, isDir);
             }
         } catch (NoSuchFieldException e) {
             Log.error("Input : NoSuchFieldException : " + e.getMessage());
-            Param.inputStatus = false;
+            inputStatus = false;
         } catch (IllegalAccessException e) {
             Log.error("Input : IllegalAccessException : " + e.getMessage());
-            Param.inputStatus = false;
+            inputStatus = false;
         }
     }
 
     /**
      * 添加基本路径
+     *
      * @param paramName 输入路径
-     * @param basePath 基本路径
-     * @param isDir 是否是目录
+     * @param basePath  基本路径
+     * @param isDir     是否是目录
      */
 
-    public static void inputPath(String paramName,String basePath,boolean isDir) {
-        Param.inputStatus = false;//执行状态重置
+    public static void inputPath(String paramName, String basePath, boolean isDir) {
+        inputStatus = false;//执行状态重置
         Log.linel4();
         System.out.println("Input " + paramName + ":  Path ;0,Return ; 1,Exit");
         System.out.print(":");
@@ -135,47 +154,42 @@ public class Input {
             String str = input.next().trim();
             if ("1".equals(str)) {
                 System.out.println("Exit");
-                Param.inputStatus = false;
+                inputStatus = false;
                 Param.exitOnOff = true;
             } else if ("0".equals(str)) {
-                Param.inputStatus = false;
-            } else if (isPath(basePath+str,isDir)) {
+                inputStatus = false;
+            } else if (isPath(basePath + str, isDir)) {
                 field = param.Param.class.getField(paramName);
                 field.set(param.Param.class, str);
                 //打印变量 和变量值
                 System.out.println(paramName + " :" + field.get(Param.class));
-                Param.inputStatus = true;
+                inputStatus = true;
             } else {
                 System.out.println("input path not exist");
-                inputPath(paramName,isDir);
+                inputPath(paramName, isDir);
             }
         } catch (NoSuchFieldException e) {
             Log.error("Input : NoSuchFieldException : " + e.getMessage());
-            Param.inputStatus = false;
+            inputStatus = false;
         } catch (IllegalAccessException e) {
             Log.error("Input : IllegalAccessException : " + e.getMessage());
-            Param.inputStatus = false;
+            inputStatus = false;
         }
     }
 
     /**
-     *
-     * @param path 路径
+     * @param path  路径
      * @param isDir 是目录
      * @return boolean
      */
-    private static boolean isPath(String path, boolean isDir){
-        FileUtils fileUtils =  new FileUtils();
-         if(isDir){
-             return fileUtils.isDir(path);
-         }else {
-             return fileUtils.isFile(path);
-         }
+    private static boolean isPath(String path, boolean isDir) {
+        FileUtils fileUtils = new FileUtils();
+        if (isDir) {
+            return fileUtils.isDir(path);
+        } else {
+            return fileUtils.isFile(path);
+        }
     }
-
-
-
-
 
 
 }

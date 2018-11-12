@@ -83,14 +83,9 @@ class CollectThreadPool {
         double collectSuccess = countStru.getSuccessfulCount();
         double collectTotal = countStru.getCount();
         double collectRatio = collectSuccess / collectTotal;
+        countStru.setRatio(collectRatio);
         Log.linel3();
-        Log.info("StartTime :" + countStru.getStartTime());
-        Log.info("Collect Total :" + countStru.getCount());
-        Log.info("Successful Count :" + countStru.getSuccessfulCount());
-        Log.info("Failed Count :" + countStru.getFailCount());
-        Log.info("EndTime :" + countStru.getEndTime());
-        Log.info("Collect TimeLong :" + countStru.getTimeLong() + " second");
-        Log.info("collectRatio :" + collectRatio);
+        Log.info(countStru.toString());//打印采集结果
         //遍历打印采集失败的列表
         for (Stru_CollectResult strut : failList) {
             Log.info("Collect Failed :" + strut.getTn() + "IP :" + strut.getIpAddress() + ",CollectStatus :" + strut.isCollectBoolean() + ",CollectStep :" + strut.getStep() + ",Log :" + strut.getLog());

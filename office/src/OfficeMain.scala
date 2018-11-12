@@ -15,7 +15,6 @@ object OfficeMain {
         Log.setDebug(true)
       }
     }
-
     val configFile = "sparkConfig.properties"
     Config.build(configFile)
     val filesUtils = new FileUtils
@@ -23,6 +22,5 @@ object OfficeMain {
     val filesName: util.List[String] = filesUtils.getFileNameToList(filesPath)
     Log.debug("fileCount :"+filesName.size())
     Compute.run(InitSpark.getSession.sparkContext)
-
   }
 }

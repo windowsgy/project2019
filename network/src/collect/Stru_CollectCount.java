@@ -44,12 +44,40 @@ class Stru_CollectCount {
     void setTimeLong(Long timeLong) {
         this.timeLong = timeLong;
     }
+    public double getRatio() {
+        return ratio;
+    }
+
+    public void setRatio(double ratio) {
+        this.ratio = ratio;
+    }
+
+
 
     private int count;
     private int successfulCount;
+
+    @Override
+    public String toString() {
+        return "Stru_CollectCount{" +
+                "count=" + count +
+                ", successfulCount=" + successfulCount +
+                ", failCount=" + failCount +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", timeLong=" + timeLong +
+                ", ratio=" + ratio +
+                '}';
+    }
+
     private int failCount;
     private String startTime ;
     private String endTime;
     private Long timeLong;
+    private double ratio;//成功比例
+
+
+
+
 
 }

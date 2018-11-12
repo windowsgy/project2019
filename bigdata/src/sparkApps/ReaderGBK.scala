@@ -10,7 +10,6 @@ import utils.Log
   * Created by jlgaoyuan on 2018/11/8.
   */
 object ReaderGBK {
-
   /**
     * 方法实现Spark读取GBK编码格式文件
     * @param sc sparkContext

@@ -23,22 +23,19 @@ public class BuildCollectParams {
             Param.threadPool = Integer.parseInt(Param.collectMap.get("threadPool"));
             //系统类型##############################################################
             Input.inputParam("currentSystemType",Param.commandMap.keySet());
-            if(!Param.inputStatus){
+            if(!Input.inputStatus){
                 return false;
             }
-            Param.inputStatus = false;//重置输入状态
             //输入设备类型
             Input.inputParam("currentDriversType",Param.commandMap.get(Param.currentSystemType).keySet());
-            if(!Param.inputStatus){
+            if(!Input.inputStatus){
                 return false;
             }
-            Param.inputStatus = false;//重置输入状态
             //设置采集类型
             Input.inputParam("currentCollectType",Param.commandMap.get(Param.currentSystemType).get(Param.currentDriversType).keySet());
-            if(!Param.inputStatus){
+            if(!Input.inputStatus){
                 return false;
             }
-            Param.inputStatus = false;//重置输入状态
             //创建当前采集目录
             String collectBasePath = Param.currentMainPath+Param.pathMap.get("collect");
             if(!fileUtils.isDir(collectBasePath)){//如果目录不存在，创建目录
@@ -73,11 +70,10 @@ public class BuildCollectParams {
             }
             Set<String> loginFilesSet = new HashSet<>(loginFileNameList);
             Input.inputParam("loginFileName",loginFilesSet);
-            if(!Param.inputStatus ){
+            if(!Input.inputStatus ){
                 Log.error("login file not setup :");
                 return false;
             }
-            Param.inputStatus = false;//重置输入状态
 
             Param.loginFilePath = loginFilesPath+Param.loginFileName;
             Log.info("loginFilePath :"+Param.loginFilePath);
@@ -90,11 +86,10 @@ public class BuildCollectParams {
             }
             Set<String> accountFilesSet = new HashSet<>(accountFileNameList);
             Input.inputParam("accountFileName",accountFilesSet);
-            if(!Param.inputStatus ){
+            if(!Input.inputStatus ){
                 Log.error("account file not setup :");
                 return false;
             }
-            Param.inputStatus = false;//重置输入状态
             Param.accountFilePath = accountFilesPath+Param.accountFileName;
             Log.info("accountFilePath :"+Param.accountFilePath);
             //logfile ####################################################

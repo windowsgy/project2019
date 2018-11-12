@@ -23,10 +23,9 @@ public class Param {
     public static String currentDriversType;//当前设备类型
     public static String currentCollectType ;//当前采集类型
 
-    public static boolean inputStatus = false;//输入状态 判断输入是否成功
     public static boolean collectOnOff ;//采集开关 未执行采集进行分析时进行判断使用,初始化当前时间参数初始化
     public static boolean currentParamOnOff = false;//初始化时使用，当前参数开关,更新当前时间信息用于目录名称生成
-    public static boolean exitOnOff = false;//退出开关
+    public static boolean exitOnOff = false;//系统退出开关 用于控制中心程序退出判断
 
     //collect
     public static String command;

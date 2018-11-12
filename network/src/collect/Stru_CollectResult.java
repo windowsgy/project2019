@@ -3,6 +3,7 @@ package collect;
 public class Stru_CollectResult {
 
     private boolean collectBoolean = false; //采集结果是否成功
+
     private String IpAddress;
     private String step;//登陆步骤
     private String log;//采集日志；
