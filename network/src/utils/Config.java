@@ -50,10 +50,7 @@ public class Config {
                 if (!keyString.contains(".")) {
                     return false;
                 }
-                String keys[] = keyString.split(".", -1);
-                if (keys.length != 3) {
-                    return false;
-                }
+                String keys[] = keyString.split(".",3);
                 if (map.containsKey(keys[0])) {//如果包含一级key
                     if (map.get(keys[0]).containsKey(keys[1])) {//包含二级key
                         map.get(keys[0]).get(keys[1]).put(keys[2], valString);//添加三级key

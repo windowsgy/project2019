@@ -39,7 +39,7 @@ public class Log {
     }
 
 
-    public static<T> void info(T x) {
+    static<T> void info(T x) {
         String message = "[info][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
@@ -48,7 +48,7 @@ public class Log {
     }
 
 
-    public static <T> void warn(T x) {
+    static <T> void warn(T x) {
         String message = "\033[35;4m"+"[warn][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\033[0m" +  "\r\n";
         System.out.print(message);
         if (logFilePath != null) {
@@ -56,7 +56,7 @@ public class Log {
         }
     }
 
-    public static<T> void error(T x) {
+    static<T> void error(T x) {
         String message = "[error][" + dtUtils.getCurTime(DATE_FORMAT) + "]" + x + "\r\n";
         System.err.print(message);
         if (logFilePath != null) {

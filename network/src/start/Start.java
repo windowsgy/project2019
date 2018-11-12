@@ -14,7 +14,6 @@ public class Start {
         }
         do {
            ControlCenter.run();
-
         } while (!Param.exitOnOff);
         Log.linel0();
         Log.info("End");
