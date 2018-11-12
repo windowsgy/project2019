@@ -14,9 +14,9 @@ public class AnalysisParam {
             Log.info("currentCollectFilePath :" + Param.currentCollectPath);
             String info = " :Whether to load the currentCollectPath ? ";
             Input.inputParam(info);
-            if (Param.inputStatus) {//是否加载当前采集数据路径
+            if (Input.inputStatus) {//是否加载当前采集数据路径
                 Param.currentFormatSourcePath = Param.currentCollectPath;
-                Param.inputStatus = false;
+                Input.inputStatus = false;
                 Log.info("currentFormatSourcePath :" + Param.currentFormatSourcePath);
                 return true;
             } else {
@@ -34,17 +34,15 @@ public class AnalysisParam {
     private static boolean setCollectPath() {
         //输入当前时间格式
         Input.inputPath("currentTimeStr", Param.pathMap.get("main") + "\\", true);
-        if (!Param.inputStatus) {
+        if (!Input.inputStatus) {
             return false;
         }
-        Param.inputStatus = false;
         Param.currentMainPath = Param.pathMap.get("main") + "\\" + Param.currentTimeStr;
         //输入采集类型
         Input.inputParam("currentCollectType", new HashSet<>(Param.formatMap.values()));
-        if (!Param.inputStatus) {
+        if (!Input.inputStatus) {
             return false;
         }
-        Param.inputStatus = false;
         String basePath = Param.currentMainPath + Param.pathMap.get("collect");
         Param.currentFormatSourcePath = basePath + Param.currentCollectType;
         FileUtils fileUtils = new FileUtils();

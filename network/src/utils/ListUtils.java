@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class ListUtils {
     /**
-     * 根据value 返回所有 key list
+     * 根据map 中的value进行判断， 返回所有 key List
      *
      * @param map   map
      * @param value 查找的value
@@ -27,31 +27,6 @@ public class ListUtils {
             }
         }
         return list;
-    }
-
-    /**
-     * List To List Array
-     *
-     * @param list      List
-     * @param splitChar SplitChar
-     * @return List Array
-     */
-    public  List<String[]> list2ListArray(List<String> list, String splitChar) {
-        String[] firstArray = list.get(0).split(splitChar); //首行
-        int firstArraySize = firstArray.length;
-        //  LogInfo.info("First Array Size:"+firstArraySize);
-        List<String[]> listArray = new ArrayList<>();
-        int lineCount = 0;
-        for (String aList : list) {
-            lineCount++;
-            String[] array = aList.split(splitChar);
-            if (array.length != firstArraySize) {
-                Log.info(lineCount + " :Line Error : " + aList);
-                return null;
-            }
-            listArray.add(aList.split(splitChar));
-        }
-        return listArray;
     }
 
 
@@ -80,34 +55,6 @@ public class ListUtils {
         return theList;
     }
 
-
-    /**
-     * @param listArray List
-     * @param index     index
-     * @return List
-     */
-    public  List<String> listArrField(List<String[]> listArray, int index) {
-        List<String> list = new ArrayList<>();
-        for (String[] aListArray : listArray) {
-            list.add(aListArray[index]);
-        }
-        return list;
-    }
-
-    /**
-     * @param list  List
-     * @param regex regex
-     * @return List
-     */
-    public  List<String> listFilter(List<String> list, String regex) {
-        List<String> filterList = new ArrayList<>();
-        for (String line : list) {
-            if (Pattern.matches(regex, line)) {
-                filterList.add(line);
-            }
-        }
-        return filterList;
-    }
 
 
 }

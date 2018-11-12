@@ -27,6 +27,11 @@ public class Config  implements FormatInterface {
         return filterList;
     }
 
+    /**
+     * 格式化
+     * @param list list
+     * @return list
+     */
     private String format(List<String> list) {
         StringBuilder sb = new StringBuilder();
         for (String line : list) {

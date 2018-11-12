@@ -201,11 +201,11 @@ public class Analysis implements ModelInterface {
             String systemType = fileNameArr[0];
             String driversType = fileNameArr[1];
             String collectType = fileNameArr[2];
-            String IpAddressress = fileNameArr[3].substring(0,fileNameArr[3].lastIndexOf("."));
+            String IpAddress = fileNameArr[3].substring(0,fileNameArr[3].lastIndexOf("."));
             strut.setSystemType(systemType);
             strut.setDriversType(driversType);
             strut.setCollectType(collectType);
-            strut.setIpAddress(IpAddressress);
+            strut.setIpAddress(IpAddress);
             strut.setFormatType(formatType);
             strut.setDesPath(currentFormatDesPath+"\\"+strut.getIpAddress()+".txt");
             strut.setSouPath(Param.currentFormatSourcePath+"\\"+ fileName);

@@ -29,7 +29,6 @@ class CollectThreadPool {
             Log.info("Collect Strut Size :" + collectList.size());
             return false;
         }
-
         //采集失败List
         List<Stru_CollectResult> failList = new ArrayList<>();
         Stru_CollectCount countStru = new Stru_CollectCount();
@@ -48,20 +47,18 @@ class CollectThreadPool {
             Future<?> f = pool.submit(c);
             list.add(f);
         }
-
         // 关闭线程池
         pool.shutdown();
         for (Future<?> f : list) {
             try {
-                Stru_CollectResult struCollectResult_ = (Stru_CollectResult) f.get();
-                String logInfo = struCollectResult_.getTn() + "," + struCollectResult_.getIpAddress() + "," + struCollectResult_.isCollectBoolean() + "," + struCollectResult_.getStep() + "," + struCollectResult_.getLog() + "," + struCollectResult_.getTimeLong() + "," + struCollectResult_.getStartDateTime() + "," + struCollectResult_.getEndDateTime();
-                Log.debug(logInfo);
-                fileUtils.wrStrAddToFile(logInfo + "\r\n", logFilePath);
-                boolean collectBoolean = struCollectResult_.isCollectBoolean();
+                Stru_CollectResult struCollectResult = (Stru_CollectResult) f.get();
+                Log.debug(struCollectResult.toString());
+                fileUtils.wrStrAddToFile(struCollectResult.toString() + "\r\n", logFilePath);
+                boolean collectBoolean = struCollectResult.isCollectBoolean();
                 if (collectBoolean) {
                     successfulCount = successfulCount + 1;
                 } else {
-                    failList.add(struCollectResult_);//采集失败的加入list;
+                    failList.add(struCollectResult);//采集失败的加入list;
                     failCount = failCount + 1;
                 }
             } catch (Exception e) {
@@ -83,23 +80,16 @@ class CollectThreadPool {
         double collectSuccess = countStru.getSuccessfulCount();
         double collectTotal = countStru.getCount();
         double collectRatio = collectSuccess / collectTotal;
+        countStru.setRatio(collectRatio);
         Log.linel3();
-        Log.info("StartTime :" + countStru.getStartTime());
-        Log.info("Collect Total :" + countStru.getCount());
-        Log.info("Successful Count :" + countStru.getSuccessfulCount());
-        Log.info("Failed Count :" + countStru.getFailCount());
-        Log.info("EndTime :" + countStru.getEndTime());
-        Log.info("Collect TimeLong :" + countStru.getTimeLong() + " second");
-        Log.info("collectRatio :" + collectRatio);
+        Log.info(countStru.toString());//打印采集结果
         //遍历打印采集失败的列表
         for (Stru_CollectResult strut : failList) {
             Log.info("Collect Failed :" + strut.getTn() + "IP :" + strut.getIpAddress() + ",CollectStatus :" + strut.isCollectBoolean() + ",CollectStep :" + strut.getStep() + ",Log :" + strut.getLog());
         }
         Log.linel3();
-
         //采集质量分析
         Log.info("collect finished");
         return true;
-
     }
 }

@@ -21,10 +21,9 @@ class ControlCenter {
                 modelPath = Param.modelTypeMap.get("CurrentParam");
             } else {//执行模块参数选择
                 Input.inputParam("currentModelType",Param.modelTypeMap.keySet());
-                if(!Param.inputStatus){
+                if(!Input.inputStatus){
                     return;
                 }
-                Param.inputStatus = false;
                 //根据选择模块执行模块
                 modelPath = Param.modelTypeMap.get(Param.currentModelType);
             }

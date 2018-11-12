@@ -5,6 +5,22 @@ public class Stru_CollectResult {
     private boolean collectBoolean = false; //采集结果是否成功
     private String IpAddress;
     private String step;//登陆步骤
+
+    @Override
+    public String toString() {
+        return "Stru_CollectResult{" +
+                "collectBoolean=" + collectBoolean +
+                ", IpAddress='" + IpAddress + '\'' +
+                ", step='" + step + '\'' +
+                ", log='" + log + '\'' +
+                ", collectInfo='" + collectInfo + '\'' +
+                ", startDateTime='" + startDateTime + '\'' +
+                ", endDateTime='" + endDateTime + '\'' +
+                ", timeLong=" + timeLong +
+                ", tn=" + tn +
+                '}';
+    }
+
     private String log;//采集日志；
     private String collectInfo; //采集信息
     private String startDateTime;//采集开始时间

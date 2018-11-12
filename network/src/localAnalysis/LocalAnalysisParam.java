@@ -25,22 +25,20 @@ public class LocalAnalysisParam {
         }
         Set<String> localFilesSet = new HashSet<>(localFileNameList);
         Input.inputParam("localFileName",localFilesSet);
-        if(!Param.inputStatus ){
+        if(!Input.inputStatus ){
             Log.error("local file not setup :");
             return false;
         }
-        Param.inputStatus = false;//重置输入状态
 
         Param.localFilePath = localFilesPath+Param.localFileName;
         System.out.println("localFilePath :"+Param.localFilePath);
 
         //本地分析类型
         Input.inputParam("localFileType",new HashSet<>(Param.localAnalysisMap.values()));
-        if(!Param.inputStatus ){
+        if(!Input.inputStatus ){
             Log.error("local file type not setup :");
             return false;
         }
-        Param.inputStatus = false;//重置输入状态
         return true;
 
     }
