@@ -10,6 +10,7 @@
         <module name="bigdata" />
         <module name="network" />
         <module name="office" />
+        <module name="utils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">

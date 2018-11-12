@@ -3,8 +3,6 @@ package collect;
 import utils.DateTimeUtils;
 import utils.FileUtils;
 import utils.Log;
-import utils.collect.ssh.Ssh_Client_Get;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -21,7 +19,7 @@ class CollectThreadPool {
      * @param logFilePath 日志文件路径
      * @return boolean
      */
-    static boolean run(List<Strut_Collect> collectList, String timeFormat, int threadPool, String logFilePath) {
+    static boolean run(List<Stru_Collect> collectList, String timeFormat, int threadPool, String logFilePath) {
         FileUtils fileUtils = new FileUtils();
         DateTimeUtils dtUtils = new DateTimeUtils();
         Log.info("Collect Start ");
@@ -41,7 +39,7 @@ class CollectThreadPool {
         // 创建多个有返回值的任务
         List<Future> list = new ArrayList<>();
         for (int i = 0; i < collectList.size(); i++) {
-            Strut_Collect stru = collectList.get(i);
+            Stru_Collect stru = collectList.get(i);
             stru.setTn(i);
             Callable<?> c = new Ssh_Client_Get(stru);
             Future<?> f = pool.submit(c);

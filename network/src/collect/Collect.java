@@ -15,7 +15,7 @@ public class Collect implements ModelInterface {
             return;
         }
         Log.linel2();
-        List<Strut_Collect> listGatherStru = BuildCollectStrut.run();
+        List<Stru_Collect> listGatherStru = BuildCollectStrut.run();
         if (listGatherStru == null) {
             return;
         }

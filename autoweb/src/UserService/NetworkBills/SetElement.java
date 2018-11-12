@@ -1,10 +1,10 @@
 package UserService.NetworkBills;
 
-import UserService.Config;
 import UserService.BaseOperation;
 import UserService.Params;
 import UserService.Stru_Bill;
 import org.openqa.selenium.*;
+import utils.Config;
 import utils.FileUtils;
 
 import java.util.*;
@@ -66,7 +66,7 @@ public class SetElement {
     public static void run() {
 
         String configFile = "userService.properties";
-        Params.map = Config.getMap(configFile);//初始化参数
+        Config.paramMap(configFile,Params.map);//初始化参数
         String editPath = Params.map.get("editPath");//获取采集编辑路径
         System.out.println(editPath);
         List<Stru_Bill> list = buildStru(editPath);//构造编辑结构体

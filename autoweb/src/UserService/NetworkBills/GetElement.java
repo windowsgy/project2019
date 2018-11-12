@@ -1,10 +1,11 @@
 package UserService.NetworkBills;
 
-import UserService.Config;
 import UserService.BaseOperation;
 import UserService.Params;
 import org.openqa.selenium.*;
+import utils.Config;
 import utils.FileUtils;
+
 
 import java.util.*;
 
@@ -26,8 +27,7 @@ public class GetElement {
 
     public static void run() {
         String configFile = "userService.properties";
-        Params.map = Config.getMap(configFile);//初始化参数
-
+        Config.paramMap(configFile,Params.map);
         String outPath = Params.map.get("getOutPath");//获取采集基本路径
         String filePath = Params.map.get("getBillFilePath");//采集文件路径
         System.out.println(filePath);

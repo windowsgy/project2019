@@ -11,12 +11,11 @@ import java.util.Properties;
  */
 public class Config {
     /**
-     * 加载配置文件到map     *
-     *
+     * 加载配置文件到map
      * @param fileName 配置文件名
      * @return map
      */
-    public boolean paramMap(String fileName, Map<String, String> map) {
+    public static boolean paramMap(String fileName, Map<String, String> map) {
         Properties props = new Properties();
         try {
             props.load(new InputStreamReader(Config.class.getClassLoader().getResourceAsStream(fileName)));
@@ -39,7 +38,7 @@ public class Config {
      * @param fileName 配置文件名
      * @return map
      */
-    public boolean paramMapL3(String fileName, Map<String, Map<String, Map<String, String>>> map) {
+    public static boolean paramMapL3(String fileName, Map<String, Map<String, Map<String, String>>> map) {
 
         Properties props = new Properties();
         try {

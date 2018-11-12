@@ -1,6 +1,6 @@
 package collect;
 
-public class Strut_Collect {
+public class Stru_Collect {
 
     private int  tn ; //线程编号
     private String IpAddress ;//IP地址
@@ -57,8 +57,8 @@ public class Strut_Collect {
         return charCode;
     }
 
-    void setCharCode() {
-        this.charCode = param.Param.charCode;
+    void setCharCode(String charCode) {
+        this.charCode = charCode;
     }
 
     public int getTn() {

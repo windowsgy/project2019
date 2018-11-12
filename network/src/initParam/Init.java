@@ -14,33 +14,31 @@ public class Init {
      * @return boolean
      */
     public static  boolean run() {
-        Config build = new Config();
         Log.info("Init Params Maps ");
-        if(!build.paramMap("path.properties",Param.pathMap)){
+        if(!Config.paramMap("path.properties",Param.pathMap)){
             return false;
         }
-        if(!build.paramMap("collect.properties",Param.collectMap)){
+        if(!Config.paramMap("collect.properties",Param.collectMap)){
             return false;
         }
-        if(!build.paramMapL3("command.properties",Param.commandMap)){
+        if(!Config.paramMapL3("command.properties",Param.commandMap)){
             return false;
         }
-        if(!build.paramMap("format.properties",Param.formatMap)){
+        if(!Config.paramMap("format.properties",Param.formatMap)){
             return false;
         }
-        if(!build.paramMap("analysis.properties",Param.analysisMap)){
+        if(!Config.paramMap("analysis.properties",Param.analysisMap)){
             return false;
         }
-        if(!build.paramMap("model.properties",Param.modelTypeMap)){
+        if(!Config.paramMap("model.properties",Param.modelTypeMap)){
             return false;
         }
-        if(!build.paramMap("localAnalysis.properties",Param.localAnalysisMap)){
+        if(!Config.paramMap("localAnalysis.properties",Param.localAnalysisMap)){
             return false;
         }
-        if(!build.paramMap("fieldsIndex.properties",Param.fieldsIndexMap)){
+        if(!Config.paramMap("fieldsIndex.properties",Param.fieldsIndexMap)){
             return false;
         }
-
         Log.info("Init Params Finished");
         return true;
     }
