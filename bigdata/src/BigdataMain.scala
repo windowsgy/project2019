@@ -16,7 +16,7 @@ object BigdataMain {
       }
     }
 
-    val configFile = "sparkConfig.properties"
+    val configFile = "spark.properties"
     Config.build(configFile)
     val filesUtils = new FileUtils
     val filesPath = Config.map.get("sourcePath")
