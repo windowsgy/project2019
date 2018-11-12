@@ -220,5 +220,12 @@
     <orderEntry type="library" name="Maven: org.apache.kafka:connect-json:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.kafka:connect-api:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.rocksdb:rocksdbjni:5.7.3" level="project" />
+    <orderEntry type="module" module-name="utils" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml:3.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi:3.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml-schemas:3.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" level="project" />
+    <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.54" level="project" />
   </component>
 </module>

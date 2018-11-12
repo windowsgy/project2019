@@ -13,16 +13,14 @@ import java.net.InetAddress;
  */
 public class ES_Client {
 
+    /**
+     *
+     */
     public static void run(){
-
         Settings settings = Settings.builder()
                 .put("cluster.name", "myClusterName").build();
-
-
         TransportClient client = new PreBuiltTransportClient(settings);
-
         // on startup
-
         try{
             client = new PreBuiltTransportClient(Settings.EMPTY)
                     .addTransportAddress(new TransportAddress(InetAddress.getByName("host1"), 9300))
@@ -30,11 +28,7 @@ public class ES_Client {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
 // on shutdown
-
         client.close();
-
     }
 }

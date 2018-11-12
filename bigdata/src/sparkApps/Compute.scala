@@ -1,13 +1,14 @@
 package sparkApps
 
 import org.apache.spark.SparkContext
-import utils.{Config, Log}
+import utils.Log
+import params.Params._
 
 object Compute {
 
   def run(sc: SparkContext): Unit = {
     Log.debug("Compute")
-    val path = Config.map.get("sourcePath")+"*"
+    val path = paramsMap.get("sourcePath")+"*"
     Log.debug("load source filePath :"+path)
     val rdd = ReaderGBK.transfer(sc,path)
     val rddFilter = rdd.filter(x => x.length>0 && x.contains(" "))

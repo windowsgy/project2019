@@ -1,4 +1,4 @@
-package utils.collect;
+package collect;
 
 public interface CollectInterface {
 }

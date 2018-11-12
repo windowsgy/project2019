@@ -1,6 +1,11 @@
-package utils.collect.telnet;
+package collect;
 
 
+import org.apache.commons.net.telnet.TelnetClient;
+
+
+import utils.DateTimeUtils;
+import utils.FileUtils;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -8,20 +13,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
 
-import utils.DateTimeUtils;
-import utils.FileUtils;
-import org.apache.commons.net.telnet.TelnetClient;
-import collect.Stru_CollectResult;
-import collect.Strut_Collect;
 
-
-public class Telnet implements Callable<Object> {
+public class Telnet_Client_Get implements Callable<Object> {
 
     private int tn ;
     private TelnetClient telnet = new TelnetClient();// 构造telnet对象
     private InputStream in; // 输入流 连接方法赋值
     private PrintStream out; // 输出流 连接方法赋值
-    private String IpAddressress; // IP地址 构造方法初始化
+    private String IpAddress; // IP地址 构造方法初始化
     private String username; // 用户名 构造方法初始化
     private String password; // 密码 构造方法初始化
     private String command; // 指令
@@ -30,8 +29,8 @@ public class Telnet implements Callable<Object> {
     private FileUtils fileUtils = new FileUtils();
     private DateTimeUtils dtUtils = new DateTimeUtils();
 
-    Telnet(Strut_Collect map) {
-        this.IpAddressress = map.getIpAddress(); // ip地址加载
+    Telnet_Client_Get(Stru_Collect map) {
+        this.IpAddress = map.getIpAddress(); // ip地址加载
         this.username = map.getUname(); // 用户名加载
         this.password = map.getPwd(); // 密码加载
         this.command = map.getCmd();
@@ -101,7 +100,7 @@ public class Telnet implements Callable<Object> {
             this.telnet.setDefaultTimeout(60000);// 60秒
             this.telnet.setConnectTimeout(60000);// 60秒
             this.telnet.setDefaultPort(23);//端口
-            this.telnet.connect(this.IpAddressress); //IP地址
+            this.telnet.connect(this.IpAddress); //IP地址
             this.in = telnet.getInputStream();//输入流
             this.out = new PrintStream(telnet.getOutputStream());//输入流
             return true;

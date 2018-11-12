@@ -4,6 +4,7 @@ package start;
 import inOut.Input;
 import param.Param;
 import utils.Log;
+import utils.Reflect;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -27,11 +28,12 @@ class ControlCenter {
                 //根据选择模块执行模块
                 modelPath = Param.modelTypeMap.get(Param.currentModelType);
             }
+
+           // Class clazz  = Reflect.createInstance(Class.forName(modelPath)).getClass();
             ModelInterface model = (ModelInterface)Class.forName(modelPath).newInstance();
             Method n = model.getClass().getDeclaredMethod("run");
             n.setAccessible(true);
             n.invoke(model);
-
         } catch (InstantiationException e) {
             Log.error("Model InstantiationException : " + e.getMessage());
         } catch (IllegalAccessException e) {

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>autoweb</groupId>
+    <groupId>project2019</groupId>
     <artifactId>autoweb</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -22,6 +22,13 @@
             <artifactId>selenium-java</artifactId>
             <version>3.14.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>project2019</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

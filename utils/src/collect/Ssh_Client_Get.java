@@ -1,8 +1,9 @@
-package utils.collect.ssh;
+package collect;
 
-import com.jcraft.jsch.*;
-import collect.Stru_CollectResult;
-import collect.Strut_Collect;
+
+import com.jcraft.jsch.ChannelShell;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
 import utils.DateTimeUtils;
 import utils.FileUtils;
 import utils.Log;
@@ -44,7 +45,7 @@ public class Ssh_Client_Get implements Callable<Object> {
      *
      * @param collectStru 采集信息结构体
      */
-    public Ssh_Client_Get(Strut_Collect collectStru) {
+    public Ssh_Client_Get(Stru_Collect collectStru) {
         //线程ID
         int tn = collectStru.getTn();
         this.host = collectStru.getIpAddress();
