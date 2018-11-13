@@ -4,9 +4,9 @@ package collect;
 import com.jcraft.jsch.ChannelShell;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import utils.DateTimeUtils;
-import utils.FileUtils;
-import utils.Log;
+import javaUtils.DateTimeUtils;
+import javaUtils.FileUtils;
+import javaUtils.Log;
 
 
 import java.io.*;
@@ -43,31 +43,33 @@ public class Ssh_Client_Get implements Callable<Object> {
     /**
      * 构造函数
      *
-     * @param collectStru 采集信息结构体
+     * @param stru 采集信息结构体
      */
-    public Ssh_Client_Get(Stru_Collect collectStru) {
+    public Ssh_Client_Get(Stru_Collect stru) {
         //线程ID
-        int tn = collectStru.getTn();
-        this.host = collectStru.getIpAddress();
-        this.port = collectStru.getPort();
-        this.systemType = collectStru.getSystemType();
-        this.driversType = collectStru.getDriversType();
-        this.collectType = collectStru.getCollectType();
-        this.userName = collectStru.getUname();
-        this.passWord = collectStru.getPwd();
-        this.cmd = collectStru.getCmd() + "\r\n";
-        this.DATE_FORMAT = collectStru.getTimeFormat();
-        this.exitCmd = collectStru.getExitCmd();
-        this.timeOut = collectStru.getTimeOut();
-        this.sleepTime = collectStru.getSleepTime();
-        this.charCode = collectStru.getCharCode();
-        this.wrPath = collectStru.getWrPath();
+        int tn = stru.getTn();
+        this.host = stru.getIpAddress();
+        this.port = stru.getPort();
+        this.systemType = stru.getSystemType();
+        this.driversType = stru.getDriversType();
+        this.collectType = stru.getCollectType();
+        this.userName = stru.getUname();
+        this.passWord = stru.getPwd();
+        this.cmd = stru.getCmd() + "\r\n";
+        this.DATE_FORMAT = stru.getTimeFormat();
+        this.exitCmd = stru.getExitCmd();
+        this.timeOut = stru.getTimeOut();
+        this.sleepTime = stru.getSleepTime();
+        this.charCode = stru.getCharCode();
+        this.wrPath = stru.getWrPath();
 
         reStrut = new Stru_CollectResult();//采集返回信息
         reStrut.setTn(tn);
         reStrut.setIpAddress(host);
         reStrut.setStartDateTime(dtUtils.getCurTime(DATE_FORMAT));
     }
+
+    
 
     public Object call() {
         System.out.println(".");
@@ -302,7 +304,7 @@ public class Ssh_Client_Get implements Callable<Object> {
 
             return false;
         }
-        succeeded = fileUtils.wrStrToFile(reStrut.getCollectInfo(), collectFilesPath, charCode);
+        succeeded = fileUtils.wrStr2File(reStrut.getCollectInfo(), collectFilesPath, charCode);
         Log.debug(succeeded);
         return succeeded;
 

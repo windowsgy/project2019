@@ -3,8 +3,8 @@ package UserService.NetworkBills;
 import UserService.BaseOperation;
 import UserService.Params;
 import org.openqa.selenium.*;
-import utils.Config;
-import utils.FileUtils;
+import javaUtils.LoadProperties;
+import javaUtils.FileUtils;
 
 
 import java.util.*;
@@ -27,7 +27,7 @@ public class GetElement {
 
     public static void run() {
         String configFile = "userService.properties";
-        Config.paramMap(configFile,Params.map);
+        LoadProperties.paramMap(configFile,Params.map);
         String outPath = Params.map.get("getOutPath");//获取采集基本路径
         String filePath = Params.map.get("getBillFilePath");//采集文件路径
         System.out.println(filePath);
@@ -78,7 +78,7 @@ public class GetElement {
             String outFilePath = outPath + list.get(i) + ".txt";
             fileUtils.createFile(outFilePath);
             String fileStr = editBill + editStep;
-            fileUtils.wrStrToFile(fileStr, outFilePath, "GBK");
+            fileUtils.wrStr2File(fileStr, outFilePath, "GBK");
         }
 
     }

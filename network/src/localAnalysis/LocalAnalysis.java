@@ -3,9 +3,9 @@ package localAnalysis;
 import localAnalysis.localAnalysis.LocalAnalysisInterface;
 import param.Param;
 import start.ModelInterface;
-import utils.FileUtils;
-import utils.ListUtils;
-import utils.Log;
+import javaUtils.FileUtils;
+import javaUtils.ListUtils;
+import javaUtils.Log;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class LocalAnalysis implements ModelInterface {
                 if (result == null) {
                     Log.error("Analysis error :" + localAnalysisType);
                 } else {
-                    fileUtils.wrStrToFile(result, analysisFilePath, Param.charCode);
+                    fileUtils.wrStr2File(result, analysisFilePath, Param.charCode);
                     //  Log.info("Analysis Finished :"+analysisType);
                 }
 

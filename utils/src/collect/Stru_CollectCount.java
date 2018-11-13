@@ -1,6 +1,7 @@
 package collect;
 
 class Stru_CollectCount {
+
     int getCount() {
         return count;
     }
@@ -44,6 +45,7 @@ class Stru_CollectCount {
     void setTimeLong(Long timeLong) {
         this.timeLong = timeLong;
     }
+
     public double getRatio() {
         return ratio;
     }

@@ -1,7 +1,7 @@
 import java.util
 
 import sparkApps.{Compute, InitSpark}
-import utils.{Config, FileUtils, Log}
+import javaUtils.{LoadProperties, FileUtils, Log}
 import params.Params._
 
 //隐式转换java 与 scala集合类
@@ -18,10 +18,10 @@ object OfficeMain {
       }
     }
     val configFile = "sparkConfig.properties"
-    Config.paramMap(configFile,paramsMap)
+    LoadProperties.paramMap(configFile,paramsMap)
     val filesUtils = new FileUtils
     val filesPath = paramsMap.get("sourcePath")
-    val filesName: util.List[String] = filesUtils.getFileNameToList(filesPath)
+    val filesName: util.List[String] = filesUtils.getFilesName(filesPath)
     Log.debug("fileCount :"+filesName.size())
     Compute.run(InitSpark.getSession.sparkContext)
   }

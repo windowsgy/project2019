@@ -2,8 +2,8 @@ package localAnalysis;
 
 import inOut.Input;
 import param.Param;
-import utils.FileUtils;
-import utils.Log;
+import javaUtils.FileUtils;
+import javaUtils.Log;
 
 import java.util.HashSet;
 import java.util.List;
@@ -18,7 +18,7 @@ public class LocalAnalysisParam {
         String localFilesPath = Param.pathMap.get("main")+Param.pathMap.get("local");
         System.out.println("localFilesPath :"+localFilesPath);
 
-        List<String> localFileNameList = fileUtils.getFileNameToList(localFilesPath);
+        List<String> localFileNameList = fileUtils.getFilesName(localFilesPath);
         if(localFileNameList == null){
             Log.error("local file is null");
             return false;

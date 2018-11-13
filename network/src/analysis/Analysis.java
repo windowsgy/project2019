@@ -6,9 +6,9 @@ import analysis.format.FormatInterface;
 import analysis.stru.FormatStrut;
 import param.Param;
 import start.ModelInterface;
-import utils.FileUtils;
-import utils.ListUtils;
-import utils.Log;
+import javaUtils.FileUtils;
+import javaUtils.ListUtils;
+import javaUtils.Log;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -101,7 +101,7 @@ public class Analysis implements ModelInterface {
             if(result == null){
                 Log.error("Analysis error :"+analysisType);
             }else {
-                fileUtils.wrStrToFile(result,analysisFilePath,Param.charCode);
+                fileUtils.wrStr2File(result,analysisFilePath,Param.charCode);
               //  Log.info("Analysis Finished :"+analysisType);
             }
         }catch (Exception e){
@@ -140,7 +140,7 @@ public class Analysis implements ModelInterface {
                 strut.setFormated(false);
             } else {
                 strut.setFormated(true);//执行格式化
-                fileUtils.wrStrToFile(result, strut.getDesPath(), Param.charCode);
+                fileUtils.wrStr2File(result, strut.getDesPath(), Param.charCode);
             }
         }
 
@@ -176,7 +176,7 @@ public class Analysis implements ModelInterface {
                 }
             }
         }
-        fileUtils.wrStrToFile(sb.toString(),integrateFilePath,Param.charCode);
+        fileUtils.wrStr2File(sb.toString(),integrateFilePath,Param.charCode);
         Log.info("Integrate Line :"+i);
         //Log.info("Integrate Finish");
         return integrateFilePath;
@@ -193,7 +193,7 @@ public class Analysis implements ModelInterface {
        // Log.info("Build FormatStrut");
         List<FormatStrut> listStrut = new ArrayList<>();
         FileUtils fileUtils = new FileUtils();
-        List<String> fileNameList = fileUtils.getFileNameToList(Param.currentFormatSourcePath);
+        List<String> fileNameList = fileUtils.getFilesName(Param.currentFormatSourcePath);
         for (String fileName : fileNameList) {
             FormatStrut strut = new FormatStrut();
             strut.setFileName(fileName);

@@ -1,10 +1,11 @@
 package collect;
 
+
+import javaUtils.Chk4Str;
+import javaUtils.FileUtils;
+import javaUtils.Log;
+import javaUtils.Regex;
 import param.Param;
-import utils.Chk4Str;
-import utils.FileUtils;
-import utils.Log;
-import utils.Regex;
 
 import java.util.*;
 

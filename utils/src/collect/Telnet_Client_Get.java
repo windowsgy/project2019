@@ -1,11 +1,11 @@
 package collect;
 
 
+import javaUtils.DateTimeUtils;
+import javaUtils.FileUtils;
 import org.apache.commons.net.telnet.TelnetClient;
 
 
-import utils.DateTimeUtils;
-import utils.FileUtils;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -30,11 +30,12 @@ public class Telnet_Client_Get implements Callable<Object> {
     private DateTimeUtils dtUtils = new DateTimeUtils();
 
     Telnet_Client_Get(Stru_Collect map) {
+
         this.IpAddress = map.getIpAddress(); // ip地址加载
         this.username = map.getUname(); // 用户名加载
         this.password = map.getPwd(); // 密码加载
         this.command = map.getCmd();
-       
+
         reStrut = new Stru_CollectResult();//采集返回信息
         reStrut.setTn(tn);
         reStrut.setIpAddress(map.getIpAddress());
