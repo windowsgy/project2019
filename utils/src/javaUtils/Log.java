@@ -19,14 +19,12 @@ public class Log {
     private static boolean outOnOff = true;
     private static FileUtils fileUtils = new FileUtils();
     private static String logFilePath = null;
-
     public static void setDebug(boolean debug) {
         debugOnOff = debug;
     }
     public static void setOut(boolean out) {
         outOnOff = out;
     }
-
 
     public static<T> void debug(T x) {
         if (debugOnOff) {
@@ -64,15 +62,11 @@ public class Log {
         }
     }
 
-
-
     public static<T> void out(T x) {
         if (outOnOff) {
             System.out.print(x);
         }
     }
-
-
 
     public static <T> void msg(T x) {
         if (outOnOff) {

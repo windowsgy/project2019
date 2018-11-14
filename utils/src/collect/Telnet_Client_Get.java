@@ -16,7 +16,7 @@ import java.util.concurrent.Callable;
 
 public class Telnet_Client_Get implements Callable<Object> {
 
-    private int tn ;
+    private int tn;
     private TelnetClient telnet = new TelnetClient();// 构造telnet对象
     private InputStream in; // 输入流 连接方法赋值
     private PrintStream out; // 输出流 连接方法赋值
@@ -29,13 +29,13 @@ public class Telnet_Client_Get implements Callable<Object> {
     private FileUtils fileUtils = new FileUtils();
     private DateTimeUtils dtUtils = new DateTimeUtils();
 
+
     Telnet_Client_Get(Stru_Collect map) {
 
         this.IpAddress = map.getIpAddress(); // ip地址加载
         this.username = map.getUname(); // 用户名加载
         this.password = map.getPwd(); // 密码加载
         this.command = map.getCmd();
-
         reStrut = new Stru_CollectResult();//采集返回信息
         reStrut.setTn(tn);
         reStrut.setIpAddress(map.getIpAddress());
@@ -180,11 +180,12 @@ public class Telnet_Client_Get implements Callable<Object> {
 
     /**
      * 结束判断
+     *
      * @param endList 结束list
-     * @param str 采集数据
+     * @param str     采集数据
      * @return 如果采集数据中包括结束list 中的内容，则判断为结束
      */
-    private  boolean end(List<String> endList, String str) {
+    private boolean end(List<String> endList, String str) {
         for (String anEndList : endList) {
             if (str.endsWith(anEndList)) {
                 return true;
@@ -199,7 +200,7 @@ public class Telnet_Client_Get implements Callable<Object> {
      * @param str 指令集
      * @return 每行指令
      */
-    private  List<String> buildCmdList(String str) {
+    private List<String> buildCmdList(String str) {
         List<String> cmdList = new ArrayList<>();
         Scanner scanStr = new Scanner(str);
         while (scanStr.hasNextLine()) {
@@ -210,6 +211,7 @@ public class Telnet_Client_Get implements Callable<Object> {
 
     /**
      * 构建version 命令 ，根据登录前或登录后提示的信息构造version指令
+     *
      * @param str 登录前后的数据
      * @return version命令
      */
@@ -227,6 +229,7 @@ public class Telnet_Client_Get implements Callable<Object> {
 
     /**
      * 采集数据错误判断,根据判断结果确认程序退出
+     *
      * @param str 采集的数据
      * @return boolean
      */
@@ -240,14 +243,12 @@ public class Telnet_Client_Get implements Callable<Object> {
                 || str.equals(str4) || str.equals(str5));
     }
 
-
-
-
     /**
      * 判断登录前字符集
+     *
      * @return List<String>
      */
-    private List<String> beforeLoginList(){
+    private List<String> beforeLoginList() {
         List<String> list = new ArrayList<>();
         list.add("Login:");
         list.add("ame:");
@@ -256,9 +257,10 @@ public class Telnet_Client_Get implements Callable<Object> {
 
     /**
      * 判断登录过程中字符集
+     *
      * @return List<String>
      */
-    private List<String> LogingList(){
+    private List<String> LogingList() {
         List<String> list = new ArrayList<>();
         list.add("ord:");
         return list;

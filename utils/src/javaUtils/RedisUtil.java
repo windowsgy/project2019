@@ -15,10 +15,9 @@ import java.util.Map;
  */
 public class RedisUtil {
 
-    private static Map<String,String> map = new HashMap<>();
-    private static String REDIS_IP = map.get("redis.ip");
-    private static String REDIS_PORT = map.get("redis.port");
-    private static String REDIS_PASSWORD = map.get("redis.password");
+    private static String REDIS_IP ;
+    private static String REDIS_PORT ;
+    private static String REDIS_PASSWORD;
     private static int REDIS_TIMEOUT = 2000;
     private static JedisPool pool;
 
@@ -27,7 +26,6 @@ public class RedisUtil {
         REDIS_PORT = map.get("redis.port");
         REDIS_PASSWORD = map.get("redis.password");
         REDIS_TIMEOUT = 2000;
-
         if (pool == null) {
             JedisPoolConfig config = new JedisPoolConfig();
             config.setMaxTotal(Integer.valueOf(map.get("redis.pool.maxTotal")));
@@ -77,6 +75,8 @@ public class RedisUtil {
         List<String> list=redis.lrange(key,0,-1);
         pool.returnResource(redis);
     }
+
+
     /**
      * 用于插入redis队列方法 参数为list
      */

@@ -15,7 +15,6 @@ object HdfsUtils {
 
 
   def getFS(): FileSystem = {
-
     System.setProperty("hadoop", "hdfs")
     val conf = new Configuration()
     FileSystem.get(conf)
@@ -23,7 +22,6 @@ object HdfsUtils {
 
   /**
     * 关闭FileSystem
-    *
     * @param fileSystem HDFS文件系统
     */
   def closeFS(fileSystem: FileSystem) {
@@ -37,21 +35,13 @@ object HdfsUtils {
   }
 
   def isExists (hdfsFilePath:String):Boolean ={
-
     val fileSystem = getFS()
-
-     fileSystem.exists(new Path(hdfsFilePath))
-
-
-
+    fileSystem.exists(new Path(hdfsFilePath))
   }
 
   def filesIsExists (hdfsFilePath:String): Boolean ={
-
     val fileSystem = getFS()
-
     fileSystem.isFile(new Path(hdfsFilePath))
-
   }
 
 
@@ -66,7 +56,6 @@ object HdfsUtils {
     val fileSystem = getFS()
     val fstats = fileSystem.listStatus(new Path(hdfsFilePath))
     try {
-
       for (fstat <- fstats) {
         if (fstat.isDirectory()) {
           println("directory")
@@ -106,15 +95,12 @@ object HdfsUtils {
     println("----------------------------------------")
   }
 
-
   /**
     * 创建目录
-    *
     * @param hdfsFilePath
     */
   def mkdir(hdfsFilePath: String) = {
     val fileSystem = getFS()
-
     try {
       val success = fileSystem.mkdirs(new Path(hdfsFilePath))
       if (success) {
