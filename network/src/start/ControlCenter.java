@@ -1,6 +1,5 @@
 package start;
 
-
 import inOut.Input;
 import param.Param;
 import javaUtils.Log;
@@ -20,16 +19,15 @@ class ControlCenter {
             if (!Param.currentParamOnOff) {
                 modelPath = Param.modelTypeMap.get("CurrentParam");
             } else {//执行模块参数选择
-                Input.inputParam("currentModelType",Param.modelTypeMap.keySet());
-                if(!Input.inputStatus){
+                Input.inputParam("currentModelType", Param.modelTypeMap.keySet());
+                if (!Input.inputStatus) {
                     return;
                 }
                 //根据选择模块执行模块
                 modelPath = Param.modelTypeMap.get(Param.currentModelType);
             }
 
-           // Class clazz  = Reflect.createInstance(Class.forName(modelPath)).getClass();
-            ModelInterface model = (ModelInterface)Class.forName(modelPath).newInstance();
+            ModelInterface model = (ModelInterface) Class.forName(modelPath).newInstance();
             Method n = model.getClass().getDeclaredMethod("run");
             n.setAccessible(true);
             n.invoke(model);

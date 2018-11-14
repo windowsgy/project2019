@@ -1,16 +1,16 @@
 package initParam;
 
-
 import param.Param;
 import javaUtils.LoadProperties;
 import javaUtils.Log;
 
-
+/**
+ * 初始化方法
+ */
 public class Init {
 
     /**
      * 构造参数
-     *
      * @return boolean
      */
     public static  boolean run() {
