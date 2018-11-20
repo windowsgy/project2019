@@ -26,9 +26,6 @@ public class ListUtils {
         return list;
     }
 
-
-
-
     /**
      * List To List Array
      *
@@ -122,11 +119,8 @@ public class ListUtils {
      */
     public static List<String> listArrField(List<String[]> listArray, int index) {
         List<String> list = new ArrayList<>();
-
         for (String[] aListArray : listArray) {
-
             list.add(aListArray[index]);
-
         }
         return list;
     }

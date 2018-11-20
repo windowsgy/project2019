@@ -37,14 +37,12 @@ public class GetElement {
         String driverPath = Params.map.get("driverPath");
         String username = Params.map.get("username");
         String password = Params.map.get("password");
-
         BaseOperation baseOperation = new BaseOperation(driverPath, url, username, password);
         //初始化
         if (!baseOperation.ieInit()) {
             System.out.println("init error");
             return;
         }
-
         bro = baseOperation.getBro();
         broJs = baseOperation.getBroJs();
         //登陆
@@ -57,7 +55,6 @@ public class GetElement {
             System.out.println("进入工单管理失败");
             return;
         }
-
         if (!baseOperation.gotoIntegratedQuery()) {
             System.out.println("进入综合查询失败");
             return;
@@ -82,9 +79,6 @@ public class GetElement {
         }
 
     }
-
-
-
 
     private static void sleep(long timeLong) {
         timeLong = timeLong * 1000;

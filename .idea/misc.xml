@@ -12,6 +12,9 @@
         <option value="$PROJECT_DIR$/autoweb/pom.xml" />
         <option value="$PROJECT_DIR$/bigdata/pom.xml" />
         <option value="$PROJECT_DIR$/utils/pom.xml" />
+        <option value="$PROJECT_DIR$/learning/pom.xml" />
+        <option value="$PROJECT_DIR$/workflow/pom.xml" />
+        <option value="$PROJECT_DIR$/deeplearning/pom.xml" />
       </list>
     </option>
   </component>

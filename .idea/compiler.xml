@@ -8,17 +8,23 @@
         <outputRelativeToContentRoot value="true" />
         <module name="autoweb" />
         <module name="bigdata" />
+        <module name="deeplearning" />
+        <module name="learning" />
         <module name="network" />
         <module name="office" />
         <module name="utils" />
+        <module name="workflow" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="autoweb" target="1.8" />
       <module name="bigdata" target="1.8" />
+      <module name="deeplearning" target="1.8" />
+      <module name="learning" target="1.8" />
       <module name="network" target="1.8" />
       <module name="office" target="1.8" />
       <module name="utils" target="1.8" />
+      <module name="workflow" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

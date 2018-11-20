@@ -15,7 +15,6 @@ public class BuildCollectParams {
     public static boolean run() {
         Log.info("Init Collect Param");
         try {
-
             FileUtils fileUtils = new FileUtils();
             Param.port = Integer.parseInt(Param.collectMap.get("port"));
             Param.timeOut = Integer.parseInt(Param.collectMap.get("timeOut"));
@@ -98,7 +97,6 @@ public class BuildCollectParams {
             Param.currentLogFilePath = currentLogBasePath+Param.currentCollectType+".txt";
             Log.info("currentLogFilePath :"+Param.currentLogFilePath);
             fileUtils.createFile(Param.currentLogFilePath);
-
         } catch (Exception e) {
             Log.error(e.getClass() + "," + e.getMessage());
             return false;
