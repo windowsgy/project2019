@@ -1,7 +1,7 @@
+import javaUtils.{FileUtils, LoadProperties, Log}
 
+import apps.{Compute, InitSpark}
 import params.Params._
-import sparkApps.{Compute, InitSpark}
-import javaUtils.{LoadProperties, FileUtils, Log}
 //隐式转换java 与 scala集合类
 //import collection.JavaConversions._
 
@@ -15,7 +15,6 @@ object BigdataMain {
         Log.setDebug(true)
       }
     }
-
     val configFile = "spark.properties"
     LoadProperties.paramMap(configFile,paramsMap)
     val filesUtils = new FileUtils

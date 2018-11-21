@@ -1,9 +1,10 @@
-package sparkApps
+package apps
+
+import javaUtils.Log
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.{SparkConf, SparkContext}
 import params.Params._
-import javaUtils.Log
 
 
 

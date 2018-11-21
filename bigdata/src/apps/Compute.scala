@@ -1,7 +1,8 @@
-package sparkApps
+package apps
+
+import javaUtils.Log
 
 import org.apache.spark.SparkContext
-import javaUtils.Log
 import params.Params._
 
 object Compute {

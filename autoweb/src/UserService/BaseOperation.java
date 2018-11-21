@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class BaseOperation {
 
-
     public WebDriver getBro() {
         return bro;
     }
@@ -82,10 +81,10 @@ public class BaseOperation {
             element.clear();//清除密码
             element.sendKeys(this.passWord);//发送密码
             WebElement loginButton = bro.findElement(By.xpath(Params.LOGIN_XPATH));//获取登陆按钮元素
-            broJs.executeScript(CLICK, loginButton);//点击登陆俺就
+            broJs.executeScript(CLICK, loginButton);//点击登陆
             sleep(5);
             String afterLoginUrl = bro.getCurrentUrl();
-            if (loginUrl.equals(afterLoginUrl)) {
+            if (loginUrl.equals(afterLoginUrl)) {//如果登陆后页面等于登陆前页面，判断为登陆失败.
                 return false;
             }
             System.out.println("login , currentPage :" + afterLoginUrl);
