@@ -3,9 +3,9 @@ package sendMail;
 
 
 
-import javaUtils.FileUtils;
-import javaUtils.ListUtils;
-import javaUtils.Log;
+import base.FileUtils;
+import base.ListUtils;
+import base.Log;
 import params.BuildParm;
 import params.InitParm;
 

@@ -1,8 +1,8 @@
 package inOut;
 
 import param.Param;
-import javaUtils.FileUtils;
-import javaUtils.Log;
+import base.FileUtils;
+import base.Log;
 
 
 import java.lang.reflect.Field;

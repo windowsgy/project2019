@@ -2,8 +2,8 @@ package params;
 
 
 
-import javaUtils.DateTimeUtils;
-import javaUtils.Log;
+import base.DateTimeUtils;
+import base.Log;
 
 import java.util.Scanner;
 

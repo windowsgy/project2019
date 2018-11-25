@@ -1,7 +1,7 @@
 package sendMail;
 
-import javaUtils.Log;
-import mail.StruMail;
+import base.Log;
+import utils.mail.StruMail;
 import params.BuildParm;
 import params.InitParm;
 

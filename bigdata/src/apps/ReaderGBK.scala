@@ -1,7 +1,6 @@
 package apps
 
-import javaUtils.Log
-
+import base.Log
 import org.apache.hadoop.io.{LongWritable, Text}
 import org.apache.hadoop.mapred.TextInputFormat
 import org.apache.spark.SparkContext

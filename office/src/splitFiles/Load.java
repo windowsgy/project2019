@@ -1,10 +1,10 @@
 package splitFiles;
 
 
-import javaUtils.FileUtils;
+import base.FileUtils;
 
-import javaUtils.ListUtils;
-import javaUtils.Log;
+import base.ListUtils;
+import base.Log;
 import params.BuildParm;
 import params.InitParm;
 

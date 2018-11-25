@@ -7,7 +7,7 @@ package model.plant;
 public class SendFactory {
 
     Sender produce(String type) {
-        if ("mail".equals(type)) {
+        if ("utils".equals(type)) {
             return new MailSender();
         } else if ("sms".equals(type)) {
             return new SmsSender();
