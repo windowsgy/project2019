@@ -1,7 +1,6 @@
 package apps
 
-import javaUtils.Log
-
+import base.Log
 import org.apache.spark.SparkContext
 import params.Params._
 

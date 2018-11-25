@@ -1,8 +1,8 @@
 package initParam;
 
 import param.Param;
-import javaUtils.LoadProperties;
-import javaUtils.Log;
+import base.LoadProperties;
+import base.Log;
 
 /**
  * 初始化方法

@@ -1,7 +1,7 @@
 package analysis.analysis;
 
 
-import javaUtils.Log;
+import base.Log;
 
 import java.util.HashSet;
 import java.util.List;

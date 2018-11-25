@@ -1,6 +1,6 @@
 
 
-import javaUtils.Log;
+import base.Log;
 import sendMail.RunSendMail;
 import splitFiles.RunSplitFile;
 
@@ -20,7 +20,7 @@ public class OfficeMain {
             case "split":
                 RunSplitFile.run();
                 break;
-            case "mail":
+            case "utils":
                 RunSendMail.run();
                 break;
             default:

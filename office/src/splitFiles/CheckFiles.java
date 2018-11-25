@@ -1,7 +1,7 @@
 package splitFiles;
 
-import javaUtils.FileUtils;
-import javaUtils.Log;
+import base.FileUtils;
+import base.Log;
 import params.BuildParm;
 
 import java.util.Scanner;

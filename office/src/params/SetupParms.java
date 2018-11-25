@@ -1,7 +1,7 @@
 package params;
 
 
-import javaUtils.Log;
+import base.Log;
 
 /**
  *

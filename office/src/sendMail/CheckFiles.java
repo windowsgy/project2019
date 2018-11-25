@@ -1,8 +1,8 @@
 package sendMail;
 
 
-import javaUtils.FileUtils;
-import javaUtils.Log;
+import base.FileUtils;
+import base.Log;
 import params.BuildParm;
 
 /**

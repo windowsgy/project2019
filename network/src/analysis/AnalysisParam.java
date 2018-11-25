@@ -2,8 +2,8 @@ package analysis;
 
 import inOut.Input;
 import param.Param;
-import javaUtils.FileUtils;
-import javaUtils.Log;
+import base.FileUtils;
+import base.Log;
 
 import java.util.HashSet;
 

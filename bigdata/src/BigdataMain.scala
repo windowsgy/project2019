@@ -1,6 +1,5 @@
-import javaUtils.{FileUtils, LoadProperties, Log}
-
 import apps.{Compute, InitSpark}
+import base.{FileUtils, LoadProperties, Log}
 import params.Params._
 //隐式转换java 与 scala集合类
 //import collection.JavaConversions._

@@ -58,7 +58,7 @@ public class Int implements FormatInterface {
                 proStatus = line.substring(line.lastIndexOf(":") + 1).trim();
             }
             if (includeDesc(line)) {
-                desc = line.substring(line.lastIndexOf(":") + 1).trim();
+                desc = line.substring(line.lastIndexOf(" ") + 1).trim();
             }
             if (includeInternetAddress(line)) {
                 IpAddress = line.substring(line.lastIndexOf("is") + 2).trim();

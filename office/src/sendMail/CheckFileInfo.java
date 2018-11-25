@@ -1,10 +1,10 @@
 package sendMail;
 
 
-import javaUtils.ListUtils;
-import javaUtils.Log;
-import javaUtils.Regex;
-import javaUtils.SetUtils;
+import base.ListUtils;
+import base.Log;
+import base.Regex;
+import base.SetUtils;
 import params.BuildParm;
 
 import java.util.HashSet;

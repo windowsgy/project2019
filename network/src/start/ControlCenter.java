@@ -2,7 +2,7 @@ package start;
 
 import inOut.Input;
 import param.Param;
-import javaUtils.Log;
+import base.Log;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
