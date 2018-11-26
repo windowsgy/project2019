@@ -8,7 +8,7 @@ import java.util.List;
 public class Int implements FormatInterface {
     @Override
     public String run(List<String> list) {
-        return fields(filter(list));
+        return fields(filter(list));//过滤后再选择字段返回字符串;
     }
 
     /**
@@ -17,7 +17,6 @@ public class Int implements FormatInterface {
      * @return list
      */
     private List<String> filter(List<String> list) {
-
         List<String> newList = new ArrayList<>();
         boolean filter = false;
         for (String line : list) {
@@ -29,7 +28,6 @@ public class Int implements FormatInterface {
                 filter = false;
             }
             if (!filter) {
-               // System.out.println(line);
                 newList.add(line);
             }
         }
@@ -58,7 +56,7 @@ public class Int implements FormatInterface {
                 proStatus = line.substring(line.lastIndexOf(":") + 1).trim();
             }
             if (includeDesc(line)) {
-                desc = line.substring(line.lastIndexOf(" ") + 1).trim();
+                desc = line.substring(line.indexOf(":") + 1).trim();
             }
             if (includeInternetAddress(line)) {
                 IpAddress = line.substring(line.lastIndexOf("is") + 2).trim();

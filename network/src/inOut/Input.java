@@ -15,7 +15,6 @@ import java.util.Set;
 public class Input {
 
     public static boolean inputStatus = false;//输入状态 判断输入是否成功
-
     /**
      * 输入 是否参数
      *
@@ -98,7 +97,7 @@ public class Input {
     /**
      * 输入路径
      * @param paramName 要设置的全局静态变量名
-     * @param isDir
+     * @param isDir boolean
      */
 
     private static void inputPath(String paramName, boolean isDir) {
@@ -152,13 +151,14 @@ public class Input {
         Scanner input = new Scanner(System.in);
         try {
             String str = input.next().trim();
+            boolean boolDir = isPath(basePath + str, isDir);
             if ("1".equals(str)) {
                 System.out.println("Exit");
                 inputStatus = false;
                 Param.exitOnOff = true;
             } else if ("0".equals(str)) {
                 inputStatus = false;
-            } else if (isPath(basePath + str, isDir)) {
+            } else if (boolDir) {
                 field = param.Param.class.getField(paramName);
                 field.set(param.Param.class, str);
                 //打印变量 和变量值
@@ -166,7 +166,7 @@ public class Input {
                 inputStatus = true;
             } else {
                 System.out.println("input path not exist");
-                inputPath(paramName, isDir);
+                inputPath(paramName, basePath,isDir);
             }
         } catch (NoSuchFieldException e) {
             Log.error("Input : NoSuchFieldException : " + e.getMessage());

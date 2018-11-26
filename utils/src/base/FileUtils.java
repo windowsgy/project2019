@@ -122,7 +122,6 @@ public class FileUtils {
      */
     public List<String> read2List(String path, long lineNumber, String code) {
         List<String> list = new ArrayList<>();//返回结果
-
         BufferedReader br;
         try {
             File file = new File(path);

@@ -33,9 +33,6 @@ public class Init {
         if(!LoadProperties.paramMap("model.properties",Param.modelTypeMap)){
             return false;
         }
-        if(!LoadProperties.paramMap("localAnalysis.properties",Param.localAnalysisMap)){
-            return false;
-        }
         if(!LoadProperties.paramMap("fieldsIndex.properties",Param.fieldsIndexMap)){
             return false;
         }

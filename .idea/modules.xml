@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/analyticszoo/analyticszoo.iml" filepath="$PROJECT_DIR$/analyticszoo/analyticszoo.iml" />
       <module fileurl="file://$PROJECT_DIR$/autoweb/autoweb.iml" filepath="$PROJECT_DIR$/autoweb/autoweb.iml" />
       <module fileurl="file://$PROJECT_DIR$/bigdata/bigdata.iml" filepath="$PROJECT_DIR$/bigdata/bigdata.iml" />
       <module fileurl="file://$PROJECT_DIR$/learning/learning.iml" filepath="$PROJECT_DIR$/learning/learning.iml" />
