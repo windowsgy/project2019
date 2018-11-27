@@ -33,15 +33,15 @@ public class ListUtils {
      * @param splitChar SplitChar
      * @return List Array
      */
-    public static List<String[]> list2ListArray(List<String> list, String splitChar) {
-        String[] firstArray = list.get(0).split(splitChar); //首行
+    public List<String[]> list2ListArray(List<String> list, String splitChar) {
+        String[] firstArray = list.get(0).split(splitChar,-1); //首行
         int firstArraySize = firstArray.length;
         //  LogInfo.info("First Array Size:"+firstArraySize);
         List<String[]> listArray = new ArrayList<>();
         int lineCount = 0;
         for (String aList : list) {
             lineCount++;
-            String[] array = aList.split(splitChar);
+            String[] array = aList.split(splitChar,-1);
             if (array.length != firstArraySize) {
                 Log.info(lineCount + " :Line Error : " + aList);
                 return null;
@@ -59,14 +59,13 @@ public class ListUtils {
      * @param splitChar 分隔符
      * @return 行、列 列表
      */
-    public static List<List<String>> list2ListFields(List<String> list, String splitChar) {
-        String[] firstArray = list.get(0).split(splitChar); //首行
-        int firstArraySize = firstArray.length;
+    public List<List<String>> list2ListFields(List<String> list, String splitChar) {
+        int firstArraySize = list.get(0).split(splitChar,-1).length; //首行
         List<List<String>> theList = new ArrayList<>();
         int lineCount = 0;
         for (String lists : list) {
             lineCount++;
-            String[] array = lists.split(splitChar);
+            String[] array = lists.split(splitChar,-1);
             if (array.length == firstArraySize) {// 如果此行长度不等于首行字段长度
                 theList.add(Arrays.asList(array));
             } else {
@@ -100,7 +99,7 @@ public class ListUtils {
      * @param regex Regex
      * @return List
      */
-    public static List<String> listFilter(List<String> list, String regex) {
+    public List<String> listFilter(List<String> list, String regex) {
         List<String> newList = new ArrayList<>();
         for (String line : list) {
             if (!Pattern.matches(regex, line)) {
@@ -117,7 +116,7 @@ public class ListUtils {
      * @param index     index
      * @return List
      */
-    public static List<String> listArrField(List<String[]> listArray, int index) {
+    public  List<String> listArrField(List<String[]> listArray, int index) {
         List<String> list = new ArrayList<>();
         for (String[] aListArray : listArray) {
             list.add(aListArray[index]);
