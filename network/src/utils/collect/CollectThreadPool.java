@@ -31,9 +31,9 @@ class CollectThreadPool {
         }
         //采集失败List
         List<Stru_CollectResult> failList = new ArrayList<>();
-        Stru_CollectCount countStru = new Stru_CollectCount();
-        countStru.setStartTime(dtUtils.getCurTime(timeFormat));
-        countStru.setCount(collectList.size());
+        Stru_CollectCount countStrut = new Stru_CollectCount();
+        countStrut.setStartTime(dtUtils.getCurTime(timeFormat));
+        countStrut.setCount(collectList.size());
         int failCount = 0;
         int successfulCount = 0;
         ExecutorService pool = Executors.newFixedThreadPool(threadPool);
@@ -72,16 +72,16 @@ class CollectThreadPool {
             }
         }
         Log.out(null);
-        countStru.setEndTime(dtUtils.getCurTime(timeFormat));
-        countStru.setTimeLong(dtUtils.timeDifference(countStru.getStartTime(), countStru.getEndTime()));
-        countStru.setSuccessfulCount(successfulCount);
-        countStru.setFailCount(failCount);
-        double collectSuccess = countStru.getSuccessfulCount();
-        double collectTotal = countStru.getCount();
+        countStrut.setEndTime(dtUtils.getCurTime(timeFormat));
+        countStrut.setTimeLong(dtUtils.timeDifference(countStrut.getStartTime(), countStrut.getEndTime()));
+        countStrut.setSuccessfulCount(successfulCount);
+        countStrut.setFailCount(failCount);
+        double collectSuccess = countStrut.getSuccessfulCount();
+        double collectTotal = countStrut.getCount();
         double collectRatio = collectSuccess / collectTotal;
-        countStru.setRatio(collectRatio);
+        countStrut.setRatio(collectRatio);
         Log.linel3();
-        Log.info(countStru.toString());//打印采集结果
+        Log.info(countStrut.toString());//打印采集结果
         //遍历打印采集失败的列表
         for (Stru_CollectResult strut : failList) {
             Log.info("Collect Failed :" + strut.getTn() + "IP :" + strut.getIpAddress() + ",CollectStatus :" + strut.isCollectBoolean() + ",CollectStep :" + strut.getStep() + ",Log :" + strut.getLog());
