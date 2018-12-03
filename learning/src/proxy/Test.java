@@ -1,4 +1,4 @@
-package staticproxy;
+package proxy;
 
 import java.lang.reflect.Proxy;
 
