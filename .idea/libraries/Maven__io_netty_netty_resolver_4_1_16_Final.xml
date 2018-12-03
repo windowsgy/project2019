@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: io.netty:netty-resolver:4.1.16.Final">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://E:/developEnv/mavenrepo/io/netty/netty-resolver/4.1.16.Final/netty-resolver-4.1.16.Final.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://E:/developEnv/mavenrepo/io/netty/netty-resolver/4.1.16.Final/netty-resolver-4.1.16.Final-sources.jar!/" />
+=======
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-resolver/4.1.16.Final/netty-resolver-4.1.16.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-resolver/4.1.16.Final/netty-resolver-4.1.16.Final-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/netty/netty-resolver/4.1.16.Final/netty-resolver-4.1.16.Final-sources.jar!/" />
+>>>>>>> origin/master
     </SOURCES>
   </library>
 </component>

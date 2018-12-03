@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.5">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://E:/developEnv/mavenrepo/org/apache/httpcomponents/httpcore-nio/4.4.5/httpcore-nio-4.4.5.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://E:/developEnv/mavenrepo/org/apache/httpcomponents/httpcore-nio/4.4.5/httpcore-nio-4.4.5-sources.jar!/" />
+=======
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore-nio/4.4.5/httpcore-nio-4.4.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore-nio/4.4.5/httpcore-nio-4.4.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore-nio/4.4.5/httpcore-nio-4.4.5-sources.jar!/" />
+>>>>>>> origin/master
     </SOURCES>
   </library>
 </component>
