@@ -1,7 +1,6 @@
 <component name="libraryTable">
   <library name="Maven: org.elasticsearch.plugin:lang-mustache-client:6.4.2">
     <CLASSES>
-<<<<<<< HEAD
       <root url="jar://E:/developEnv/mavenrepo/org/elasticsearch/plugin/lang-mustache-client/6.4.2/lang-mustache-client-6.4.2.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -9,15 +8,6 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://E:/developEnv/mavenrepo/org/elasticsearch/plugin/lang-mustache-client/6.4.2/lang-mustache-client-6.4.2-sources.jar!/" />
-=======
-      <root url="jar://$MAVEN_REPOSITORY$/org/elasticsearch/plugin/lang-mustache-client/6.4.2/lang-mustache-client-6.4.2.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/elasticsearch/plugin/lang-mustache-client/6.4.2/lang-mustache-client-6.4.2-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/elasticsearch/plugin/lang-mustache-client/6.4.2/lang-mustache-client-6.4.2-sources.jar!/" />
->>>>>>> origin/master
     </SOURCES>
   </library>
 </component>
