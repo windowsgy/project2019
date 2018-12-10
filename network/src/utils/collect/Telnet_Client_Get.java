@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 
-public class Telnet_Client_Get implements Callable<Object> {
+public class Telnet_Client_Get implements Callable<Stru_CollectResult> {
 
     private int tn;
     private TelnetClient telnet = new TelnetClient();// 构造telnet对象
@@ -39,7 +39,7 @@ public class Telnet_Client_Get implements Callable<Object> {
         reStrut.setStartDateTime(dtUtils.getCurTime(DATE_FORMAT));
     }
 
-    public Object call() {
+    public Stru_CollectResult call() {
         reStrut.setStep("connectToServer");
         if (!connectToServer()) {//如果连接失败返回
             return reStrut;

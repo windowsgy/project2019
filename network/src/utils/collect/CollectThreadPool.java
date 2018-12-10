@@ -17,11 +17,11 @@ class CollectThreadPool {
     /**
      * @param collectList 采集结构体
      * @param timeFormat  时间格式
-     * @param threadPool  线程池大小
+     * @param poolSize  线程池大小
      * @param logFilePath 日志文件路径
      * @return boolean
      */
-    static boolean run(List<Stru_Collect> collectList, String timeFormat, int threadPool, String logFilePath) {
+    static boolean run(List<Stru_Collect> collectList, String timeFormat, int poolSize, String logFilePath) {
         FileUtils fileUtils = new FileUtils();
         DateTimeUtils dtUtils = new DateTimeUtils();
         Log.info("Collect Start ");
@@ -36,19 +36,27 @@ class CollectThreadPool {
         countStrut.setCount(collectList.size());
         int failCount = 0;
         int successfulCount = 0;
-        ExecutorService pool = Executors.newFixedThreadPool(threadPool);
+        ExecutorService pool = Executors.newFixedThreadPool(poolSize);
         // 创建多个有返回值的任务
         List<Future> list = new ArrayList<>();
         for (int i = 0; i < collectList.size(); i++) {
             Stru_Collect stru = collectList.get(i);
             stru.setTn(i);
-            Callable<?> c = new Ssh_Client_Get(stru);
-            Future<?> f = pool.submit(c);
+            Callable<Stru_CollectResult> c = new Ssh_Client_Get(stru);
+            Future<Stru_CollectResult> f = pool.submit(c);
             list.add(f);
+        }
+        //循环判断线程全部结束
+        while (true) {
+            if (pool.isTerminated()) {
+                Log.debug("pool is finished ");
+                break;
+            }
         }
         // 关闭线程池
         pool.shutdown();
-        for (Future<?> f : list) {
+        //循环读取结果
+        for (Future f : list) {
             try {
                 Stru_CollectResult struCollectResult = (Stru_CollectResult) f.get();
                 Log.debug(struCollectResult.toString());
@@ -63,12 +71,6 @@ class CollectThreadPool {
             } catch (Exception e) {
                 Log.error(e.getClass().getSimpleName() + "," + e.getMessage());
                 e.printStackTrace();
-            }
-        }
-        while (true) {
-            if (pool.isTerminated()) {
-                Log.debug("pool is finished ");
-                break;
             }
         }
         Log.out(null);

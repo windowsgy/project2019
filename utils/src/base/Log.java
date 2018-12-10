@@ -17,6 +17,8 @@ public class Log {
     private static boolean debugOnOff = false;//debug 开关
     private static boolean outOnOff = true;
     private static FileUtils fileUtils = new FileUtils();
+
+
     private static String logFilePath = null;
     public static void setDebug(boolean debug) {
         debugOnOff = debug;
@@ -24,6 +26,8 @@ public class Log {
     public static void setOut(boolean out) {
         outOnOff = out;
     }
+
+
 
     public static<T> void debug(T x) {
         if (debugOnOff) {

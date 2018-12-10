@@ -12,7 +12,7 @@ import base.Log;
 
 import java.io.*;
 
-public class Ssh_Client_Get implements Callable<Object> {
+public class Ssh_Client_Get implements Callable<Stru_CollectResult> {
 
     private JSch jsch = new JSch();
     private Session session;
@@ -69,7 +69,7 @@ public class Ssh_Client_Get implements Callable<Object> {
     }
 
 
-    public Object call() {
+    public Stru_CollectResult call() {
         System.out.println(".");
 
         if (!createSession()) {
