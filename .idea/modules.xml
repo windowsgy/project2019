@@ -5,9 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/autoweb/autoweb.iml" filepath="$PROJECT_DIR$/autoweb/autoweb.iml" />
       <module fileurl="file://$PROJECT_DIR$/bigdata/bigdata.iml" filepath="$PROJECT_DIR$/bigdata/bigdata.iml" />
       <module fileurl="file://$PROJECT_DIR$/learning/learning.iml" filepath="$PROJECT_DIR$/learning/learning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybites/mybites.iml" filepath="$PROJECT_DIR$/mybites/mybites.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/office/office.iml" filepath="$PROJECT_DIR$/office/office.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/project2019.iml" filepath="$PROJECT_DIR$/.idea/project2019.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sprintdemo/sprintdemo.iml" filepath="$PROJECT_DIR$/sprintdemo/sprintdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/webserver/webserver.iml" filepath="$PROJECT_DIR$/webserver/webserver.iml" />
     </modules>

@@ -1,7 +1,7 @@
 package sendMail;
 
 import base.Log;
-import utils.mail.StruMail;
+import collect.mail.StruMail;
 import params.BuildParm;
 import params.InitParm;
 

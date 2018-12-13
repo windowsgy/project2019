@@ -11,7 +11,6 @@ public class Param {
     public static Map<String,String> formatMap = new HashMap<>();//格式化集合
     public static Map<String,String> analysisMap = new HashMap<>();//分析参数
     public static Map<String,String> collectMap = new HashMap<>();//采集参数
-    public static Map<String,String> localAnalysisMap = new HashMap<>();//本地采集参数
     public static Map<String,String> fieldsIndexMap = new HashMap<>();//本地分析字段索引
     public static Map<String,String> pathMap = new HashMap<>();//采集参数
     public static Map<String,Map<String,Map<String,String>>> commandMap = new HashMap<>();//命令集合
@@ -53,13 +52,6 @@ public class Param {
     public static final String splitChar = "\\|";
     public static final String fileSplitChar = "_";
     public static final String charCode = "UTF-8";
-
-    //LocalAnalysis
-    public static String localAnalysisSubTableName = "Sheet1";//当前分析子表名称
-    public static String localFilePath;//本地分析数据路径
-    public static String localFileName;//本地分析文件名
-    public static String localFileType;//本地文件类型
-
 
     public final static String  filterStr = "---- More ----\u001B[42D                                          \u001B[42D";
 

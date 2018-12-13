@@ -27,7 +27,7 @@ public class CheckFileInfo {
         }  else if(BuildParm.summaryList == null || BuildParm.summaryList.size()<1){
             Log.info("汇总文件信息为空");
             return false;
-        }  else if (BuildParm.summaryJoinField.size()!= new HashSet<String>(BuildParm.summaryJoinField).size()){
+        }  else if (BuildParm.summaryJoinField.size()!= new HashSet<>(BuildParm.summaryJoinField).size()){
             Log.info("汇总文件关联字段不唯一");
             return false;
         }     else if (BuildParm.summaryMailField.size()!= ListUtils.listSelect(BuildParm.summaryMailField, Regex.REGEX_EMAIL).size()){

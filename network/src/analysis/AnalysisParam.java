@@ -33,7 +33,7 @@ public class AnalysisParam {
      */
     private static boolean setCollectPath() {
         //输入当前时间格式
-        Input.inputPath("currentTimeStr", Param.pathMap.get("main") + "\\", true);
+        Input.inputPath("currentTimeStr", Param.pathMap.get("main") + "\\");
         if (!Input.inputStatus) {
             return false;
         }

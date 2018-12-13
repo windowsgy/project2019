@@ -2,9 +2,11 @@ package analysis.stru;
 
 public class OspfPeer_Stru {
 
-
-
     private String localId;
+    private String localIp;
+    private String remoteId;
+    private String remoteIp;
+    private String status;
 
     public String getLocalId() {
         return localId;
@@ -45,10 +47,5 @@ public class OspfPeer_Stru {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    private String localIp;
-    private String remoteId;
-    private String remoteIp;
-    private String status;
 
 }

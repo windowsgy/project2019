@@ -9,8 +9,10 @@
         <module name="autoweb" />
         <module name="bigdata" />
         <module name="learning" />
+        <module name="mybites" />
         <module name="network" />
         <module name="office" />
+        <module name="sprintdemo" />
         <module name="utils" />
         <module name="workflow" />
       </profile>
@@ -19,8 +21,10 @@
       <module name="autoweb" target="1.8" />
       <module name="bigdata" target="1.8" />
       <module name="learning" target="1.8" />
+      <module name="mybites" target="1.8" />
       <module name="network" target="1.8" />
       <module name="office" target="1.8" />
+      <module name="sprintdemo" target="1.8" />
       <module name="utils" target="1.8" />
       <module name="workflow" target="1.8" />
     </bytecodeTargetLevel>

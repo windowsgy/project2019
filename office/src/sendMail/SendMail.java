@@ -2,8 +2,8 @@ package sendMail;
 
 
 import base.Log;
-import utils.mail.SendMailUtil;
-import utils.mail.StruMail;
+import collect.mail.SendMailUtil;
+import collect.mail.StruMail;
 
 import java.util.ArrayList;
 import java.util.List;

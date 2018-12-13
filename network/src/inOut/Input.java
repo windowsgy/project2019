@@ -15,6 +15,7 @@ import java.util.Set;
 public class Input {
 
     public static boolean inputStatus = false;//输入状态 判断输入是否成功
+
     /**
      * 输入 是否参数
      *
@@ -95,55 +96,15 @@ public class Input {
     }
 
     /**
-     * 输入路径
-     * @param paramName 要设置的全局静态变量名
-     * @param isDir boolean
-     */
-
-    private static void inputPath(String paramName, boolean isDir) {
-        inputStatus = false;//执行状态重置
-        Log.linel4();
-        System.out.println("Input " + paramName + ":  Path ;0,Return ; 1,Exit");
-        System.out.print(":");
-        Field field;
-        Scanner input = new Scanner(System.in);
-        String str = input.next().trim();
-        try {
-            if ("1".equals(str)) {
-                System.out.println("Exit");
-                inputStatus = false;
-                Param.exitOnOff = true;
-            } else if ("0".equals(str)) {
-                inputStatus = false;
-            } else if (isPath(str, isDir)) {
-                field = param.Param.class.getField(paramName);
-                field.set(param.Param.class, str);
-                //打印变量 和变量值
-                System.out.println(paramName + " :" + field.get(Param.class));
-                inputStatus = true;
-            } else {
-                System.out.println("input path not exist");
-                inputPath(paramName, isDir);
-            }
-        } catch (NoSuchFieldException e) {
-            Log.error("Input : NoSuchFieldException : " + e.getMessage());
-            inputStatus = false;
-        } catch (IllegalAccessException e) {
-            Log.error("Input : IllegalAccessException : " + e.getMessage());
-            inputStatus = false;
-        }
-    }
-
-    /**
      * 添加基本路径
      *
      * @param paramName 输入路径
-     * @param basePath  基本路径
-     * @param isDir     是否是目录
+     * @param basePath  基本路径 ，输入路径的前缀
      */
 
-    public static void inputPath(String paramName, String basePath, boolean isDir) {
+    public static void inputPath(String paramName, String basePath) {
         inputStatus = false;//执行状态重置
+        FileUtils fileUtils = new FileUtils();
         Log.linel4();
         System.out.println("Input " + paramName + ":  Path ;0,Return ; 1,Exit");
         System.out.print(":");
@@ -151,7 +112,7 @@ public class Input {
         Scanner input = new Scanner(System.in);
         try {
             String str = input.next().trim();
-            boolean boolDir = isPath(basePath + str, isDir);
+            boolean boolDir = fileUtils.isDir(basePath + str);
             if ("1".equals(str)) {
                 System.out.println("Exit");
                 inputStatus = false;
@@ -166,7 +127,7 @@ public class Input {
                 inputStatus = true;
             } else {
                 System.out.println("input path not exist");
-                inputPath(paramName, basePath,isDir);
+                inputPath(paramName, basePath);
             }
         } catch (NoSuchFieldException e) {
             Log.error("Input : NoSuchFieldException : " + e.getMessage());
@@ -176,20 +137,5 @@ public class Input {
             inputStatus = false;
         }
     }
-
-    /**
-     * @param path  路径
-     * @param isDir 是目录
-     * @return boolean
-     */
-    private static boolean isPath(String path, boolean isDir) {
-        FileUtils fileUtils = new FileUtils();
-        if (isDir) {
-            return fileUtils.isDir(path);
-        } else {
-            return fileUtils.isFile(path);
-        }
-    }
-
 
 }

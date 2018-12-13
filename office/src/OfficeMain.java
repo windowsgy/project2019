@@ -20,7 +20,7 @@ public class OfficeMain {
             case "split":
                 RunSplitFile.run();
                 break;
-            case "utils":
+            case "collect":
                 RunSendMail.run();
                 break;
             default:
