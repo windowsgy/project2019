@@ -12,7 +12,6 @@
         <module name="mybites" />
         <module name="network" />
         <module name="office" />
-        <module name="sprintdemo" />
         <module name="utils" />
         <module name="workflow" />
       </profile>
